@@ -24,5 +24,6 @@ export SEEDS=${SEEDS:-"10 20 30"}
 export EVALUATE_AFTER_RUN=0
 bash scripts/baseline.sh random digits synthetic_planes
 bash scripts/baseline.sh loo digits synthetic_planes
+bash scripts/baseline.sh datashap digits
 bash scripts/method.sh digits synthetic_planes
 bash scripts/evaluate.sh

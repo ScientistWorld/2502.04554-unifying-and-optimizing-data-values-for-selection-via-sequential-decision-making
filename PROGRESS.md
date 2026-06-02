@@ -4,7 +4,7 @@
 
 - Paper analysis completed for the core RQ3 experiment.
 - Implemented Algorithm 2's feature/label bipartite graph threshold learning and iterative maximum coverage ranking.
-- Implemented random and leave-one-out baselines.
+- Implemented random, leave-one-out, and Monte Carlo Data Shapley baselines.
 - Implemented method-agnostic evaluation that reads ranking artifacts and retrains logistic regression along the selection curve.
 - Job `a461534d-087` ran the method and baselines end-to-end and produced ranking artifacts plus score files.
 - Job `5acc95ba-aa2` completed the full reproduction script and passed `validate.py --compare`.
@@ -22,11 +22,13 @@
 
 ## Remaining
 
+- The next submitted job will regenerate scores with the added Data Shapley baseline on `digits_selection`.
 - Higher milestones require adding more of the paper's OpenML datasets or improving the synthetic substitute so the additional setting has a clear, reproducible method advantage.
 - A future agent can start from the packaged scripts and current 20-seed scores without needing to repair the environment.
 
 ## Issues
 
+- Continuation audit noted that the previous core claim relied only on random and LOO baselines; a Monte Carlo Data Shapley baseline has been added and is pending a full job run.
 - Exact OpenML datasets are not downloaded yet. The first run uses bundled/generated data to avoid blocking the initial method execution.
 - A continuation attempt to fetch OpenML 2dplanes (dataset ID 727) via both `fetch_openml` and direct OpenML API/download URLs hung from the login node, so no unverified download URL was committed.
 - Job `1097f20d-3d2` failed before method execution because scikit-learn 1.8 removed the `multi_class` argument from `LogisticRegression`. Fixed in `data/metrics.py`.

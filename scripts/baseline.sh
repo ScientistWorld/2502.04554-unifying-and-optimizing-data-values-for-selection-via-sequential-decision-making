@@ -39,6 +39,12 @@ for dataset in ${DATASETS[@]}; do
           --seed "$seed" \
           --output-dir checkpoints/rankings
         ;;
+      datashap)
+        python -m baseline.datashap_selection \
+          --dataset "$dataset" \
+          --seed "$seed" \
+          --output-dir checkpoints/rankings
+        ;;
       *)
         echo "Unknown baseline: $BASELINE" >&2
         exit 2

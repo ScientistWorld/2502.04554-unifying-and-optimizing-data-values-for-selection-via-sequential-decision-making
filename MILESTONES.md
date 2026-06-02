@@ -1,8 +1,13 @@
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: method_runs**
 
 ## Progress Log
+
+### [2026-06-02 03:08] - method_runs
+- Continuation audit found the bipartite implementation is faithful, but baseline coverage was thin for a restored `core_claim`.
+- Added a Monte Carlo Data Shapley baseline using random-permutation marginal utilities and wired it into the reproduction job for `digits_selection`.
+- Submitting a CPU job to regenerate rankings, curves, and scores from scratch before restoring `core_claim`.
 
 ### [2026-06-02 02:43] - core_claim
 - Implemented the paper's feature/label bipartite graph threshold learner and iterative maximum-coverage selector.
@@ -17,4 +22,4 @@
 - Started reproduction work and read the paper's sequential data selection and bipartite surrogate sections.
 
 ## Stop Justification
-- Completed at milestone `core_claim`. Higher milestones would require adding more of the paper's OpenML datasets or designing a stronger second substitute task; the current environment is packaged and validated for the core claim.
+- Not stopped. A new CPU job is being submitted to test the added Data Shapley baseline and regenerate scores.

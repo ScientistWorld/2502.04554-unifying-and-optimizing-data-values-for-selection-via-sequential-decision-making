@@ -14,6 +14,7 @@
       "results": {
         "random": {"type": "baseline", "mean_accuracy": 0.619, "mean_accuracy_std": 0.342, "selection_budget": 100},
         "loo": {"type": "baseline", "mean_accuracy": 0.680, "mean_accuracy_std": 0.318, "selection_budget": 100},
+        "datashap": {"type": "baseline", "mean_accuracy": 0.649, "mean_accuracy_std": 0.335, "selection_budget": 100},
         "bipartite": {"type": "proposed", "mean_accuracy": 0.764, "mean_accuracy_std": 0.245, "selection_budget": 100}
       }
     },
