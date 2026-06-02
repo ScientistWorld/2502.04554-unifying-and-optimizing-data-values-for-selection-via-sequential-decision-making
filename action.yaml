@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
+action: submit
 gpus: 0
 test: false
-milestone: core_claim
-notes: "Core claim reproduced and validated: the paper's bipartite coverage selector beats random and LOO on the digits selection curve, with packaged scripts and scoring in place."
+milestone: method_runs
+notes: "Regenerate rankings, curves, and scores with the added Monte Carlo Data Shapley baseline on digits before restoring core_claim."

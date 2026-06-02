@@ -9,6 +9,13 @@
           "final_accuracy": 0.8916499999999999,
           "selection_budget": 100.0
         },
+        "datashap": {
+          "mean_accuracy": 0.7744065000000002,
+          "mean_accuracy_std": 0.011102903347773516,
+          "early20_accuracy": 0.48599,
+          "final_accuracy": 0.8916499999999999,
+          "selection_budget": 100.0
+        },
         "loo": {
           "mean_accuracy": 0.7218100000000001,
           "mean_accuracy_std": 0.029321808266203526,
