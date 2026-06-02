@@ -1,6 +1,4 @@
 # The system reads this file after the turn ends.
-action: submit
-gpus: 0
-test: false
+action: done
 milestone: core_claim
-notes: "Regenerate the strengthened structured multiclass benchmark with Data Shapley on both datasets; keep milestone at core_claim until the CPU job verifies whether core_claim_plus is supported."
+notes: "Final verification complete: restored verified benchmark consistency and confirmed the workspace is ready at core_claim."

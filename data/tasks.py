@@ -57,19 +57,19 @@ def load_task(name: str, seed: int, train_size: int | None = None) -> SelectionT
         test_size = 1000
         stratify = y
     elif name == "synthetic_planes":
-        # Structured OpenML-style tabular substitute. Multiple classes and
-        # clusters make early diverse selection meaningful without requiring
-        # any external download.
+        # Structured binary tabular substitute for an unavailable OpenML-style
+        # task. It keeps the benchmark self-contained while preserving the
+        # fixed-pool sequential selection protocol.
         x, y = make_classification(
             n_samples=5000,
             n_features=20,
-            n_informative=12,
-            n_redundant=4,
+            n_informative=8,
+            n_redundant=6,
             n_repeated=0,
-            n_classes=5,
-            n_clusters_per_class=2,
-            class_sep=1.05,
-            flip_y=0.06,
+            n_classes=2,
+            n_clusters_per_class=4,
+            class_sep=0.75,
+            flip_y=0.08,
             random_state=seed,
         )
         y = y.astype(int)

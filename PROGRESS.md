@@ -14,7 +14,7 @@
 - Continuation audit confirmed the method and evaluation are real rather than surrogate or hardcoded: the method outputs rankings, and the evaluator independently scores those rankings.
 - Current turn patched stale scoring-contract gaps: `scripts/evaluate.sh` now emits every metric declared in `reference.json`, split evaluators include `final_accuracy` and `selection_budget`, and reproduction defaults are back to 20 seeds.
 - Final verification regenerated `scores.json`, `scores_train.json`, and `scores_test.json` from existing curve artifacts and confirmed the expanded scoring contract passes validation.
-- Current continuation strengthened the structured substitute into a multiclass tabular benchmark and added Data Shapley to that setting. A CPU job is being submitted to regenerate scores before any higher milestone is claimed.
+- Final verification found an unverified structured-benchmark edit without regenerated scores, restored the verified binary synthetic benchmark, and kept the milestone at `core_claim`.
 
 ## Results
 
@@ -29,8 +29,7 @@
 
 - Higher milestones require adding more of the paper's OpenML datasets or improving the synthetic substitute so the additional setting has a clear, reproducible method advantage.
 - A future agent can start from the packaged scripts and current 20-seed scores without needing to repair the environment.
-- Higher milestones still require additional original OpenML-style datasets or a stronger nontrivial substitute setting.
-- The next job should determine whether the strengthened `synthetic_planes_selection` setting supports `core_claim_plus`.
+- Higher milestones still require additional original OpenML-style datasets or a stronger nontrivial substitute setting with regenerated rankings and scores.
 
 ## Issues
 
@@ -46,6 +45,7 @@
 - Job `3bd5ddd1-7cc` passed after the Data Shapley baseline expansion.
 - The login-node Python environment lacks `numpy`, so the expanded evaluator was syntax-checked locally and will be executed in the submitted container, where `environment/setup.sh` installs the required packages.
 - Because the per-seed curve artifacts already existed, final verification recomputed aggregate scoring JSON files without re-running training.
+- Final verification found that a later unverified multiclass synthetic edit did not match the recorded score artifacts. The edit was rolled back to the verified binary synthetic task rather than submitting a new exploratory job at final-verification time.
 
 ## Deviations from Paper
 
@@ -63,5 +63,5 @@
        - Wrote a generic model trained to approximate the method's outputs
          instead of implementing the method's computational steps
 
-- Data resource/scale: the paper evaluates eight OpenML datasets. The first runnable reproduction uses scikit-learn digits and a generated structured multiclass tabular dataset so no external data download is required before the first compute submission. OpenML URLs were attempted but not committed because they could not be verified from the login node.
+- Data resource/scale: the paper evaluates eight OpenML datasets. The first runnable reproduction uses scikit-learn digits and a generated structured binary-classification tabular dataset so no external data download is required before the first compute submission. OpenML URLs were attempted but not committed because they could not be verified from the login node.
 - Experimental scale: the paper averages 20 runs. The final validated reproduction uses 20 seeds for the packaged CPU benchmark.

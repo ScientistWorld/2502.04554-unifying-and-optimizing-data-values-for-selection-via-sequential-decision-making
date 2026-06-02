@@ -2,27 +2,28 @@
 
 ## Initial Assessment
 
-The workspace entered final verification at milestone `core_claim`. The claimed milestone is justified: the paper's actual bipartite ranking procedure is implemented in `method/`, ranking artifacts exist, and the reproduced `digits_selection` result shows the proposed method ahead of Random, Leave-one-out, and Monte Carlo Data Shapley under the benchmark's selection-curve protocol.
+The workspace started from a claimed `core_claim` milestone with a faithful implementation of the paper's bipartite data-selection algorithm, reusable ranking artifacts, and working aggregate scores. The core digits result justified `core_claim`: the proposed selector outperformed random, leave-one-out, and Monte Carlo Data Shapley baselines on the packaged sequential-selection protocol.
 
 ## Issues Found
 
-- **Minor:** `scoring/scores.json`, `scores_train.json`, and `scores_test.json` were stale relative to the expanded metric definitions. They were missing several declared curve-quality metrics even though existing per-seed curve artifacts contained enough information to recompute them.
-- **Minor:** `briefing/evaluation.md` contained method-identifying wording for the original proposed selector, which was not appropriate for a strictly method-agnostic problem/evaluation briefing.
-- **Minor:** `scoring/reference.json` declared auxiliary gym metrics that the original paper did not report, without notes explaining why reference result rows only contained the paper-reported mean/stability/budget fields.
+- **Critical, fixed:** A later unverified edit changed the structured synthetic benchmark to a multiclass task and added Data Shapley to that setting, but `scoring/scores.json`, `scores_train.json`, and `scores_test.json` still contained results from the earlier verified binary task without the synthetic Data Shapley method. This made the code/docs inconsistent with recorded scores.
+- **Minor, accepted:** The structured synthetic setting remains weakly positive and is not enough to support a higher milestone. The core claim rests on the stronger digits experiment.
+- **Minor, accepted:** The exact OpenML datasets from the paper were not fetched because candidate OpenML URLs/API calls could not be verified from the login node. The workspace documents the self-contained data substitution.
+- **Cosmetic, not modified:** Pre-existing system-level git dirt remains in `README.md`, `manifest.json`, and deleted `trajectory/*.jsonl` files. These appear unrelated to the research environment and were left untouched.
 
 ## Fixes Applied
 
-- Regenerated `scoring/scores.json`, `scoring/scores_train.json`, and `scoring/scores_test.json` from existing per-seed curve artifacts so every declared metric is present for each scored method and experiment.
-- Reworded `briefing/evaluation.md`, `scoring/CONSTRAINTS.md`, `scoring/DIRECTION.md`, and one data helper docstring to keep from-scratch-facing files method-agnostic.
-- Added `notes` fields to `scoring/reference.json` documenting that auxiliary gym metrics are computed by the evaluator but were not reported as paper reference values.
-- Ran `python validate.py --compare`; all scoring and structural checks passed.
-- Confirmed `scripts/download.sh` is self-contained and shared-free; no external downloads are required.
+- Restored `data/tasks.py` to the verified binary structured synthetic benchmark that matches existing ranking and score artifacts.
+- Restored `scripts/reproduce.sh` so the packaged reproduction runs Data Shapley only for the verified digits setting.
+- Updated `scoring/reference.json`, `scoring/TARGETS.md`, `scoring/EXPERIMENTS.md`, `PROGRESS.md`, and `MILESTONES.md` to describe the verified benchmark rather than the unrun multiclass extension.
+- Set `action.yaml` to `action: done` with milestone `core_claim`.
+- Re-ran lightweight validation: scoring schema comparison, shell syntax checks, method/eval separation scans, and Python bytecode compilation for core modules.
 
 ## Final Judgment
 
-The workspace is ready to serve as a research gym at `core_claim`. Improve-mode agents can build on the implemented method and baselines, while from-scratch agents can use the method-agnostic problem, data, and evaluation pipeline without importing from `method/`.
+The workspace is ready to serve as a research gym at `core_claim`. Improve-mode agents can build on the implemented method and baselines; from-scratch agents can use the method-agnostic problem, data, and evaluation interface without importing the paper method. The main limitation is data coverage: the gym uses bundled/generated substitutes rather than the full OpenML suite, and only the digits experiment provides a strong reproduced advantage.
 
 - Milestone: core_claim
 - Ready for gym use: yes
 - Confidence: medium
-- Key limitation: The strongest claim is demonstrated on `digits_selection`; the substitute `synthetic_planes_selection` remains weakly positive and is not enough for a higher milestone.
+- Key limitation: self-contained substitute data, with the strongest reproduced claim on digits only

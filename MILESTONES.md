@@ -4,10 +4,10 @@
 
 ## Progress Log
 
-### [2026-06-02 03:53] - core_claim
-- Strengthened the structured tabular substitute into a multiclass benchmark with more meaningful early-selection diversity.
-- Added the Monte Carlo Data Shapley baseline to `synthetic_planes_selection`.
-- Submitting a CPU regeneration job before considering any `core_claim_plus` claim.
+### [2026-06-02 04:10] - core_claim
+- Final verification found an unverified structured-benchmark edit that did not have regenerated scores.
+- Restored the verified binary structured tabular benchmark and kept the milestone at `core_claim`.
+- No higher milestone is claimed because the additional structured setting remains weak.
 
 ### [2026-06-02 03:48] - core_claim
 - Final verification completed.
