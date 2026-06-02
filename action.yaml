@@ -3,4 +3,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Seed split train=1-10/test=11-20; 56 train metrics, 56 test metrics; mean-accuracy gaps range -0.0251 to +0.0020; no null, invariant, saturated, or paper-agreement scored metrics."
+notes: "Packaging audit complete: no external artifacts required; download and entrypoint paths now work from the checkout root."
