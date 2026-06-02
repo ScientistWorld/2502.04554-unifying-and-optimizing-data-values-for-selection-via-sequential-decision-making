@@ -41,5 +41,10 @@
 - Early-prefix behavior also supports the paper's claim: early20 accuracy `0.5970` versus random `0.4095` and LOO `0.3910`.
 - The structured synthetic setting remains a failed additional setting and is not used to claim `core_claim_plus`.
 
+### [2026-06-02 02:42] - core_claim
+- Job `19c5bc2c-050` completed the same packaged reproduction with 20 seeds and passed `validate.py --compare`.
+- The 20-seed digits result remains positive: bipartite mean accuracy `0.7967` versus random `0.7475` and LOO `0.7218`, with early20 accuracy `0.5997` versus random `0.4345` and LOO `0.3606`.
+- The synthetic substitute shows only a very small mean advantage over LOO (`0.5710` versus `0.5704`), so it is documented as additional evidence but not strong enough for `core_claim_plus`.
+
 ## Stop Justification
-- Not stopped.
+- Stopped at `core_claim`: the reusable environment is packaged, validated, and the central claim is reproduced on the digits benchmark. Higher milestones would require adding and validating more paper datasets or redesigning the synthetic substitute.
