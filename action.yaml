@@ -30,5 +30,5 @@
 action: submit
 gpus: 0
 test: false
-milestone: method_runs
-notes: "Retry after removing the undeclared num_runs metric; rerun full CPU reproduction and validate scores."
+milestone: core_claim
+notes: "Run the packaged reproduction with 20 seeds to strengthen the validated core-claim result and match the paper's repeated-trial scale more closely."
