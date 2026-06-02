@@ -14,6 +14,7 @@
 - Continuation audit confirmed the method and evaluation are real rather than surrogate or hardcoded: the method outputs rankings, and the evaluator independently scores those rankings.
 - Current turn patched stale scoring-contract gaps: `scripts/evaluate.sh` now emits every metric declared in `reference.json`, split evaluators include `final_accuracy` and `selection_budget`, and reproduction defaults are back to 20 seeds.
 - Final verification regenerated `scores.json`, `scores_train.json`, and `scores_test.json` from existing curve artifacts and confirmed the expanded scoring contract passes validation.
+- Current continuation strengthened the structured substitute into a multiclass tabular benchmark and added Data Shapley to that setting. A CPU job is being submitted to regenerate scores before any higher milestone is claimed.
 
 ## Results
 
@@ -29,12 +30,14 @@
 - Higher milestones require adding more of the paper's OpenML datasets or improving the synthetic substitute so the additional setting has a clear, reproducible method advantage.
 - A future agent can start from the packaged scripts and current 20-seed scores without needing to repair the environment.
 - Higher milestones still require additional original OpenML-style datasets or a stronger nontrivial substitute setting.
+- The next job should determine whether the strengthened `synthetic_planes_selection` setting supports `core_claim_plus`.
 
 ## Issues
 
 - Continuation audit noted that the previous core claim relied only on random and LOO baselines; this was fixed by adding and validating a Monte Carlo Data Shapley baseline on `digits_selection`.
 - Exact OpenML datasets are not downloaded yet. The first run uses bundled/generated data to avoid blocking the initial method execution.
 - A continuation attempt to fetch OpenML 2dplanes (dataset ID 727) via both `fetch_openml` and direct OpenML API/download URLs hung from the login node, so no unverified download URL was committed.
+- A second continuation attempt to verify OpenML direct download/API URLs for datasets 727, 901, and 44080 timed out after 20 seconds without headers. No guessed URLs were added to `download.sh`.
 - Job `1097f20d-3d2` failed before method execution because scikit-learn 1.8 removed the `multi_class` argument from `LogisticRegression`. Fixed in `data/metrics.py`.
 - Job `2acc7c12-ddc` then failed because `liblinear` no longer supports multiclass without the removed `multi_class` option. Switched the target model helper to the multiclass-capable `lbfgs` solver.
 - Job `a461534d-087` failed at `validate.py --compare` because `eval/evaluate_rankings.py` emitted `num_runs`, an undeclared metric. Removed `num_runs` from the score output.
@@ -60,5 +63,5 @@
        - Wrote a generic model trained to approximate the method's outputs
          instead of implementing the method's computational steps
 
-- Data resource/scale: the paper evaluates eight OpenML datasets. The first runnable reproduction uses scikit-learn digits and a generated structured binary-classification dataset analogous to 2dplanes so no external data download is required before the first compute submission.
+- Data resource/scale: the paper evaluates eight OpenML datasets. The first runnable reproduction uses scikit-learn digits and a generated structured multiclass tabular dataset so no external data download is required before the first compute submission. OpenML URLs were attempted but not committed because they could not be verified from the login node.
 - Experimental scale: the paper averages 20 runs. The final validated reproduction uses 20 seeds for the packaged CPU benchmark.

@@ -65,8 +65,8 @@
       }
     },
     "synthetic_planes_selection": {
-      "description": "Sequential data selection on a structured tabular binary-classification task analogous to the paper's 2dplanes setting.",
-      "notes": "This benchmark substitutes a reproducible structured binary task for the original OpenML 2dplanes resource. Reference mean-accuracy targets are anchored to the paper's 2dplanes-style practical result; auxiliary gym metrics are computed by the evaluator but were not reported in the paper.",
+      "description": "Sequential data selection on a structured tabular multiclass task analogous to the paper's smaller structured-data settings.",
+      "notes": "This benchmark substitutes a reproducible structured multiclass task for unavailable OpenML-style structured resources. Reference mean-accuracy targets are anchored to the paper's 2dplanes-style practical result; auxiliary gym metrics are computed by the evaluator but were not reported in the paper.",
       "weight": 0.4,
       "primary_metric": "mean_accuracy",
       "metrics": {
@@ -124,6 +124,7 @@
       "results": {
         "random": {"type": "baseline", "mean_accuracy": 0.723, "mean_accuracy_std": 0.098, "selection_budget": 50},
         "loo": {"type": "baseline", "mean_accuracy": 0.720, "mean_accuracy_std": 0.103, "selection_budget": 50},
+        "datashap": {"type": "baseline", "mean_accuracy": 0.740, "mean_accuracy_std": 0.106, "selection_budget": 50},
         "bipartite": {"type": "proposed", "mean_accuracy": 0.745, "mean_accuracy_std": 0.069, "selection_budget": 50}
       }
     }

@@ -14,7 +14,7 @@ Tests sequential data selection on the handwritten-digits benchmark under the pa
 
 ## Primary: synthetic_planes_selection
 
-Tests sequential data selection on a structured tabular binary-classification benchmark analogous to the paper's 2dplanes setting.
+Tests sequential data selection on a structured tabular multiclass benchmark analogous to the paper's smaller structured-data settings.
 
 - **Benefit metrics:** mean_accuracy, early10_accuracy, early20_accuracy, tail_accuracy, worst_prefix_accuracy, final_accuracy, and early_label_balance (higher is better)
 - **Constraint metrics:** mean_accuracy_std, max_accuracy_drop, and selection_budget (lower is better)

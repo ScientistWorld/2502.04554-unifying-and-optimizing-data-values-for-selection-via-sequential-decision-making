@@ -4,6 +4,11 @@
 
 ## Progress Log
 
+### [2026-06-02 03:53] - core_claim
+- Strengthened the structured tabular substitute into a multiclass benchmark with more meaningful early-selection diversity.
+- Added the Monte Carlo Data Shapley baseline to `synthetic_planes_selection`.
+- Submitting a CPU regeneration job before considering any `core_claim_plus` claim.
+
 ### [2026-06-02 03:48] - core_claim
 - Final verification completed.
 - Regenerated stale scoring JSON files from existing curve artifacts so all declared metrics are present.

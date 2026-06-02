@@ -8,4 +8,4 @@ Tests whether a data selection method can produce a ranking that performs well o
 
 ## synthetic_planes_selection
 
-Tests whether a data selection method can produce a ranking that performs well on a structured tabular binary-classification task. This experiment provides a smaller practical setting for comparing full-curve accuracy, early-prefix quality, run-to-run stability, and selected-budget size under the same fixed learner and split protocol.
+Tests whether a data selection method can produce a ranking that performs well on a structured tabular multiclass task. This experiment provides a smaller practical setting for comparing full-curve accuracy, early-prefix quality, run-to-run stability, and selected-budget size under the same fixed learner and split protocol.
