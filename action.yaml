@@ -27,8 +27,8 @@
 #   milestone: core_claim
 #   notes: "Reproduced the core claim. Environment packaged."
 
-action: pending
-gpus: 1
+action: submit
+gpus: 0
 test: false
 milestone: none
-notes: ""
+notes: "CPU reproduction job: install sklearn deps, run bipartite selection plus random/LOO baselines on digits and synthetic_planes for five seeds, evaluate rankings, and compare scores."
