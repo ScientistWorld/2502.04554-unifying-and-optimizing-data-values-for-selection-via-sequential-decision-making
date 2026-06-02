@@ -30,5 +30,5 @@
 action: submit
 gpus: 0
 test: false
-milestone: none
-notes: "Retry after switching LogisticRegression to lbfgs for multiclass sklearn 1.8 compatibility; run bipartite selection plus random/LOO baselines on digits and synthetic_planes for five seeds, evaluate rankings, and compare scores."
+milestone: method_runs
+notes: "Retry after removing the undeclared num_runs metric; rerun full CPU reproduction and validate scores."
