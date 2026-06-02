@@ -1,6 +1,6 @@
 # The system reads this file after the turn ends.
-action: submit
+action: done
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Rerun split evaluation after removing invariant endpoint/budget metrics and replacing saturated coverage with label balance."
+notes: "Seed split train=1-10/test=11-20; 56 train metrics, 56 test metrics; mean-accuracy gaps range -0.0251 to +0.0020; no null, invariant, saturated, or paper-agreement scored metrics."
