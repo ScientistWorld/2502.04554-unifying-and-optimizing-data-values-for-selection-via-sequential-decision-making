@@ -15,7 +15,10 @@
 
 ## Progress Log
 
-<!-- Write your progress here -->
+### [2026-06-02 01:30] - none
+- Read the paper and identified the central method: sequential data selection with a learned bipartite coverage surrogate and greedy maximum coverage ranking.
+- Implemented the first version of the method, random/LOO baselines, and a method-agnostic evaluator.
+- Prepared a CPU job to run the end-to-end reproduction before claiming `method_runs`.
 
 ## Stop Justification
-- Completed at milestone `none`.
+- Not stopped.

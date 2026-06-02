@@ -10,5 +10,20 @@ set -e
 
 cd /home/user
 
-# TODO: run the paper's method
-# TODO: call scripts/evaluate.sh to score
+DATASETS=("${@:-digits synthetic_planes}")
+SEEDS=${SEEDS:-"10 20 30"}
+
+mkdir -p checkpoints/rankings
+
+for dataset in ${DATASETS[@]}; do
+  for seed in ${SEEDS}; do
+    python -m method.bipartite_selection \
+      --dataset "$dataset" \
+      --seed "$seed" \
+      --output-dir checkpoints/rankings
+  done
+done
+
+if [ "${EVALUATE_AFTER_RUN:-1}" = "1" ]; then
+  bash scripts/evaluate.sh
+fi

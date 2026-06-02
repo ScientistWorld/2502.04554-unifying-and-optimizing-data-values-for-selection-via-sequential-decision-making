@@ -13,8 +13,8 @@ set -e
 
 cd /home/user
 
-# Example: train a model
-python method/train.py --epochs 10 --lr 0.001
-
-# Example: evaluate
-bash scripts/evaluate.sh checkpoints/best.pt
+python -m compileall data method baseline eval
+rm -rf checkpoints/rankings scoring/curves scoring/scores.json
+export SEEDS="10 20 30 40 50"
+bash scripts/reproduce.sh
+python validate.py --compare

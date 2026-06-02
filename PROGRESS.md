@@ -2,19 +2,25 @@
 
 ## What Works
 
-<!-- What has been successfully reproduced so far. -->
+- Paper analysis completed for the core RQ3 experiment.
+- Implemented Algorithm 2's feature/label bipartite graph threshold learning and iterative maximum coverage ranking.
+- Implemented random and leave-one-out baselines.
+- Implemented method-agnostic evaluation that reads ranking artifacts and retrains logistic regression along the selection curve.
 
 ## Results
 
-<!-- Reproduced numbers compared to the paper's reported numbers. -->
+- No completed compute-node results yet. The next submitted job will write `scoring/scores.json`.
+- Paper reference targets included for `digits_selection` and a structured tabular task analogous to `2dplanes`.
 
 ## Remaining
 
-<!-- What still needs to be done to reach higher milestones. -->
+- Run the end-to-end pipeline on a compute node.
+- Inspect whether bipartite outperforms random and LOO on at least one non-trivial task.
+- If the first run supports the core claim, expand to more seeds or additional OpenML datasets.
 
 ## Issues
 
-<!-- Blockers, bugs, or difficulties encountered. -->
+- Exact OpenML datasets are not downloaded yet. The first run uses bundled/generated data to avoid blocking the initial method execution.
 
 ## Deviations from Paper
 
@@ -32,6 +38,5 @@
        - Wrote a generic model trained to approximate the method's outputs
          instead of implementing the method's computational steps
 
-     The test: could someone reading your code identify which algorithm from
-     the paper you implemented? If not, you replaced the method. -->
-
+- Data resource/scale: the paper evaluates eight OpenML datasets. The first runnable reproduction uses scikit-learn digits and a generated structured binary-classification dataset analogous to 2dplanes so no external data download is required before the first compute submission.
+- Experimental scale: the paper averages 20 runs. The first job runs five seeds to establish `method_runs` and, if results are positive, a minimal `core_claim`; later runs can increase to 20 seeds.

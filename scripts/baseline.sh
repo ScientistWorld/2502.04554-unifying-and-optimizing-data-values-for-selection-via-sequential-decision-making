@@ -17,4 +17,36 @@ set -e
 
 cd /home/user
 
-# TODO: run baseline
+BASELINE=${1:-random}
+shift || true
+DATASETS=("${@:-digits synthetic_planes}")
+SEEDS=${SEEDS:-"10 20 30"}
+
+mkdir -p checkpoints/rankings
+
+for dataset in ${DATASETS[@]}; do
+  for seed in ${SEEDS}; do
+    case "$BASELINE" in
+      random)
+        python -m baseline.random_selection \
+          --dataset "$dataset" \
+          --seed "$seed" \
+          --output-dir checkpoints/rankings
+        ;;
+      loo)
+        python -m baseline.loo_selection \
+          --dataset "$dataset" \
+          --seed "$seed" \
+          --output-dir checkpoints/rankings
+        ;;
+      *)
+        echo "Unknown baseline: $BASELINE" >&2
+        exit 2
+        ;;
+    esac
+  done
+done
+
+if [ "${EVALUATE_AFTER_RUN:-1}" = "1" ]; then
+  bash scripts/evaluate.sh
+fi

@@ -1,0 +1,38 @@
+{
+  "experiments": {
+    "digits_selection": {
+      "description": "Sequential data selection on the digits dataset using the paper's RQ3 protocol.",
+      "weight": 0.6,
+      "primary_metric": "mean_accuracy",
+      "metrics": {
+        "mean_accuracy": {"higher_is_better": true, "coefficient": 1.0},
+        "mean_accuracy_std": {"higher_is_better": false, "coefficient": -0.05},
+        "early20_accuracy": {"higher_is_better": true, "coefficient": 0.6},
+        "final_accuracy": {"higher_is_better": true, "coefficient": 0.2},
+        "selection_budget": {"higher_is_better": false, "coefficient": -0.1}
+      },
+      "results": {
+        "random": {"type": "baseline", "mean_accuracy": 0.619, "mean_accuracy_std": 0.342, "selection_budget": 100},
+        "loo": {"type": "baseline", "mean_accuracy": 0.680, "mean_accuracy_std": 0.318, "selection_budget": 100},
+        "bipartite": {"type": "proposed", "mean_accuracy": 0.764, "mean_accuracy_std": 0.245, "selection_budget": 100}
+      }
+    },
+    "synthetic_planes_selection": {
+      "description": "Sequential data selection on a structured tabular binary-classification task analogous to the paper's 2dplanes setting.",
+      "weight": 0.4,
+      "primary_metric": "mean_accuracy",
+      "metrics": {
+        "mean_accuracy": {"higher_is_better": true, "coefficient": 1.0},
+        "mean_accuracy_std": {"higher_is_better": false, "coefficient": -0.05},
+        "early20_accuracy": {"higher_is_better": true, "coefficient": 0.6},
+        "final_accuracy": {"higher_is_better": true, "coefficient": 0.2},
+        "selection_budget": {"higher_is_better": false, "coefficient": -0.1}
+      },
+      "results": {
+        "random": {"type": "baseline", "mean_accuracy": 0.723, "mean_accuracy_std": 0.098, "selection_budget": 50},
+        "loo": {"type": "baseline", "mean_accuracy": 0.720, "mean_accuracy_std": 0.103, "selection_budget": 50},
+        "bipartite": {"type": "proposed", "mean_accuracy": 0.745, "mean_accuracy_std": 0.069, "selection_budget": 50}
+      }
+    }
+  }
+}
