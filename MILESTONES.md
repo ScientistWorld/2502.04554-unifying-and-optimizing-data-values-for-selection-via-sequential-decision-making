@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: none**
+**Current: method_runs**
 
 <!-- Milestone levels (update "Current" above as you progress):
   none             — just started, no meaningful progress yet
@@ -29,6 +29,11 @@
 - Reviewed failed job `2acc7c12-ddc`.
 - Fixed the target logistic regression solver for multiclass compatibility under scikit-learn 1.8.
 - Resubmitting without claiming progress beyond `none`.
+
+### [2026-06-02 01:58] - method_runs
+- Job `a461534d-087` ran the paper's bipartite threshold-learning and greedy maximum-coverage selection method for all configured seeds and datasets.
+- The job wrote ranking artifacts and `scoring/scores.json`; it failed only because `num_runs` was emitted as an undeclared metric.
+- Digits results support the core effect direction, but the milestone remains `method_runs` until the official validation pass completes after the scoring-contract fix.
 
 ## Stop Justification
 - Not stopped.

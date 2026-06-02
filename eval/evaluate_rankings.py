@@ -59,7 +59,6 @@ def main() -> None:
             metrics[key] = float(np.mean([row[key] for row in rows]))
             if len(rows) > 1 and key == "mean_accuracy":
                 metrics[f"{key}_std"] = float(np.std([row[key] for row in rows], ddof=0))
-        metrics["num_runs"] = float(len(rows))
         scores["experiments"][exp]["results"][method] = metrics
 
     Path(args.scores).parent.mkdir(parents=True, exist_ok=True)
