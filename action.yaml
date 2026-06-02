@@ -31,4 +31,4 @@ action: submit
 gpus: 0
 test: false
 milestone: none
-notes: "Retry after fixing scikit-learn 1.8 LogisticRegression API change; run bipartite selection plus random/LOO baselines on digits and synthetic_planes for five seeds, evaluate rankings, and compare scores."
+notes: "Retry after switching LogisticRegression to lbfgs for multiclass sklearn 1.8 compatibility; run bipartite selection plus random/LOO baselines on digits and synthetic_planes for five seeds, evaluate rankings, and compare scores."
