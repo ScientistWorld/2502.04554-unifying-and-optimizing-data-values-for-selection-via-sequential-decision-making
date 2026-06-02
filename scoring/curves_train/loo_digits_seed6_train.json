@@ -113,8 +113,6 @@
     "tail_accuracy": 0.7853375,
     "worst_prefix_accuracy": 0.101,
     "max_accuracy_drop": 0.01799999999999996,
-    "final_accuracy": 0.901,
-    "selection_budget": 100.0,
-    "early_label_coverage": 0.9
+    "early_label_balance": 0.8433684947518476
   }
 }
