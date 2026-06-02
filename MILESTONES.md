@@ -20,5 +20,10 @@
 - Implemented the first version of the method, random/LOO baselines, and a method-agnostic evaluator.
 - Prepared a CPU job to run the end-to-end reproduction before claiming `method_runs`.
 
+### [2026-06-02 01:46] - none
+- Reviewed failed job `1097f20d-3d2`.
+- Fixed scikit-learn 1.8 compatibility in the logistic regression evaluation helper.
+- Resubmitting the same CPU reproduction job; no milestone claimed until the job completes successfully.
+
 ## Stop Justification
 - Not stopped.

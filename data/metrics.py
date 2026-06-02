@@ -24,7 +24,6 @@ def fit_eval_logreg(
         solver="liblinear",
         max_iter=300,
         random_state=seed,
-        multi_class="ovr",
     )
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", ConvergenceWarning)
@@ -46,4 +45,3 @@ def selection_curve(task, ranking: list[int], seed: int) -> list[float]:
             )
         )
     return accs
-
