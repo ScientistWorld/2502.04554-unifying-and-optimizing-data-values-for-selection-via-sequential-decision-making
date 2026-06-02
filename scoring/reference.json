@@ -44,6 +44,16 @@
           "higher_is_better": true,
           "coefficient": 0.15,
           "description": "Normalized label entropy in the first 20 selected examples, discouraging degenerate early class composition."
+        },
+        "final_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.0,
+          "description": "Compatibility-only full-budget accuracy; unscored because all complete rankings train on the same final set."
+        },
+        "selection_budget": {
+          "higher_is_better": false,
+          "coefficient": 0.0,
+          "description": "Compatibility-only ranking length; unscored because the interface requires full candidate rankings."
         }
       },
       "results": {
@@ -97,6 +107,16 @@
           "higher_is_better": true,
           "coefficient": 0.15,
           "description": "Normalized label entropy in the first 20 selected examples, discouraging degenerate early class composition."
+        },
+        "final_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.0,
+          "description": "Compatibility-only full-budget accuracy; unscored because all complete rankings train on the same final set."
+        },
+        "selection_budget": {
+          "higher_is_better": false,
+          "coefficient": 0.0,
+          "description": "Compatibility-only ranking length; unscored because the interface requires full candidate rankings."
         }
       },
       "results": {
