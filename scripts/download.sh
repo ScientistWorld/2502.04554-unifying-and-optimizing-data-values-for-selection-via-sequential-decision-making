@@ -16,7 +16,8 @@
 
 set -e
 
-cd /home/user
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd "$SCRIPT_DIR/.."
 
 mkdir -p data/downloads
 echo "No external downloads are required. This reproduction uses scikit-learn bundled datasets and generated synthetic data."

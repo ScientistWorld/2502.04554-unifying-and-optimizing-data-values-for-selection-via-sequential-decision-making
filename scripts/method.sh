@@ -8,7 +8,8 @@
 
 set -e
 
-cd /home/user
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd "$SCRIPT_DIR/.."
 
 DATASETS=("${@:-digits synthetic_planes}")
 SEEDS=${SEEDS:-"10 20 30"}
