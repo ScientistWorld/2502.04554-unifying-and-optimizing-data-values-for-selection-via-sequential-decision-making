@@ -11,7 +11,7 @@ This file intentionally describes only the task, metrics, baselines, and fair-co
 - **Early-prefix accuracy:** test accuracy at small selected budgets, such as the first 10-30 percent of the training pool or the paper's early checkpoints. Higher is better.
 - **Best-baseline gap:** difference between a submitted method and the strongest non-oracle baseline under the same dataset, split, learner, and budget. Higher is better.
 - **Oracle gap:** difference between the submitted method and the exact optimal sequential policy on small-pool experiments where exhaustive dynamic programming is feasible. Lower is better.
-- **Runtime / utility-query budget:** wall-clock time, number of downstream model retrainings, or number of subset utility evaluations used to produce the ranking. Lower is better, subject to achieving the selection metrics.
+- **Utility-query budget:** number of downstream model retrainings or subset utility evaluations used to produce the ranking. Lower is better, subject to achieving the selection metrics.
 
 ## Baselines and Targets
 
