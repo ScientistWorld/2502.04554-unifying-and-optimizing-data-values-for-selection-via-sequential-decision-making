@@ -4,6 +4,13 @@
 
 ## Progress Log
 
+### [2026-06-02 02:40] - core_claim
+- Continuation audit completed from the reset `method_runs` state.
+- Verified that `method/bipartite_selection.py` implements the paper's actual bipartite surrogate workflow: sampled subset utilities, feature/label thresholded train-validation graph learning, and greedy maximum uncovered-validation coverage ranking.
+- Verified that evaluation is method-independent: `eval/evaluate_rankings.py` reads ranking artifacts, reconstructs the fixed task split, trains the fixed logistic-regression learner on ranking prefixes, and writes `scoring/scores.json`.
+- Re-ran `python validate.py --compare`; scoring and separation checks passed.
+- Attempted to acquire the actual OpenML 2dplanes dataset for a higher milestone, but OpenML metadata/download endpoints hung from this node. No fragile unverified URL was added.
+
 ### [2026-06-02 02:55] - core_claim
 - Validated the reusable benchmark with `python validate.py --compare`.
 - The implemented bipartite graph threshold-learning plus greedy maximum-coverage selector reproduces the core practical claim on the digits setting over 20 seeds.

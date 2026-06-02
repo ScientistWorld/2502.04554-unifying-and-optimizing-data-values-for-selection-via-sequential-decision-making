@@ -10,6 +10,7 @@
 - Job `5acc95ba-aa2` completed the full reproduction script and passed `validate.py --compare`.
 - Job `19c5bc2c-050` expanded the packaged reproduction to 20 seeds and passed `validate.py --compare`.
 - The current workspace passes `python validate.py --compare` and is complete at `core_claim`.
+- Continuation audit confirmed the method and evaluation are real rather than surrogate or hardcoded: the method outputs rankings, and the evaluator independently scores those rankings.
 
 ## Results
 
@@ -27,6 +28,7 @@
 ## Issues
 
 - Exact OpenML datasets are not downloaded yet. The first run uses bundled/generated data to avoid blocking the initial method execution.
+- A continuation attempt to fetch OpenML 2dplanes (dataset ID 727) via both `fetch_openml` and direct OpenML API/download URLs hung from the login node, so no unverified download URL was committed.
 - Job `1097f20d-3d2` failed before method execution because scikit-learn 1.8 removed the `multi_class` argument from `LogisticRegression`. Fixed in `data/metrics.py`.
 - Job `2acc7c12-ddc` then failed because `liblinear` no longer supports multiclass without the removed `multi_class` option. Switched the target model helper to the multiclass-capable `lbfgs` solver.
 - Job `a461534d-087` failed at `validate.py --compare` because `eval/evaluate_rankings.py` emitted `num_runs`, an undeclared metric. Removed `num_runs` from the score output.
