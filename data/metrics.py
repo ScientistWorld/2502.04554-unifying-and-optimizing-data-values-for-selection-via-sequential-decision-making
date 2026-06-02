@@ -21,8 +21,8 @@ def fit_eval_logreg(
         return float(np.mean(y_eval == classes[0]))
     model = LogisticRegression(
         C=1.0,
-        solver="liblinear",
-        max_iter=300,
+        solver="lbfgs",
+        max_iter=500,
         random_state=seed,
     )
     with warnings.catch_warnings():

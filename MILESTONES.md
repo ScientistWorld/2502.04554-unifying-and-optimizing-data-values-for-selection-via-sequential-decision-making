@@ -25,5 +25,10 @@
 - Fixed scikit-learn 1.8 compatibility in the logistic regression evaluation helper.
 - Resubmitting the same CPU reproduction job; no milestone claimed until the job completes successfully.
 
+### [2026-06-02 01:51] - none
+- Reviewed failed job `2acc7c12-ddc`.
+- Fixed the target logistic regression solver for multiclass compatibility under scikit-learn 1.8.
+- Resubmitting without claiming progress beyond `none`.
+
 ## Stop Justification
 - Not stopped.
