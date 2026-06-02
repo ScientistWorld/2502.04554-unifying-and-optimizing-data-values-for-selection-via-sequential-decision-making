@@ -18,13 +18,28 @@ SAFE_NAME = re.compile(r"[^A-Za-z0-9_.-]+")
 
 def summarize_curve(curve: list[float]) -> dict[str, float]:
     arr = np.array(curve, dtype=float)
+    early10_k = min(10, len(arr))
     early_k = min(20, len(arr))
+    tail_start = min(early_k, len(arr) - 1)
     return {
         "mean_accuracy": float(arr.mean()),
+        "early10_accuracy": float(arr[:early10_k].mean()),
         "early20_accuracy": float(arr[:early_k].mean()),
+        "tail_accuracy": float(arr[tail_start:].mean()),
+        "worst_prefix_accuracy": float(arr.min()),
+        "max_accuracy_drop": float(max(0.0, -np.diff(arr).min())) if len(arr) > 1 else 0.0,
         "final_accuracy": float(arr[-1]),
         "selection_budget": float(len(arr)),
     }
+
+
+def early_label_coverage(y_train: np.ndarray, ranking: list[int]) -> float:
+    classes = set(int(cls) for cls in np.unique(y_train))
+    if not classes:
+        return 0.0
+    early_k = min(20, len(ranking))
+    prefix_classes = set(int(cls) for cls in y_train[np.array(ranking[:early_k], dtype=int)])
+    return float(len(prefix_classes) / len(classes))
 
 
 def safe_stem(value: str) -> str:
@@ -83,6 +98,8 @@ def main() -> None:
 
         task = load_task(dataset, seed, train_size=train_size)
         curve = selection_curve(task, ranking, seed=seed)
+        summary = summarize_curve(curve)
+        summary["early_label_coverage"] = early_label_coverage(task.y_train, ranking)
         curve_payload = {
             "slice": "train",
             "source": str(path),
@@ -90,7 +107,7 @@ def main() -> None:
             "method": method,
             "seed": seed,
             "curve": curve,
-            "summary": summarize_curve(curve),
+            "summary": summary,
         }
         curve_name = f"{safe_stem(method)}_{safe_stem(dataset)}_seed{seed}_train.json"
         (curves_dir / curve_name).write_text(json.dumps(curve_payload, indent=2))

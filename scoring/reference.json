@@ -5,11 +5,56 @@
       "weight": 0.6,
       "primary_metric": "mean_accuracy",
       "metrics": {
-        "mean_accuracy": {"higher_is_better": true, "coefficient": 1.0},
-        "mean_accuracy_std": {"higher_is_better": false, "coefficient": -0.05},
-        "early20_accuracy": {"higher_is_better": true, "coefficient": 0.6},
-        "final_accuracy": {"higher_is_better": true, "coefficient": 0.2},
-        "selection_budget": {"higher_is_better": false, "coefficient": -0.1}
+        "mean_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Average test accuracy over the full sequential selection curve."
+        },
+        "mean_accuracy_std": {
+          "higher_is_better": false,
+          "coefficient": -0.05,
+          "description": "Run-to-run variability of full-curve test accuracy across seeds."
+        },
+        "early10_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.5,
+          "description": "Mean test accuracy over the first 10 selected examples, emphasizing very low-budget selection."
+        },
+        "early20_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.6,
+          "description": "Mean test accuracy over the first 20 selected examples, measuring sample-efficient early ranking quality."
+        },
+        "tail_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.4,
+          "description": "Mean test accuracy after the early-selection region, checking that early gains persist across larger budgets."
+        },
+        "worst_prefix_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Lowest test accuracy reached by any prefix of the ranking, penalizing fragile curves."
+        },
+        "max_accuracy_drop": {
+          "higher_is_better": false,
+          "coefficient": -0.2,
+          "description": "Largest one-step decrease in test accuracy along the selection curve."
+        },
+        "early_label_coverage": {
+          "higher_is_better": true,
+          "coefficient": 0.15,
+          "description": "Fraction of training labels represented in the first 20 selected examples."
+        },
+        "final_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.2,
+          "description": "Test accuracy after the full candidate ranking has been selected."
+        },
+        "selection_budget": {
+          "higher_is_better": false,
+          "coefficient": -0.1,
+          "description": "Number of selected candidates required by the submitted ranking."
+        }
       },
       "results": {
         "random": {"type": "baseline", "mean_accuracy": 0.619, "mean_accuracy_std": 0.342, "selection_budget": 100},
@@ -23,11 +68,56 @@
       "weight": 0.4,
       "primary_metric": "mean_accuracy",
       "metrics": {
-        "mean_accuracy": {"higher_is_better": true, "coefficient": 1.0},
-        "mean_accuracy_std": {"higher_is_better": false, "coefficient": -0.05},
-        "early20_accuracy": {"higher_is_better": true, "coefficient": 0.6},
-        "final_accuracy": {"higher_is_better": true, "coefficient": 0.2},
-        "selection_budget": {"higher_is_better": false, "coefficient": -0.1}
+        "mean_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Average test accuracy over the full sequential selection curve."
+        },
+        "mean_accuracy_std": {
+          "higher_is_better": false,
+          "coefficient": -0.05,
+          "description": "Run-to-run variability of full-curve test accuracy across seeds."
+        },
+        "early10_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.5,
+          "description": "Mean test accuracy over the first 10 selected examples, emphasizing very low-budget selection."
+        },
+        "early20_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.6,
+          "description": "Mean test accuracy over the first 20 selected examples, measuring sample-efficient early ranking quality."
+        },
+        "tail_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.4,
+          "description": "Mean test accuracy after the early-selection region, checking that early gains persist across larger budgets."
+        },
+        "worst_prefix_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Lowest test accuracy reached by any prefix of the ranking, penalizing fragile curves."
+        },
+        "max_accuracy_drop": {
+          "higher_is_better": false,
+          "coefficient": -0.2,
+          "description": "Largest one-step decrease in test accuracy along the selection curve."
+        },
+        "early_label_coverage": {
+          "higher_is_better": true,
+          "coefficient": 0.15,
+          "description": "Fraction of training labels represented in the first 20 selected examples."
+        },
+        "final_accuracy": {
+          "higher_is_better": true,
+          "coefficient": 0.2,
+          "description": "Test accuracy after the full candidate ranking has been selected."
+        },
+        "selection_budget": {
+          "higher_is_better": false,
+          "coefficient": -0.1,
+          "description": "Number of selected candidates required by the submitted ranking."
+        }
       },
       "results": {
         "random": {"type": "baseline", "mean_accuracy": 0.723, "mean_accuracy_std": 0.098, "selection_budget": 50},
