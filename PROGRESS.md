@@ -9,6 +9,7 @@
 - Job `a461534d-087` ran the method and baselines end-to-end and produced ranking artifacts plus score files.
 - Job `5acc95ba-aa2` completed the full reproduction script and passed `validate.py --compare`.
 - Job `19c5bc2c-050` expanded the packaged reproduction to 20 seeds and passed `validate.py --compare`.
+- The current workspace passes `python validate.py --compare` and is complete at `core_claim`.
 
 ## Results
 
@@ -16,6 +17,7 @@
 - Jobs `a461534d-087` and `5acc95ba-aa2` reproduced the central effect on digits: bipartite mean accuracy `0.8006` versus LOO `0.7321` and random `0.7424`; early20 accuracy `0.5970` versus LOO `0.3910` and random `0.4095`.
 - The final 20-seed run preserved the central effect on digits: bipartite mean accuracy `0.7967` versus LOO `0.7218` and random `0.7475`; early20 accuracy `0.5997` versus LOO `0.3606` and random `0.4345`.
 - The final 20-seed `synthetic_planes_selection` result is weakly positive but not strong enough for a higher milestone: bipartite mean accuracy `0.5710` versus LOO `0.5704` and random `0.5482`.
+- Milestone claimed: `core_claim`, because the digits experiment demonstrates the paper's practical claim that the bipartite selector produces a better selection curve than standard baselines under the paper's RQ3 protocol.
 
 ## Remaining
 

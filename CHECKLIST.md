@@ -19,10 +19,10 @@ Check off items as you complete them. Order does not matter; keep this aligned w
 ## Scoring Artifacts
 
 - [x] `scoring/reference.json` records paper targets with the same experiment and metric structure as scores
-- [ ] Workspace validated via `python validate.py`
-- [ ] `scoring/scores.json` records reproduced numbers with the same experiment and metric structure as reference
-- [ ] Every experiment in `scoring/TARGETS.md` appears in both JSON scoring files once those files exist
-- [ ] Every experiment in `scoring/scores.json` is summarized in `scoring/EXPERIMENTS.md`
+- [x] Workspace validated via `python validate.py --compare`
+- [x] `scoring/scores.json` records reproduced numbers with the same experiment and metric structure as reference
+- [x] Every experiment in `scoring/TARGETS.md` appears in both JSON scoring files once those files exist
+- [x] Every experiment in `scoring/scores.json` is summarized in `scoring/EXPERIMENTS.md`
 
 ## Code
 
@@ -45,9 +45,9 @@ Check off items as you complete them. Order does not matter; keep this aligned w
 
 ## Data
 
-- [ ] Dataset acquisition is documented and reproducible
-- [ ] Downloaded or generated large files are ignored or placed under the allowed downloads location
-- [ ] Training and evaluation preprocessing are consistent
+- [x] Dataset acquisition is documented and reproducible
+- [x] Downloaded or generated large files are ignored or placed under the allowed downloads location
+- [x] Training and evaluation preprocessing are consistent
 
 ## Milestones
 
