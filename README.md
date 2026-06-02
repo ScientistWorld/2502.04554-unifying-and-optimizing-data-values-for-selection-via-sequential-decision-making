@@ -196,7 +196,7 @@ The small-pool oracle comparison uses 20 training points, 100 validation points,
 
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: method_runs**
 
 ## Stop Justification
-- Completed at milestone `core_claim`.
+- Completed at milestone `method_runs`.
