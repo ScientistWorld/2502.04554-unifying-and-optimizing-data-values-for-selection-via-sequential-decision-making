@@ -2,8 +2,8 @@
 # Once you set action to 'done', STOP immediately.
 # Do NOT sleep, poll, or wait. The system reads this file
 # only after your turn ends.
-action: done
+action: pending
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Seed split ranking evaluation: train seeds 1-10, test seeds 11-20; 5 matched metrics per experiment; scripts written, scores produced later."
+notes: ""
