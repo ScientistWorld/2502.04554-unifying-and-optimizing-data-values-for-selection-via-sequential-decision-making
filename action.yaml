@@ -1,6 +1,6 @@
 # The system reads this file after the turn ends.
-action: done
+action: submit
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Final verification passed at core_claim; scoring JSONs and method-agnostic docs were repaired and validate.py --compare passes."
+notes: "Regenerate the strengthened structured multiclass benchmark with Data Shapley on both datasets; keep milestone at core_claim until the CPU job verifies whether core_claim_plus is supported."
