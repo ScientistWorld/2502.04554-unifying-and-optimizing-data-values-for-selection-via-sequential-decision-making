@@ -3,4 +3,4 @@ action: submit
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Run evaluate_train.sh and evaluate_test.sh against existing ranking artifacts; populate split score files."
+notes: "Rerun split evaluation after removing invariant endpoint/budget metrics and replacing saturated coverage with label balance."

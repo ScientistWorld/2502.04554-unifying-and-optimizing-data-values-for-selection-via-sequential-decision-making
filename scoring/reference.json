@@ -40,20 +40,10 @@
           "coefficient": -0.2,
           "description": "Largest one-step decrease in test accuracy along the selection curve."
         },
-        "early_label_coverage": {
+        "early_label_balance": {
           "higher_is_better": true,
           "coefficient": 0.15,
-          "description": "Fraction of training labels represented in the first 20 selected examples."
-        },
-        "final_accuracy": {
-          "higher_is_better": true,
-          "coefficient": 0.2,
-          "description": "Test accuracy after the full candidate ranking has been selected."
-        },
-        "selection_budget": {
-          "higher_is_better": false,
-          "coefficient": -0.1,
-          "description": "Number of selected candidates required by the submitted ranking."
+          "description": "Normalized label entropy in the first 20 selected examples, discouraging degenerate early class composition."
         }
       },
       "results": {
@@ -103,20 +93,10 @@
           "coefficient": -0.2,
           "description": "Largest one-step decrease in test accuracy along the selection curve."
         },
-        "early_label_coverage": {
+        "early_label_balance": {
           "higher_is_better": true,
           "coefficient": 0.15,
-          "description": "Fraction of training labels represented in the first 20 selected examples."
-        },
-        "final_accuracy": {
-          "higher_is_better": true,
-          "coefficient": 0.2,
-          "description": "Test accuracy after the full candidate ranking has been selected."
-        },
-        "selection_budget": {
-          "higher_is_better": false,
-          "coefficient": -0.1,
-          "description": "Number of selected candidates required by the submitted ranking."
+          "description": "Normalized label entropy in the first 20 selected examples, discouraging degenerate early class composition."
         }
       },
       "results": {

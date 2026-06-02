@@ -28,18 +28,19 @@ def summarize_curve(curve: list[float]) -> dict[str, float]:
         "tail_accuracy": float(arr[tail_start:].mean()),
         "worst_prefix_accuracy": float(arr.min()),
         "max_accuracy_drop": float(max(0.0, -np.diff(arr).min())) if len(arr) > 1 else 0.0,
-        "final_accuracy": float(arr[-1]),
-        "selection_budget": float(len(arr)),
     }
 
 
-def early_label_coverage(y_train: np.ndarray, ranking: list[int]) -> float:
-    classes = set(int(cls) for cls in np.unique(y_train))
-    if not classes:
+def early_label_balance(y_train: np.ndarray, ranking: list[int]) -> float:
+    classes = np.unique(y_train)
+    if len(classes) <= 1:
         return 0.0
     early_k = min(20, len(ranking))
-    prefix_classes = set(int(cls) for cls in y_train[np.array(ranking[:early_k], dtype=int)])
-    return float(len(prefix_classes) / len(classes))
+    prefix = y_train[np.array(ranking[:early_k], dtype=int)]
+    counts = np.array([np.sum(prefix == cls) for cls in classes], dtype=float)
+    probabilities = counts[counts > 0] / max(1, early_k)
+    entropy = -np.sum(probabilities * np.log(probabilities))
+    return float(entropy / np.log(len(classes)))
 
 
 def safe_stem(value: str) -> str:
@@ -125,7 +126,7 @@ def main() -> None:
         task = load_task(dataset, seed, train_size=train_size)
         curve = selection_curve(task, ranking, seed=seed)
         summary = summarize_curve(curve)
-        summary["early_label_coverage"] = early_label_coverage(task.y_train, ranking)
+        summary["early_label_balance"] = early_label_balance(task.y_train, ranking)
         curve_payload = {
             "slice": "test",
             "source": str(path),
