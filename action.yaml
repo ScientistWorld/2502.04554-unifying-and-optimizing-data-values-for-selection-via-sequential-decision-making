@@ -1,9 +1,6 @@
-# This iteration writes files only — do NOT submit compute jobs.
-# Once you set action to 'done', STOP immediately.
-# Do NOT sleep, poll, or wait. The system reads this file
-# only after your turn ends.
-action: done
+# The system reads this file after the turn ends.
+action: submit
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Improvements: added curve-shape and early class-coverage metrics to train/test slices; completed reference metric descriptions; verified shell wrappers and no train/test score stubs. Notes: see DESIGN_NOTES.md."
+notes: "Run evaluate_train.sh and evaluate_test.sh against existing ranking artifacts; populate split score files."
