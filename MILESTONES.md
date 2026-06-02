@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: method_runs**
+**Current: core_claim**
 
 <!-- Milestone levels (update "Current" above as you progress):
   none             — just started, no meaningful progress yet
@@ -34,6 +34,12 @@
 - Job `a461534d-087` ran the paper's bipartite threshold-learning and greedy maximum-coverage selection method for all configured seeds and datasets.
 - The job wrote ranking artifacts and `scoring/scores.json`; it failed only because `num_runs` was emitted as an undeclared metric.
 - Digits results support the core effect direction, but the milestone remains `method_runs` until the official validation pass completes after the scoring-contract fix.
+
+### [2026-06-02 02:12] - core_claim
+- Job `5acc95ba-aa2` completed successfully and `validate.py --compare` passed.
+- On `digits_selection`, the bipartite method outperformed both baselines with the same selection budget: mean accuracy `0.8006` versus random `0.7424` and LOO `0.7321`.
+- Early-prefix behavior also supports the paper's claim: early20 accuracy `0.5970` versus random `0.4095` and LOO `0.3910`.
+- The structured synthetic setting remains a failed additional setting and is not used to claim `core_claim_plus`.
 
 ## Stop Justification
 - Not stopped.
