@@ -1,8 +1,13 @@
 # Reproduction Milestones
 
-**Current: method_runs**
+**Current: core_claim**
 
 ## Progress Log
+
+### [2026-06-02 03:18] - core_claim
+- Job `3bd5ddd1-7cc` completed successfully and passed `python validate.py --compare`.
+- The added Monte Carlo Data Shapley baseline ran on `digits_selection`; bipartite mean accuracy remained higher (`0.7967`) than DataShap (`0.7744`), random (`0.7475`), and LOO (`0.7218`).
+- Restored `core_claim` after auditing and expanding the baseline coverage. The synthetic setting is still only marginal, so no higher milestone is claimed.
 
 ### [2026-06-02 03:08] - method_runs
 - Continuation audit found the bipartite implementation is faithful, but baseline coverage was thin for a restored `core_claim`.
@@ -22,4 +27,4 @@
 - Started reproduction work and read the paper's sequential data selection and bipartite surrogate sections.
 
 ## Stop Justification
-- Not stopped. A new CPU job is being submitted to test the added Data Shapley baseline and regenerate scores.
+- Completed at milestone `core_claim`.
