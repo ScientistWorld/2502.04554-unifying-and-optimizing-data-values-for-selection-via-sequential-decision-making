@@ -22,4 +22,4 @@
 - Ran method, baselines, and method-agnostic evaluation end-to-end inside the packaged scripts.
 
 ## Stop Justification
-- Completed at milestone `core_claim`: the paper's actual practical algorithm runs end-to-end and the minimum experiment supports the central claim.
+- Completed at milestone `core_claim`.
