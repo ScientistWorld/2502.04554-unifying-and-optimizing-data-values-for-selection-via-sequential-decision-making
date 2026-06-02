@@ -4,6 +4,11 @@
 
 ## Progress Log
 
+### [2026-06-02 03:48] - core_claim
+- Final verification completed.
+- Regenerated stale scoring JSON files from existing curve artifacts so all declared metrics are present.
+- Cleaned method-agnostic documentation wording and confirmed `python validate.py --compare` passes.
+
 ### [2026-06-02 03:45] - core_claim
 - Audited the scoring contract and found `scores.json` was stale relative to the declared metrics.
 - Patched the standard evaluator to emit all declared curve-quality and constraint metrics, restored 20-seed defaults, and updated the submitted job to regenerate scores from scratch.

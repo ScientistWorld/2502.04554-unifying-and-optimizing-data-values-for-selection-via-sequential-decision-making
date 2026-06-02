@@ -15,7 +15,7 @@ def fit_eval_logreg(
     y_eval: np.ndarray,
     seed: int,
 ) -> float:
-    """Train the target model used in the paper and return accuracy."""
+    """Train the benchmark target model and return accuracy."""
     classes = np.unique(y_train)
     if len(classes) < 2:
         return float(np.mean(y_eval == classes[0]))

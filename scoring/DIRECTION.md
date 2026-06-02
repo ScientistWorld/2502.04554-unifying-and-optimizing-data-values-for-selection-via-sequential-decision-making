@@ -18,4 +18,4 @@ In-scope work includes new valuation functions, utility surrogates, subset-ranki
 - Improving scores by replacing the fixed downstream learner with a stronger model.
 - Using external data or test-set feedback to construct the ranking.
 - Reporting only a single best-budget subset when the benchmark requires a complete ranking and prefix curve.
-- Treating the small-pool exact oracle as a practical method for the scaled benchmark.
+- Exhaustively searching all possible rankings for the scaled benchmark.

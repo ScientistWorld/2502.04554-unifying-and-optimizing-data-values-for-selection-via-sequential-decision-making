@@ -2,6 +2,7 @@
   "experiments": {
     "digits_selection": {
       "description": "Sequential data selection on the digits dataset using the paper's RQ3 protocol.",
+      "notes": "The original paper reports mean selection-curve accuracy for the proposed method and baselines from plotted curves/tables. Auxiliary gym metrics such as early10, tail, worst-prefix, max-drop, and label-balance are computed by the evaluator for future comparisons but are not reported as paper reference values.",
       "weight": 0.6,
       "primary_metric": "mean_accuracy",
       "metrics": {
@@ -65,6 +66,7 @@
     },
     "synthetic_planes_selection": {
       "description": "Sequential data selection on a structured tabular binary-classification task analogous to the paper's 2dplanes setting.",
+      "notes": "This benchmark substitutes a reproducible structured binary task for the original OpenML 2dplanes resource. Reference mean-accuracy targets are anchored to the paper's 2dplanes-style practical result; auxiliary gym metrics are computed by the evaluator but were not reported in the paper.",
       "weight": 0.4,
       "primary_metric": "mean_accuracy",
       "metrics": {

@@ -1,6 +1,6 @@
 # The system reads this file after the turn ends.
-action: submit
+action: done
 gpus: 0
-test: true
+test: false
 milestone: core_claim
-notes: "CPU validation job: regenerate 20-seed rankings/scores with the expanded scoring metrics, then run validate.py --compare plus train/test split evaluation."
+notes: "Final verification passed at core_claim; scoring JSONs and method-agnostic docs were repaired and validate.py --compare passes."

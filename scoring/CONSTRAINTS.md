@@ -4,7 +4,7 @@ These constraints define what a future scientist must hold fixed when trying to 
 
 ## Target Learner
 
-The downstream model used to evaluate selected prefixes must remain the benchmark's scikit-learn Logistic Regression target learner. The paper's claim is about selecting data for a fixed learner; switching to a stronger classifier, neural network, ensemble, or tuned model would improve test accuracy for reasons unrelated to data selection quality.
+The downstream model used to evaluate selected prefixes must remain the benchmark's scikit-learn Logistic Regression target learner. The task is about selecting data for a fixed learner; switching to a stronger classifier, neural network, ensemble, or tuned model would improve test accuracy for reasons unrelated to data selection quality.
 
 ## Data and Splits
 
@@ -24,7 +24,7 @@ Use the benchmark seed schedule and report averages over the same 20 independent
 
 ## Utility-Query and Retraining Budget
 
-Non-oracle methods must respect the benchmark's model-retraining or subset-utility-query budget. Exact exhaustive dynamic programming is allowed only in the small-pool oracle experiment, where it is a reference point rather than a practical submitted method.
+Methods must respect the benchmark's model-retraining or subset-utility-query budget. Exhaustive search over all possible rankings is not a practical submitted method for the scaled benchmark.
 
 ## Baseline Comparisons
 
@@ -38,5 +38,5 @@ Baseline results must be computed under the same splits, learner, preprocessing,
 - [ ] Test labels and test feedback are not used to create or tune rankings.
 - [ ] Candidate pool and validation sizes match the specified experiment.
 - [ ] Results are averaged over the benchmark's 20 trials.
-- [ ] Non-oracle utility-query and retraining budgets are not exceeded.
+- [ ] Utility-query and retraining budgets are not exceeded.
 - [ ] Baselines and submitted method use the same preprocessing and evaluation checkpoints.
