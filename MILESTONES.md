@@ -47,4 +47,4 @@
 - The synthetic substitute shows only a very small mean advantage over LOO (`0.5710` versus `0.5704`), so it is documented as additional evidence but not strong enough for `core_claim_plus`.
 
 ## Stop Justification
-- Stopped at `core_claim`: the reusable environment is packaged, validated, and the central claim is reproduced on the digits benchmark. Higher milestones would require adding and validating more paper datasets or redesigning the synthetic substitute.
+- Completed at milestone `core_claim`.

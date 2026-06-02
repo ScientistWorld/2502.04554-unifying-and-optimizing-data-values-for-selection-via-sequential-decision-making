@@ -27,8 +27,6 @@
 #   milestone: core_claim
 #   notes: "Reproduced the core claim. Environment packaged."
 
-action: submit
-gpus: 0
-test: false
+action: done
 milestone: core_claim
-notes: "Run the packaged reproduction with 20 seeds to strengthen the validated core-claim result and match the paper's repeated-trial scale more closely."
+notes: "Completed a validated reusable reproduction. The 20-seed digits experiment supports the paper's central bipartite data-selection claim; higher milestones require additional paper datasets or a stronger substitute setting."
