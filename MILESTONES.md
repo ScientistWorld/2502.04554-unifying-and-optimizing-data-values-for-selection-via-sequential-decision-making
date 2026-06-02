@@ -4,6 +4,11 @@
 
 ## Progress Log
 
+### [2026-06-02 03:45] - core_claim
+- Audited the scoring contract and found `scores.json` was stale relative to the declared metrics.
+- Patched the standard evaluator to emit all declared curve-quality and constraint metrics, restored 20-seed defaults, and updated the submitted job to regenerate scores from scratch.
+- Keeping the current milestone at `core_claim` until the regeneration job validates in the container.
+
 ### [2026-06-02 03:18] - core_claim
 - Job `3bd5ddd1-7cc` completed successfully and passed `python validate.py --compare`.
 - The added Monte Carlo Data Shapley baseline ran on `digits_selection`; bipartite mean accuracy remained higher (`0.7967`) than DataShap (`0.7744`), random (`0.7475`), and LOO (`0.7218`).

@@ -1,6 +1,6 @@
 # The system reads this file after the turn ends.
-action: done
+action: submit
 gpus: 0
-test: false
+test: true
 milestone: core_claim
-notes: "Packaging audit complete: no external artifacts required; download and entrypoint paths now work from the checkout root."
+notes: "CPU validation job: regenerate 20-seed rankings/scores with the expanded scoring metrics, then run validate.py --compare plus train/test split evaluation."

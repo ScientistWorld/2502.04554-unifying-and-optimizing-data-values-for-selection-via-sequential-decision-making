@@ -21,7 +21,7 @@ cd "$SCRIPT_DIR/.."
 
 rm -rf checkpoints/rankings scoring/curves scoring/scores.json
 
-export SEEDS=${SEEDS:-"10 20 30"}
+export SEEDS=${SEEDS:-"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"}
 export EVALUATE_AFTER_RUN=0
 bash scripts/baseline.sh random digits synthetic_planes
 bash scripts/baseline.sh loo digits synthetic_planes

@@ -28,6 +28,8 @@ def summarize_curve(curve: list[float]) -> dict[str, float]:
         "tail_accuracy": float(arr[tail_start:].mean()),
         "worst_prefix_accuracy": float(arr.min()),
         "max_accuracy_drop": float(max(0.0, -np.diff(arr).min())) if len(arr) > 1 else 0.0,
+        "final_accuracy": float(arr[-1]),
+        "selection_budget": float(len(arr)),
     }
 
 

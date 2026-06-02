@@ -12,7 +12,7 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$SCRIPT_DIR/.."
 
 DATASETS=("${@:-digits synthetic_planes}")
-SEEDS=${SEEDS:-"10 20 30"}
+SEEDS=${SEEDS:-"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"}
 
 mkdir -p checkpoints/rankings
 

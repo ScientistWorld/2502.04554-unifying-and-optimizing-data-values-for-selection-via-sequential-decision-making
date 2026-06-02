@@ -12,6 +12,7 @@
 - Job `3bd5ddd1-7cc` reran the packaged reproduction with the added Monte Carlo Data Shapley baseline and passed `validate.py --compare`.
 - The current workspace passes `python validate.py --compare` and is complete at `core_claim`.
 - Continuation audit confirmed the method and evaluation are real rather than surrogate or hardcoded: the method outputs rankings, and the evaluator independently scores those rankings.
+- Current turn patched stale scoring-contract gaps: `scripts/evaluate.sh` now emits every metric declared in `reference.json`, split evaluators include `final_accuracy` and `selection_budget`, and reproduction defaults are back to 20 seeds.
 
 ## Results
 
@@ -26,6 +27,7 @@
 
 - Higher milestones require adding more of the paper's OpenML datasets or improving the synthetic substitute so the additional setting has a clear, reproducible method advantage.
 - A future agent can start from the packaged scripts and current 20-seed scores without needing to repair the environment.
+- The pending CPU job should regenerate `scoring/scores.json`, `scoring/scores_train.json`, and `scoring/scores_test.json` with the expanded metric set.
 
 ## Issues
 
@@ -38,6 +40,7 @@
 - Job `5acc95ba-aa2` passed, confirming the scoring-contract fix.
 - Job `19c5bc2c-050` passed after the 20-seed expansion.
 - Job `3bd5ddd1-7cc` passed after the Data Shapley baseline expansion.
+- The login-node Python environment lacks `numpy`, so the expanded evaluator was syntax-checked locally and will be executed in the submitted container, where `environment/setup.sh` installs the required packages.
 
 ## Deviations from Paper
 
