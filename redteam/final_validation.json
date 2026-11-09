@@ -1,0 +1,36 @@
+{
+  "job_id": "e175191e-e18",
+  "attempts": 18,
+  "accepted": 15,
+  "rejected": 3,
+  "winning_shortcuts": [
+    "shortcut_brute_force",
+    "shortcut_larger_pool",
+    "shortcut_rebuilt_answers",
+    "shortcut_replaced_task",
+    "shortcut_seed_cherry_pick"
+  ],
+  "tying_shortcuts": [
+    "shortcut_more_samples"
+  ],
+  "all_test_commands_have_no_arguments": true,
+  "all_evaluators_unchanged": true,
+  "reference_matches_stored": true,
+  "experiment_files_restored_to_pre_audit_state": {
+    "data/tasks.py": true,
+    "checkpoints/rankings": true,
+    "scoring/scores_train.json": true,
+    "scoring/scores_test.json": true,
+    "scoring/curves_train": true,
+    "scoring/curves_test": true
+  },
+  "original_gym_diff_excluding_system_metadata_and_action": [],
+  "python_sources_parsed": [
+    "redteam/__init__.py",
+    "redteam/final_check.py",
+    "redteam/generate.py",
+    "redteam/harness.py",
+    "redteam/summarize.py"
+  ],
+  "shell_scripts_checked": 19
+}

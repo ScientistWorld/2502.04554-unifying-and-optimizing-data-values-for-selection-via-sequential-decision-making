@@ -40,21 +40,21 @@
     }
   },
   "scores": {
-    "better_coverage_reset": 0.0439300222157789,
+    "better_coverage_reset": 0.04393002221577891,
     "better_validation_prototypes": 0.3423922962440786,
     "reference_seed0": 0.0,
     "reference_seed1": 0.0,
     "reference_seed2": 0.0,
-    "shortcut_brute_force": 0.7339860696020184,
-    "shortcut_forged_fields": -1.211061788973129,
-    "shortcut_larger_pool": 0.9439437056076854,
+    "shortcut_brute_force": 0.7339860696020185,
+    "shortcut_forged_fields": -1.2110617889731292,
+    "shortcut_larger_pool": 0.9439437056076851,
     "shortcut_more_samples": 0.0,
-    "shortcut_rebuilt_answers": 1.7171708444685159,
-    "shortcut_replaced_task": 5.222179603263459,
-    "shortcut_seed_cherry_pick": 0.7436809630654736,
-    "shortcut_singleton_constant": -5.421408307591191,
+    "shortcut_rebuilt_answers": 1.717170844468516,
+    "shortcut_replaced_task": 5.22217960326346,
+    "shortcut_seed_cherry_pick": 0.7436809630654735,
+    "shortcut_singleton_constant": -5.421408307591193,
     "weaker_label_blocks": -3.504411792362059,
-    "weaker_random": -1.211061788973129
+    "weaker_random": -1.2110617889731292
   },
   "raw_metrics": {
     "better_coverage_reset": {
@@ -744,6 +744,66 @@
       "population_std": 0.0
     }
   },
+  "reference_data_seed_spread": {
+    "digits": {
+      "seeds": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "mean_accuracies": [
+        0.7810400000000002,
+        0.8081100000000001,
+        0.79506,
+        0.7923500000000001,
+        0.7969499999999998,
+        0.80013,
+        0.8000399999999999,
+        0.79715,
+        0.7939099999999999,
+        0.8124400000000002
+      ],
+      "range": 0.031399999999999983,
+      "population_std": 0.008157142636977732,
+      "first_three_range": 0.027069999999999927
+    },
+    "synthetic_planes": {
+      "seeds": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "mean_accuracies": [
+        0.56172,
+        0.5336799999999999,
+        0.58932,
+        0.5660400000000001,
+        0.52148,
+        0.48928,
+        0.5439200000000001,
+        0.5721600000000001,
+        0.5880399999999999,
+        0.6189600000000001
+      ],
+      "range": 0.12968000000000007,
+      "population_std": 0.03566818302072591,
+      "first_three_range": 0.05564000000000002
+    }
+  },
   "reference_rank_spread": {
     "scores": [
       0.0,
@@ -751,6 +811,56 @@
       0.0
     ],
     "range": 0.0
+  },
+  "honest_cohort_sensitivity": {
+    "cohort": [
+      "better_coverage_reset",
+      "better_validation_prototypes",
+      "reference_seed0",
+      "reference_seed1",
+      "reference_seed2",
+      "weaker_label_blocks",
+      "weaker_random"
+    ],
+    "scales": {
+      "digits_selection": {
+        "mean_accuracy": 0.1041790779404896,
+        "mean_accuracy_std": 0.003000191493743642,
+        "early10_accuracy": 0.12398061632565711,
+        "early20_accuracy": 0.1607569647426366,
+        "tail_accuracy": 0.09095128661080455,
+        "worst_prefix_accuracy": 0.0006204014500173842,
+        "max_accuracy_drop": 0.008117328403370374,
+        "early_label_balance": 0.23381669665024754
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.012881464487663622,
+        "mean_accuracy_std": 0.006300767351728104,
+        "early10_accuracy": 0.023016562271014986,
+        "early20_accuracy": 0.02286298112938141,
+        "tail_accuracy": 0.006342606172641066,
+        "worst_prefix_accuracy": 0.0052616440357728216,
+        "max_accuracy_drop": 0.006652788275357534,
+        "early_label_balance": 0.3436703286252032
+      }
+    },
+    "scores": {
+      "better_coverage_reset": 0.37864805670273377,
+      "better_validation_prototypes": 0.423514529983203,
+      "reference_seed0": 0.0,
+      "reference_seed1": 0.0,
+      "reference_seed2": 0.0,
+      "shortcut_brute_force": 3.0541620717276214,
+      "shortcut_forged_fields": -2.7765034131974113,
+      "shortcut_larger_pool": 4.935964227005329,
+      "shortcut_more_samples": 0.0,
+      "shortcut_rebuilt_answers": 7.632780908098677,
+      "shortcut_replaced_task": 28.584783977177732,
+      "shortcut_seed_cherry_pick": 4.964230958472192,
+      "shortcut_singleton_constant": -11.63243436422809,
+      "weaker_label_blocks": -6.6518099208063735,
+      "weaker_random": -2.7765034131974113
+    }
   },
   "rejected": {
     "shortcut_invalid_constant": {

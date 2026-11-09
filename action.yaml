@@ -1,4 +1,2 @@
-action: submit
-gpus: 0
-test: false
-notes: "Bundle three reference RNG reruns, quality variants, and persistent-artifact shortcut checks through unchanged hidden test."
+action: done
+notes: "Audit complete: genuine variants rank correctly; five shortcuts beat the reference and one ties; original gym restored."

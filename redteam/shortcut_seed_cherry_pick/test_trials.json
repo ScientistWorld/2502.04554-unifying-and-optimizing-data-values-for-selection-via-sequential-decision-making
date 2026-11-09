@@ -1,0 +1,34 @@
+[
+  {
+    "dataset": "digits",
+    "seed": 20,
+    "first_prefix_accuracy": 0.099,
+    "summary": {
+      "mean_accuracy": 0.8124400000000002,
+      "early10_accuracy": 0.42299999999999993,
+      "early20_accuracy": 0.60355,
+      "tail_accuracy": 0.8646625,
+      "worst_prefix_accuracy": 0.099,
+      "max_accuracy_drop": 0.019000000000000017,
+      "final_accuracy": 0.912,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9772756218496935
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 20,
+    "first_prefix_accuracy": 0.502,
+    "summary": {
+      "mean_accuracy": 0.6189600000000001,
+      "early10_accuracy": 0.5762,
+      "early20_accuracy": 0.5984999999999999,
+      "tail_accuracy": 0.6326,
+      "worst_prefix_accuracy": 0.502,
+      "max_accuracy_drop": 0.04399999999999993,
+      "final_accuracy": 0.638,
+      "selection_budget": 50.0,
+      "early_label_balance": 0.9709505944546688
+    }
+  }
+]

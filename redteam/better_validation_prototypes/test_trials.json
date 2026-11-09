@@ -1,0 +1,322 @@
+[
+  {
+    "dataset": "digits",
+    "seed": 11,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.7785600000000001,
+      "early10_accuracy": 0.45149999999999996,
+      "early20_accuracy": 0.5818000000000001,
+      "tail_accuracy": 0.82775,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.030999999999999917,
+      "final_accuracy": 0.896,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 12,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.81969,
+      "early10_accuracy": 0.476,
+      "early20_accuracy": 0.6426000000000001,
+      "tail_accuracy": 0.8639624999999999,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.020999999999999908,
+      "final_accuracy": 0.893,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 13,
+    "first_prefix_accuracy": 0.102,
+    "summary": {
+      "mean_accuracy": 0.8062799999999999,
+      "early10_accuracy": 0.47190000000000004,
+      "early20_accuracy": 0.6178,
+      "tail_accuracy": 0.8533999999999999,
+      "worst_prefix_accuracy": 0.102,
+      "max_accuracy_drop": 0.01100000000000001,
+      "final_accuracy": 0.892,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 14,
+    "first_prefix_accuracy": 0.102,
+    "summary": {
+      "mean_accuracy": 0.8016999999999999,
+      "early10_accuracy": 0.44719999999999993,
+      "early20_accuracy": 0.61855,
+      "tail_accuracy": 0.8474875000000001,
+      "worst_prefix_accuracy": 0.102,
+      "max_accuracy_drop": 0.016999999999999904,
+      "final_accuracy": 0.876,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 15,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.81605,
+      "early10_accuracy": 0.47700000000000004,
+      "early20_accuracy": 0.62435,
+      "tail_accuracy": 0.8639749999999999,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.010999999999999899,
+      "final_accuracy": 0.889,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 16,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.80669,
+      "early10_accuracy": 0.4574000000000001,
+      "early20_accuracy": 0.62115,
+      "tail_accuracy": 0.8530749999999999,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.009000000000000008,
+      "final_accuracy": 0.873,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 17,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.80559,
+      "early10_accuracy": 0.46040000000000003,
+      "early20_accuracy": 0.6013,
+      "tail_accuracy": 0.8566624999999999,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.02400000000000002,
+      "final_accuracy": 0.895,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 18,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.8129000000000002,
+      "early10_accuracy": 0.4765,
+      "early20_accuracy": 0.6348,
+      "tail_accuracy": 0.8574249999999999,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.02200000000000002,
+      "final_accuracy": 0.891,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 19,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.8042100000000001,
+      "early10_accuracy": 0.4892,
+      "early20_accuracy": 0.6174499999999999,
+      "tail_accuracy": 0.8509,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.028000000000000025,
+      "final_accuracy": 0.885,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "digits",
+    "seed": 20,
+    "first_prefix_accuracy": 0.101,
+    "summary": {
+      "mean_accuracy": 0.8167100000000002,
+      "early10_accuracy": 0.4569,
+      "early20_accuracy": 0.59575,
+      "tail_accuracy": 0.8719499999999998,
+      "worst_prefix_accuracy": 0.101,
+      "max_accuracy_drop": 0.01200000000000001,
+      "final_accuracy": 0.912,
+      "selection_budget": 100.0,
+      "early_label_balance": 0.9999999999999998
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 11,
+    "first_prefix_accuracy": 0.5,
+    "summary": {
+      "mean_accuracy": 0.51764,
+      "early10_accuracy": 0.5296000000000001,
+      "early20_accuracy": 0.5267999999999999,
+      "tail_accuracy": 0.5115333333333333,
+      "worst_prefix_accuracy": 0.466,
+      "max_accuracy_drop": 0.035999999999999976,
+      "final_accuracy": 0.566,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 12,
+    "first_prefix_accuracy": 0.496,
+    "summary": {
+      "mean_accuracy": 0.53972,
+      "early10_accuracy": 0.5422,
+      "early20_accuracy": 0.5504,
+      "tail_accuracy": 0.5326000000000001,
+      "worst_prefix_accuracy": 0.484,
+      "max_accuracy_drop": 0.026000000000000023,
+      "final_accuracy": 0.496,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 13,
+    "first_prefix_accuracy": 0.502,
+    "summary": {
+      "mean_accuracy": 0.6047199999999999,
+      "early10_accuracy": 0.5894,
+      "early20_accuracy": 0.6019,
+      "tail_accuracy": 0.6065999999999999,
+      "worst_prefix_accuracy": 0.502,
+      "max_accuracy_drop": 0.03400000000000003,
+      "final_accuracy": 0.592,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 14,
+    "first_prefix_accuracy": 0.498,
+    "summary": {
+      "mean_accuracy": 0.55208,
+      "early10_accuracy": 0.5005999999999999,
+      "early20_accuracy": 0.5332,
+      "tail_accuracy": 0.5646666666666668,
+      "worst_prefix_accuracy": 0.44,
+      "max_accuracy_drop": 0.055999999999999994,
+      "final_accuracy": 0.526,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 15,
+    "first_prefix_accuracy": 0.498,
+    "summary": {
+      "mean_accuracy": 0.5192000000000001,
+      "early10_accuracy": 0.5328000000000002,
+      "early20_accuracy": 0.5377000000000001,
+      "tail_accuracy": 0.5068666666666667,
+      "worst_prefix_accuracy": 0.484,
+      "max_accuracy_drop": 0.03400000000000003,
+      "final_accuracy": 0.538,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 16,
+    "first_prefix_accuracy": 0.5,
+    "summary": {
+      "mean_accuracy": 0.4947600000000001,
+      "early10_accuracy": 0.4750000000000001,
+      "early20_accuracy": 0.4747,
+      "tail_accuracy": 0.5081333333333333,
+      "worst_prefix_accuracy": 0.44,
+      "max_accuracy_drop": 0.03799999999999998,
+      "final_accuracy": 0.502,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 17,
+    "first_prefix_accuracy": 0.498,
+    "summary": {
+      "mean_accuracy": 0.55748,
+      "early10_accuracy": 0.5197999999999999,
+      "early20_accuracy": 0.5349,
+      "tail_accuracy": 0.5725333333333332,
+      "worst_prefix_accuracy": 0.494,
+      "max_accuracy_drop": 0.03599999999999992,
+      "final_accuracy": 0.576,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 18,
+    "first_prefix_accuracy": 0.504,
+    "summary": {
+      "mean_accuracy": 0.56148,
+      "early10_accuracy": 0.5897999999999999,
+      "early20_accuracy": 0.582,
+      "tail_accuracy": 0.5478000000000001,
+      "worst_prefix_accuracy": 0.484,
+      "max_accuracy_drop": 0.04400000000000004,
+      "final_accuracy": 0.484,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 19,
+    "first_prefix_accuracy": 0.5,
+    "summary": {
+      "mean_accuracy": 0.61412,
+      "early10_accuracy": 0.5848,
+      "early20_accuracy": 0.6058,
+      "tail_accuracy": 0.6196666666666667,
+      "worst_prefix_accuracy": 0.5,
+      "max_accuracy_drop": 0.04600000000000004,
+      "final_accuracy": 0.552,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  },
+  {
+    "dataset": "synthetic_planes",
+    "seed": 20,
+    "first_prefix_accuracy": 0.502,
+    "summary": {
+      "mean_accuracy": 0.6054400000000001,
+      "early10_accuracy": 0.5746,
+      "early20_accuracy": 0.5941,
+      "tail_accuracy": 0.613,
+      "worst_prefix_accuracy": 0.502,
+      "max_accuracy_drop": 0.050000000000000044,
+      "final_accuracy": 0.638,
+      "selection_budget": 50.0,
+      "early_label_balance": 1.0
+    }
+  }
+]

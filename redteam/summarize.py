@@ -61,12 +61,59 @@ def main():
             "range": max(means) - min(means), "population_std": statistics.pstdev(means),
         }
     seed_ranks = [ranks[name] for name in reference_names]
+    data_seed_spread = {}
+    for name in values:
+        trials = [json.loads(p.read_text()) for p in
+                  sorted((AUDIT / name / "curves_test").glob("*.json"))]
+        if trials:
+            # These small records are tracked even though bulky curve caches
+            # are ignored. For duplicated seeds the score includes repetitions,
+            # while the curve filename overwrites; preserve that distinction.
+            compact = [{"dataset": r["dataset"], "seed": r["seed"],
+                        "first_prefix_accuracy": r["curve"][0], "summary": r["summary"]}
+                       for r in trials]
+            (AUDIT / name / "test_trials.json").write_text(json.dumps(compact, indent=2))
+            if name == "reference_seed0":
+                for dataset in ("digits", "synthetic_planes"):
+                    rows = sorted([r for r in trials if r["dataset"] == dataset],
+                                  key=lambda r: r["seed"])
+                    numbers = [r["summary"]["mean_accuracy"] for r in rows]
+                    data_seed_spread[dataset] = {
+                        "seeds": [r["seed"] for r in rows], "mean_accuracies": numbers,
+                        "range": max(numbers)-min(numbers),
+                        "population_std": statistics.pstdev(numbers),
+                        "first_three_range": max(numbers[:3])-min(numbers[:3]),
+                    }
+    # Sensitivity to a reasonable cohort without degenerate shortcuts. The
+    # production cohort is unknown, so retaining this population is essential.
+    honest_names = [name for name in values if not name.startswith("shortcut_")]
+    honest_scales, honest_scores = {}, {}
+    for exp, definition in reference.items():
+        honest_scales[exp] = {}
+        for key, spec in definition["metrics"].items():
+            if abs(spec["coefficient"]) > 0:
+                honest_scales[exp][key] = statistics.pstdev(
+                    values[name][exp][key] for name in honest_names)
+    for name, row in values.items():
+        score = 0.0
+        for exp, definition in reference.items():
+            for key, scale in honest_scales[exp].items():
+                if scale < 1e-15:
+                    continue
+                spec = definition["metrics"][key]
+                direction = 1 if spec["higher_is_better"] else -1
+                score += (definition["weight"] * abs(spec["coefficient"]) * direction *
+                          (row[exp][key] - base[exp][key]) / scale)
+        honest_scores[name] = score
     summary = {
         "normalization": "population standard deviation over listed accepted audit attempts; future production population unknown",
         "cohort": list(values), "scales": scales, "scores": ranks,
         "raw_metrics": values, "weighted_metric_contributions": contributions,
         "reference_seed_spread": seed_spread,
+        "reference_data_seed_spread": data_seed_spread,
         "reference_rank_spread": {"scores": seed_ranks, "range": max(seed_ranks)-min(seed_ranks)},
+        "honest_cohort_sensitivity": {"cohort": honest_names,
+                                      "scales": honest_scales, "scores": honest_scores},
         "rejected": {name: r for name, r in records.items() if r.get("test_exit_code") != 0},
         "all_evaluators_unchanged": all(r.get("evaluator_unchanged") for r in records.values()),
     }
