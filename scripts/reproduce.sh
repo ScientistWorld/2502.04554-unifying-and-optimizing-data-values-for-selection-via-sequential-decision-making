@@ -10,6 +10,9 @@ set -e
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$SCRIPT_DIR/.."
+# One BLAS/OpenMP thread per process unless the caller says otherwise: jobs get
+# one CPU, and default per-core thread pools oversubscribe it badly.
+export OMP_NUM_THREADS=${OMP_NUM_THREADS:-1} OPENBLAS_NUM_THREADS=${OPENBLAS_NUM_THREADS:-1} MKL_NUM_THREADS=${MKL_NUM_THREADS:-1}
 
 rm -rf checkpoints/instances checkpoints/rankings scoring/curves scoring/curves_train
 rm -f scoring/scores.json scoring/scores_train.json scoring/scores_test.json
