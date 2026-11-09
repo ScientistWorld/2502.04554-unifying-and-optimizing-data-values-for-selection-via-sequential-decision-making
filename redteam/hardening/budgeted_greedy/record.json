@@ -1,0 +1,9 @@
+{
+  "check": "budgeted_greedy",
+  "rankers": [
+    "budgeted_greedy"
+  ],
+  "test_exit_code": 0,
+  "test_seconds": 437.72566094691865,
+  "scores_file_exists": true
+}

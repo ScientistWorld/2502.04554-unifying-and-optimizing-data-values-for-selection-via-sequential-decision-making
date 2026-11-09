@@ -5,4 +5,4 @@ action: submit
 gpus: 0
 test: false
 milestone: core_claim
-notes: "Resubmit hardened-gym verification with BLAS threads pinned to 1: reproduce reference+baselines (visible + hidden held-out test), run variant/shortcut checks through the held-out evaluator, summarize, validate."
+notes: "Final reference regeneration after decoupling the visible method seed from the split seed (reproduce visible + held-out), plus two new checks (visible cohort rerun, budget-respecting validation greedy); earlier checks are cached. Then summarize and validate."

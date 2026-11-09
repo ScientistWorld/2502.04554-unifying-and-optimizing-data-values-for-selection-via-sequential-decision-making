@@ -1,0 +1,19 @@
+{
+  "check": "cohort_train",
+  "rankers": [
+    "bipartite",
+    "random",
+    "loo",
+    "datashap",
+    "coverage_reset",
+    "validation_prototypes",
+    "label_blocks",
+    "brute_force_greedy",
+    "more_samples_800"
+  ],
+  "test_exit_code": 0,
+  "test_seconds": 0.0,
+  "scores_file_exists": false,
+  "train_exit_code": 0,
+  "train_seconds": 603.275931565091
+}

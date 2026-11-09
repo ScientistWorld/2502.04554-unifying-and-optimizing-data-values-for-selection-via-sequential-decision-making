@@ -1,0 +1,156 @@
+{
+  "experiments": {
+    "digits_selection": {
+      "results": {
+        "bipartite": {
+          "curve_accuracy_std": 0.14076795508832968,
+          "early10_accuracy": 0.44713,
+          "early20_accuracy": 0.5997125000000001,
+          "max_accuracy_drop": 0.026150000000000014,
+          "mean_accuracy": 0.7967045,
+          "tail_accuracy": 0.8459524999999999
+        },
+        "brute_force_greedy": {
+          "curve_accuracy_std": 0.14421070346458337,
+          "early10_accuracy": 0.43898000000000004,
+          "early20_accuracy": 0.58805,
+          "max_accuracy_drop": 0.014750000000000008,
+          "mean_accuracy": 0.7984975000000001,
+          "tail_accuracy": 0.8511093749999998
+        },
+        "coverage_reset": {
+          "curve_accuracy_std": 0.14204059423189555,
+          "early10_accuracy": 0.44713,
+          "early20_accuracy": 0.6002700000000001,
+          "max_accuracy_drop": 0.025000000000000015,
+          "mean_accuracy": 0.8051345,
+          "tail_accuracy": 0.8563506249999999
+        },
+        "datashap": {
+          "curve_accuracy_std": 0.1671457290839344,
+          "early10_accuracy": 0.36436,
+          "early20_accuracy": 0.49796250000000003,
+          "max_accuracy_drop": 0.02145,
+          "mean_accuracy": 0.7740570000000002,
+          "tail_accuracy": 0.843080625
+        },
+        "label_blocks": {
+          "curve_accuracy_std": 0.2548189585647033,
+          "early10_accuracy": 0.099,
+          "early20_accuracy": 0.143735,
+          "max_accuracy_drop": 0.0052499999999999995,
+          "mean_accuracy": 0.499066,
+          "tail_accuracy": 0.58789875
+        },
+        "loo": {
+          "curve_accuracy_std": 0.21300989624897712,
+          "early10_accuracy": 0.24043,
+          "early20_accuracy": 0.36060500000000006,
+          "max_accuracy_drop": 0.022799999999999997,
+          "mean_accuracy": 0.7218099999999998,
+          "tail_accuracy": 0.8121112500000001
+        },
+        "more_samples_800": {
+          "curve_accuracy_std": 0.14076795508832968,
+          "early10_accuracy": 0.44713,
+          "early20_accuracy": 0.5997125000000001,
+          "max_accuracy_drop": 0.026150000000000014,
+          "mean_accuracy": 0.7967045,
+          "tail_accuracy": 0.8459524999999999
+        },
+        "random": {
+          "curve_accuracy_std": 0.1885125345540715,
+          "early10_accuracy": 0.297675,
+          "early20_accuracy": 0.4177099999999999,
+          "max_accuracy_drop": 0.022350000000000002,
+          "mean_accuracy": 0.736354,
+          "tail_accuracy": 0.8160149999999999
+        },
+        "validation_prototypes": {
+          "curve_accuracy_std": 0.13845889881026063,
+          "early10_accuracy": 0.46576499999999993,
+          "early20_accuracy": 0.6128175,
+          "max_accuracy_drop": 0.017649999999999992,
+          "mean_accuracy": 0.8076155,
+          "tail_accuracy": 0.8563149999999998
+        }
+      }
+    },
+    "fried_selection": {
+      "results": {
+        "bipartite": {
+          "curve_accuracy_std": 0.06609067177749066,
+          "early10_accuracy": 0.6606,
+          "early20_accuracy": 0.6909950000000001,
+          "max_accuracy_drop": 0.06100000000000001,
+          "mean_accuracy": 0.734848,
+          "tail_accuracy": 0.7640833333333334
+        },
+        "brute_force_greedy": {
+          "curve_accuracy_std": 0.05966900113124068,
+          "early10_accuracy": 0.6890700000000001,
+          "early20_accuracy": 0.7264749999999999,
+          "max_accuracy_drop": 0.04110000000000001,
+          "mean_accuracy": 0.7610480000000001,
+          "tail_accuracy": 0.7840966666666666
+        },
+        "coverage_reset": {
+          "curve_accuracy_std": 0.07124220588948661,
+          "early10_accuracy": 0.66109,
+          "early20_accuracy": 0.69561,
+          "max_accuracy_drop": 0.06019999999999999,
+          "mean_accuracy": 0.74271,
+          "tail_accuracy": 0.7741100000000001
+        },
+        "datashap": {
+          "curve_accuracy_std": 0.09183041509216867,
+          "early10_accuracy": 0.5889200000000001,
+          "early20_accuracy": 0.651215,
+          "max_accuracy_drop": 0.045399999999999996,
+          "mean_accuracy": 0.729692,
+          "tail_accuracy": 0.78201
+        },
+        "label_blocks": {
+          "curve_accuracy_std": 0.12310147514956919,
+          "early10_accuracy": 0.49939999999999996,
+          "early20_accuracy": 0.49939999999999996,
+          "max_accuracy_drop": 0.013100000000000006,
+          "mean_accuracy": 0.603896,
+          "tail_accuracy": 0.67356
+        },
+        "loo": {
+          "curve_accuracy_std": 0.10317615995955655,
+          "early10_accuracy": 0.54644,
+          "early20_accuracy": 0.604495,
+          "max_accuracy_drop": 0.0451,
+          "mean_accuracy": 0.6979960000000001,
+          "tail_accuracy": 0.7603300000000001
+        },
+        "more_samples_800": {
+          "curve_accuracy_std": 0.0660483575571717,
+          "early10_accuracy": 0.66347,
+          "early20_accuracy": 0.693805,
+          "max_accuracy_drop": 0.0619,
+          "mean_accuracy": 0.736408,
+          "tail_accuracy": 0.7648100000000001
+        },
+        "random": {
+          "curve_accuracy_std": 0.083896437087638,
+          "early10_accuracy": 0.5976100000000001,
+          "early20_accuracy": 0.64489,
+          "max_accuracy_drop": 0.0449,
+          "mean_accuracy": 0.713562,
+          "tail_accuracy": 0.7593433333333334
+        },
+        "validation_prototypes": {
+          "curve_accuracy_std": 0.0684372843119889,
+          "early10_accuracy": 0.6542999999999999,
+          "early20_accuracy": 0.6976549999999999,
+          "max_accuracy_drop": 0.045700000000000005,
+          "mean_accuracy": 0.7484540000000001,
+          "tail_accuracy": 0.7823200000000001
+        }
+      }
+    }
+  }
+}
