@@ -1,0 +1,24 @@
+{
+  "name": "shortcut_invalid_empty",
+  "test_command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "test_arguments": [],
+  "evaluator_sha256_before": {
+    "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+    "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+    "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+  },
+  "train_exit_code": 1,
+  "test_exit_code": 1,
+  "test_seconds": 3.082782921846956,
+  "test_error_tail": "shortcut_invalid_empty: digits seed=1 queries=0\nshortcut_invalid_empty: digits seed=2 queries=0\nshortcut_invalid_empty: digits seed=3 queries=0\nshortcut_invalid_empty: digits seed=4 queries=0\nshortcut_invalid_empty: digits seed=5 queries=0\nshortcut_invalid_empty: digits seed=6 queries=0\nshortcut_invalid_empty: digits seed=7 queries=0\nshortcut_invalid_empty: digits seed=8 queries=0\nshortcut_invalid_empty: digits seed=9 queries=0\nshortcut_invalid_empty: digits seed=10 queries=0\nshortcut_invalid_empty: digits seed=11 queries=0\nshortcut_invalid_empty: digits seed=12 queries=0\nshortcut_invalid_empty: digits seed=13 queries=0\nshortcut_invalid_empty: digits seed=14 queries=0\nshortcut_invalid_empty: digits seed=15 queries=0\nshortcut_invalid_empty: digits seed=16 queries=0\nshortcut_invalid_empty: digits seed=17 queries=0\nshortcut_invalid_empty: digits seed=18 queries=0\nshortcut_invalid_empty: digits seed=19 queries=0\nshortcut_invalid_empty: digits seed=20 queries=0\nshortcut_invalid_empty: synthetic_planes seed=1 queries=0\nshortcut_invalid_empty: synthetic_planes seed=2 queries=0\nshortcut_invalid_empty: synthetic_planes seed=3 queries=0\nshortcut_invalid_empty: synthetic_planes seed=4 queries=0\nshortcut_invalid_empty: synthetic_planes seed=5 queries=0\nshortcut_invalid_empty: synthetic_planes seed=6 queries=0\nshortcut_invalid_empty: synthetic_planes seed=7 queries=0\nshortcut_invalid_empty: synthetic_planes seed=8 queries=0\nshortcut_invalid_empty: synthetic_planes seed=9 queries=0\nshortcut_invalid_empty: synthetic_planes seed=10 queries=0\nshortcut_invalid_empty: synthetic_planes seed=11 queries=0\nshortcut_invalid_empty: synthetic_planes seed=12 queries=0\nshortcut_invalid_empty: synthetic_planes seed=13 queries=0\nshortcut_invalid_empty: synthetic_planes seed=14 queries=0\nshortcut_invalid_empty: synthetic_planes seed=15 queries=0\nshortcut_invalid_empty: synthetic_planes seed=16 queries=0\nshortcut_invalid_empty: synthetic_planes seed=17 queries=0\nshortcut_invalid_empty: synthetic_planes seed=18 queries=0\nshortcut_invalid_empty: synthetic_planes seed=19 queries=0\nshortcut_invalid_empty: synthetic_planes seed=20 queries=0\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/train/evaluate.py\", line 135, in <module>\n    main()\n  File \"/home/user/eval/train/evaluate.py\", line 100, in main\n    validate_ranking(ranking, train_size, path)\n  File \"/home/user/eval/train/evaluate.py\", line 54, in validate_ranking\n    raise ValueError(f\"{source} ranking has {len(ranking)} entries, expected {train_size}\")\nValueError: checkpoints/rankings/bipartite_digits_seed10_row9.json ranking has 0 entries, expected 100\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/test/evaluate.py\", line 173, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 126, in main\n    validate_ranking(ranking, train_size, path)\n  File \"/home/user/eval/test/evaluate.py\", line 54, in validate_ranking\n    raise ValueError(f\"{source} ranking has {len(ranking)} entries, expected {train_size}\")\nValueError: checkpoints/rankings/bipartite_digits_seed11_row10.json ranking has 0 entries, expected 100\n",
+  "seconds": 9.758054516045377,
+  "evaluator_sha256_after": {
+    "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+    "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+    "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+  },
+  "evaluator_unchanged": true
+}

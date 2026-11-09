@@ -1,0 +1,830 @@
+{
+  "normalization": "population standard deviation over listed accepted audit attempts; future production population unknown",
+  "cohort": [
+    "better_coverage_reset",
+    "better_validation_prototypes",
+    "reference_seed0",
+    "reference_seed1",
+    "reference_seed2",
+    "shortcut_brute_force",
+    "shortcut_forged_fields",
+    "shortcut_larger_pool",
+    "shortcut_more_samples",
+    "shortcut_rebuilt_answers",
+    "shortcut_replaced_task",
+    "shortcut_seed_cherry_pick",
+    "shortcut_singleton_constant",
+    "weaker_label_blocks",
+    "weaker_random"
+  ],
+  "scales": {
+    "digits_selection": {
+      "mean_accuracy": 0.1975313242925846,
+      "mean_accuracy_std": 0.004803911736223793,
+      "early10_accuracy": 0.1257857675043829,
+      "early20_accuracy": 0.1756492134928781,
+      "tail_accuracy": 0.20404339351767758,
+      "worst_prefix_accuracy": 0.0008940295794261445,
+      "max_accuracy_drop": 0.010741694465958343,
+      "early_label_balance": 0.2838009180236692
+    },
+    "synthetic_planes_selection": {
+      "mean_accuracy": 0.10944974837302457,
+      "mean_accuracy_std": 0.014899788755197674,
+      "early10_accuracy": 0.09277398744619454,
+      "early20_accuracy": 0.10385196449219868,
+      "tail_accuracy": 0.113413246811648,
+      "worst_prefix_accuracy": 0.008494536806415971,
+      "max_accuracy_drop": 0.11515766969198746,
+      "early_label_balance": 0.33324561486943044
+    }
+  },
+  "scores": {
+    "better_coverage_reset": 0.0439300222157789,
+    "better_validation_prototypes": 0.3423922962440786,
+    "reference_seed0": 0.0,
+    "reference_seed1": 0.0,
+    "reference_seed2": 0.0,
+    "shortcut_brute_force": 0.7339860696020184,
+    "shortcut_forged_fields": -1.211061788973129,
+    "shortcut_larger_pool": 0.9439437056076854,
+    "shortcut_more_samples": 0.0,
+    "shortcut_rebuilt_answers": 1.7171708444685159,
+    "shortcut_replaced_task": 5.222179603263459,
+    "shortcut_seed_cherry_pick": 0.7436809630654736,
+    "shortcut_singleton_constant": -5.421408307591191,
+    "weaker_label_blocks": -3.504411792362059,
+    "weaker_random": -1.211061788973129
+  },
+  "raw_metrics": {
+    "better_coverage_reset": {
+      "digits_selection": {
+        "mean_accuracy": 0.8040080000000002,
+        "mean_accuracy_std": 0.011020125952093262,
+        "early10_accuracy": 0.44567999999999997,
+        "early20_accuracy": 0.59886,
+        "tail_accuracy": 0.8552950000000001,
+        "worst_prefix_accuracy": 0.0997,
+        "max_accuracy_drop": 0.028100000000000024,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.97165337870232
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.563456,
+        "mean_accuracy_std": 0.038107889786762016,
+        "early10_accuracy": 0.55724,
+        "early20_accuracy": 0.56537,
+        "tail_accuracy": 0.56218,
+        "worst_prefix_accuracy": 0.4866,
+        "max_accuracy_drop": 0.048600000000000004,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9847674647757716
+      }
+    },
+    "better_validation_prototypes": {
+      "digits_selection": {
+        "mean_accuracy": 0.8068379999999999,
+        "mean_accuracy_std": 0.011041198123392226,
+        "early10_accuracy": 0.46640000000000004,
+        "early20_accuracy": 0.6155549999999999,
+        "tail_accuracy": 0.8546587499999999,
+        "worst_prefix_accuracy": 0.1012,
+        "max_accuracy_drop": 0.01859999999999997,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9999999999999998
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.5566639999999999,
+        "mean_accuracy_std": 0.03883319487242838,
+        "early10_accuracy": 0.5438599999999999,
+        "early20_accuracy": 0.55415,
+        "tail_accuracy": 0.55834,
+        "worst_prefix_accuracy": 0.4795999999999999,
+        "max_accuracy_drop": 0.04000000000000001,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 1.0
+      }
+    },
+    "reference_seed0": {
+      "digits_selection": {
+        "mean_accuracy": 0.797718,
+        "mean_accuracy_std": 0.008157142636977732,
+        "early10_accuracy": 0.44567999999999997,
+        "early20_accuracy": 0.59909,
+        "tail_accuracy": 0.8473749999999999,
+        "worst_prefix_accuracy": 0.0997,
+        "max_accuracy_drop": 0.028100000000000024,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9716533787023203
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.5584600000000001,
+        "mean_accuracy_std": 0.03566818302072591,
+        "early10_accuracy": 0.5582,
+        "early20_accuracy": 0.56055,
+        "tail_accuracy": 0.5570666666666666,
+        "worst_prefix_accuracy": 0.4866,
+        "max_accuracy_drop": 0.0512,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9804026928691437
+      }
+    },
+    "reference_seed1": {
+      "digits_selection": {
+        "mean_accuracy": 0.797718,
+        "mean_accuracy_std": 0.008157142636977732,
+        "early10_accuracy": 0.44567999999999997,
+        "early20_accuracy": 0.59909,
+        "tail_accuracy": 0.8473749999999999,
+        "worst_prefix_accuracy": 0.0997,
+        "max_accuracy_drop": 0.028100000000000024,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9716533787023203
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.5584600000000001,
+        "mean_accuracy_std": 0.03566818302072591,
+        "early10_accuracy": 0.5582,
+        "early20_accuracy": 0.56055,
+        "tail_accuracy": 0.5570666666666666,
+        "worst_prefix_accuracy": 0.4866,
+        "max_accuracy_drop": 0.0512,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9804026928691437
+      }
+    },
+    "reference_seed2": {
+      "digits_selection": {
+        "mean_accuracy": 0.797718,
+        "mean_accuracy_std": 0.008157142636977732,
+        "early10_accuracy": 0.44567999999999997,
+        "early20_accuracy": 0.59909,
+        "tail_accuracy": 0.8473749999999999,
+        "worst_prefix_accuracy": 0.0997,
+        "max_accuracy_drop": 0.028100000000000024,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9716533787023203
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.5584600000000001,
+        "mean_accuracy_std": 0.03566818302072591,
+        "early10_accuracy": 0.5582,
+        "early20_accuracy": 0.56055,
+        "tail_accuracy": 0.5570666666666666,
+        "worst_prefix_accuracy": 0.4866,
+        "max_accuracy_drop": 0.0512,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9804026928691437
+      }
+    },
+    "shortcut_brute_force": {
+      "digits_selection": {
+        "mean_accuracy": 0.7972430000000001,
+        "mean_accuracy_std": 0.008806285312207411,
+        "early10_accuracy": 0.43906,
+        "early20_accuracy": 0.58737,
+        "tail_accuracy": 0.8497112499999998,
+        "worst_prefix_accuracy": 0.1012,
+        "max_accuracy_drop": 0.014800000000000002,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9765377597080842
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.589004,
+        "mean_accuracy_std": 0.02899381699604245,
+        "early10_accuracy": 0.56702,
+        "early20_accuracy": 0.5822100000000001,
+        "tail_accuracy": 0.5935333333333335,
+        "worst_prefix_accuracy": 0.497,
+        "max_accuracy_drop": 0.03920000000000001,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9963725048442477
+      }
+    },
+    "shortcut_forged_fields": {
+      "digits_selection": {
+        "mean_accuracy": 0.7469870000000001,
+        "mean_accuracy_std": 0.01455788930442875,
+        "early10_accuracy": 0.31738,
+        "early20_accuracy": 0.43996500000000005,
+        "tail_accuracy": 0.8237424999999998,
+        "worst_prefix_accuracy": 0.10010000000000001,
+        "max_accuracy_drop": 0.028499999999999987,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.8971137708930923
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.539068,
+        "mean_accuracy_std": 0.031271170365050255,
+        "early10_accuracy": 0.5118199999999999,
+        "early20_accuracy": 0.52479,
+        "tail_accuracy": 0.5485866666666667,
+        "worst_prefix_accuracy": 0.475,
+        "max_accuracy_drop": 0.047000000000000014,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9644354458695903
+      }
+    },
+    "shortcut_larger_pool": {
+      "digits_selection": {
+        "mean_accuracy": 0.910924,
+        "mean_accuracy_std": 0.006193604416385237,
+        "early10_accuracy": 0.44704000000000005,
+        "early20_accuracy": 0.5929949999999999,
+        "tail_accuracy": 0.9218870689655173,
+        "worst_prefix_accuracy": 0.1008,
+        "max_accuracy_drop": 0.02629999999999999,
+        "final_accuracy": 0.9544,
+        "selection_budget": 600.0,
+        "early_label_balance": 0.959063509599684
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.6262204,
+        "mean_accuracy_std": 0.050455988118755506,
+        "early10_accuracy": 0.5499400000000001,
+        "early20_accuracy": 0.5546399999999999,
+        "tail_accuracy": 0.6269434343434344,
+        "worst_prefix_accuracy": 0.4878,
+        "max_accuracy_drop": 0.044,
+        "final_accuracy": 0.6350000000000001,
+        "selection_budget": 2000.0,
+        "early_label_balance": 0.9510586678380557
+      }
+    },
+    "shortcut_more_samples": {
+      "digits_selection": {
+        "mean_accuracy": 0.797718,
+        "mean_accuracy_std": 0.008157142636977732,
+        "early10_accuracy": 0.44567999999999997,
+        "early20_accuracy": 0.59909,
+        "tail_accuracy": 0.8473749999999999,
+        "worst_prefix_accuracy": 0.0997,
+        "max_accuracy_drop": 0.028100000000000024,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9716533787023203
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.5584600000000001,
+        "mean_accuracy_std": 0.03566818302072591,
+        "early10_accuracy": 0.5582,
+        "early20_accuracy": 0.56055,
+        "tail_accuracy": 0.5570666666666666,
+        "worst_prefix_accuracy": 0.4866,
+        "max_accuracy_drop": 0.0512,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9804026928691437
+      }
+    },
+    "shortcut_rebuilt_answers": {
+      "digits_selection": {
+        "mean_accuracy": 0.8460240000000001,
+        "mean_accuracy_std": 0.0137184271693223,
+        "early10_accuracy": 0.4495,
+        "early20_accuracy": 0.6229250000000001,
+        "tail_accuracy": 0.90179875,
+        "worst_prefix_accuracy": 0.10200000000000001,
+        "max_accuracy_drop": 0.0064000000000000055,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9818204974797549
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.638188,
+        "mean_accuracy_std": 0.03416335369954184,
+        "early10_accuracy": 0.6116400000000001,
+        "early20_accuracy": 0.6306200000000001,
+        "tail_accuracy": 0.6432333333333332,
+        "worst_prefix_accuracy": 0.49899999999999994,
+        "max_accuracy_drop": 0.031800000000000016,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9810184521156884
+      }
+    },
+    "shortcut_replaced_task": {
+      "digits_selection": {
+        "mean_accuracy": 0.9550640000000001,
+        "mean_accuracy_std": 1.743559577423107e-05,
+        "early10_accuracy": 0.5506399999999999,
+        "early20_accuracy": 0.77532,
+        "tail_accuracy": 1.0,
+        "worst_prefix_accuracy": 0.099,
+        "max_accuracy_drop": 0.0,
+        "final_accuracy": 1.0,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9999999999999998
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.9799919999999999,
+        "mean_accuracy_std": 9.086253353276915e-05,
+        "early10_accuracy": 0.8999599999999999,
+        "early20_accuracy": 0.94998,
+        "tail_accuracy": 1.0,
+        "worst_prefix_accuracy": 0.4998,
+        "max_accuracy_drop": 0.5002,
+        "final_accuracy": 1.0,
+        "selection_budget": 50.0,
+        "early_label_balance": 1.0
+      }
+    },
+    "shortcut_seed_cherry_pick": {
+      "digits_selection": {
+        "mean_accuracy": 0.8124400000000002,
+        "mean_accuracy_std": 0.0,
+        "early10_accuracy": 0.42299999999999993,
+        "early20_accuracy": 0.60355,
+        "tail_accuracy": 0.8646625,
+        "worst_prefix_accuracy": 0.099,
+        "max_accuracy_drop": 0.019000000000000017,
+        "final_accuracy": 0.9120000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.9772756218496935
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.6189600000000002,
+        "mean_accuracy_std": 1.1102230246251565e-16,
+        "early10_accuracy": 0.5762,
+        "early20_accuracy": 0.5984999999999998,
+        "tail_accuracy": 0.6326,
+        "worst_prefix_accuracy": 0.502,
+        "max_accuracy_drop": 0.04399999999999993,
+        "final_accuracy": 0.638,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9709505944546688
+      }
+    },
+    "shortcut_singleton_constant": {
+      "digits_selection": {
+        "mean_accuracy": 0.099,
+        "mean_accuracy_std": 0.0,
+        "early10_accuracy": 0.099,
+        "early20_accuracy": 0.099,
+        "tail_accuracy": 0.099,
+        "worst_prefix_accuracy": 0.099,
+        "max_accuracy_drop": 0.0,
+        "final_accuracy": 0.099,
+        "selection_budget": 1.0,
+        "early_label_balance": 0.0
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.49959999999999993,
+        "mean_accuracy_std": 0.0021540659228538035,
+        "early10_accuracy": 0.49959999999999993,
+        "early20_accuracy": 0.49959999999999993,
+        "tail_accuracy": 0.49959999999999993,
+        "worst_prefix_accuracy": 0.49959999999999993,
+        "max_accuracy_drop": 0.0,
+        "final_accuracy": 0.49959999999999993,
+        "selection_budget": 1.0,
+        "early_label_balance": 0.0
+      }
+    },
+    "weaker_label_blocks": {
+      "digits_selection": {
+        "mean_accuracy": 0.4990310000000001,
+        "mean_accuracy_std": 0.004253989774317737,
+        "early10_accuracy": 0.099,
+        "early20_accuracy": 0.14497,
+        "tail_accuracy": 0.5875462499999999,
+        "worst_prefix_accuracy": 0.099,
+        "max_accuracy_drop": 0.005399999999999999,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.30102999566398114
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.525192,
+        "mean_accuracy_std": 0.019037636828135945,
+        "early10_accuracy": 0.4998,
+        "early20_accuracy": 0.4997999999999999,
+        "tail_accuracy": 0.5421199999999999,
+        "worst_prefix_accuracy": 0.49239999999999995,
+        "max_accuracy_drop": 0.032400000000000005,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.0
+      }
+    },
+    "weaker_random": {
+      "digits_selection": {
+        "mean_accuracy": 0.7469870000000001,
+        "mean_accuracy_std": 0.01455788930442875,
+        "early10_accuracy": 0.31738,
+        "early20_accuracy": 0.43996500000000005,
+        "tail_accuracy": 0.8237424999999998,
+        "worst_prefix_accuracy": 0.10010000000000001,
+        "max_accuracy_drop": 0.028499999999999987,
+        "final_accuracy": 0.8902000000000001,
+        "selection_budget": 100.0,
+        "early_label_balance": 0.8971137708930923
+      },
+      "synthetic_planes_selection": {
+        "mean_accuracy": 0.539068,
+        "mean_accuracy_std": 0.031271170365050255,
+        "early10_accuracy": 0.5118199999999999,
+        "early20_accuracy": 0.52479,
+        "tail_accuracy": 0.5485866666666667,
+        "worst_prefix_accuracy": 0.475,
+        "max_accuracy_drop": 0.047000000000000014,
+        "final_accuracy": 0.5469999999999999,
+        "selection_budget": 50.0,
+        "early_label_balance": 0.9644354458695903
+      }
+    }
+  },
+  "weighted_metric_contributions": {
+    "better_coverage_reset": {
+      "digits_selection/mean_accuracy": 0.019105830498103712,
+      "digits_selection/mean_accuracy_std": -0.01787907525565426,
+      "digits_selection/early10_accuracy": 0.0,
+      "digits_selection/early20_accuracy": -0.00047139408343197664,
+      "digits_selection/tail_accuracy": 0.009315665492670724,
+      "digits_selection/worst_prefix_accuracy": 0.0,
+      "digits_selection/max_accuracy_drop": -0.0,
+      "digits_selection/early_label_balance": -7.04156088796941e-17,
+      "synthetic_planes_selection/mean_accuracy": 0.01825860753182407,
+      "synthetic_planes_selection/mean_accuracy_std": -0.003274820611379514,
+      "synthetic_planes_selection/early10_accuracy": -0.0020695456267994005,
+      "synthetic_planes_selection/early20_accuracy": 0.01113893228362483,
+      "synthetic_planes_selection/tail_accuracy": 0.007213736986933002,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.0,
+      "synthetic_planes_selection/max_accuracy_drop": 0.0018062192518860278,
+      "synthetic_planes_selection/early_label_balance": 0.000785865748001763
+    },
+    "better_validation_prototypes": {
+      "digits_selection/mean_accuracy": 0.027701935475787035,
+      "digits_selection/mean_accuracy_std": -0.01801066908453377,
+      "digits_selection/early10_accuracy": 0.04941735558264515,
+      "digits_selection/early20_accuracy": 0.033745667755240336,
+      "digits_selection/tail_accuracy": 0.00856729526922203,
+      "digits_selection/worst_prefix_accuracy": 0.25166952545845533,
+      "digits_selection/max_accuracy_drop": 0.10612850734237478,
+      "digits_selection/early_label_balance": 0.008989385709380912,
+      "synthetic_planes_selection/mean_accuracy": -0.00656374281968758,
+      "synthetic_planes_selection/mean_accuracy_std": -0.0042483982876581105,
+      "synthetic_planes_selection/early10_accuracy": -0.030913837800314013,
+      "synthetic_planes_selection/early20_accuracy": -0.01479028353012402,
+      "synthetic_planes_selection/tail_accuracy": 0.001796380397006777,
+      "synthetic_planes_selection/worst_prefix_accuracy": -0.08240590581363921,
+      "synthetic_planes_selection/max_accuracy_drop": 0.007780636777355199,
+      "synthetic_planes_selection/early_label_balance": 0.0035284438125677484
+    },
+    "reference_seed0": {
+      "digits_selection/mean_accuracy": 0.0,
+      "digits_selection/mean_accuracy_std": -0.0,
+      "digits_selection/early10_accuracy": 0.0,
+      "digits_selection/early20_accuracy": 0.0,
+      "digits_selection/tail_accuracy": 0.0,
+      "digits_selection/worst_prefix_accuracy": 0.0,
+      "digits_selection/max_accuracy_drop": -0.0,
+      "digits_selection/early_label_balance": 0.0,
+      "synthetic_planes_selection/mean_accuracy": 0.0,
+      "synthetic_planes_selection/mean_accuracy_std": -0.0,
+      "synthetic_planes_selection/early10_accuracy": 0.0,
+      "synthetic_planes_selection/early20_accuracy": 0.0,
+      "synthetic_planes_selection/tail_accuracy": 0.0,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.0,
+      "synthetic_planes_selection/max_accuracy_drop": -0.0,
+      "synthetic_planes_selection/early_label_balance": 0.0
+    },
+    "reference_seed1": {
+      "digits_selection/mean_accuracy": 0.0,
+      "digits_selection/mean_accuracy_std": -0.0,
+      "digits_selection/early10_accuracy": 0.0,
+      "digits_selection/early20_accuracy": 0.0,
+      "digits_selection/tail_accuracy": 0.0,
+      "digits_selection/worst_prefix_accuracy": 0.0,
+      "digits_selection/max_accuracy_drop": -0.0,
+      "digits_selection/early_label_balance": 0.0,
+      "synthetic_planes_selection/mean_accuracy": 0.0,
+      "synthetic_planes_selection/mean_accuracy_std": -0.0,
+      "synthetic_planes_selection/early10_accuracy": 0.0,
+      "synthetic_planes_selection/early20_accuracy": 0.0,
+      "synthetic_planes_selection/tail_accuracy": 0.0,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.0,
+      "synthetic_planes_selection/max_accuracy_drop": -0.0,
+      "synthetic_planes_selection/early_label_balance": 0.0
+    },
+    "reference_seed2": {
+      "digits_selection/mean_accuracy": 0.0,
+      "digits_selection/mean_accuracy_std": -0.0,
+      "digits_selection/early10_accuracy": 0.0,
+      "digits_selection/early20_accuracy": 0.0,
+      "digits_selection/tail_accuracy": 0.0,
+      "digits_selection/worst_prefix_accuracy": 0.0,
+      "digits_selection/max_accuracy_drop": -0.0,
+      "digits_selection/early_label_balance": 0.0,
+      "synthetic_planes_selection/mean_accuracy": 0.0,
+      "synthetic_planes_selection/mean_accuracy_std": -0.0,
+      "synthetic_planes_selection/early10_accuracy": 0.0,
+      "synthetic_planes_selection/early20_accuracy": 0.0,
+      "synthetic_planes_selection/tail_accuracy": 0.0,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.0,
+      "synthetic_planes_selection/max_accuracy_drop": -0.0,
+      "synthetic_planes_selection/early_label_balance": 0.0
+    },
+    "shortcut_brute_force": {
+      "digits_selection/mean_accuracy": -0.0014428091393635957,
+      "digits_selection/mean_accuracy_std": -0.004053838064934665,
+      "digits_selection/early10_accuracy": -0.015788749708354623,
+      "digits_selection/early20_accuracy": -0.024020602860092482,
+      "digits_selection/tail_accuracy": 0.002747944887279116,
+      "digits_selection/worst_prefix_accuracy": 0.25166952545845533,
+      "digits_selection/max_accuracy_drop": 0.14857991027932407,
+      "digits_selection/early_label_balance": 0.0015489530251698903,
+      "synthetic_planes_selection/mean_accuracy": 0.11162748367735088,
+      "synthetic_planes_selection/mean_accuracy_std": 0.008959007586406439,
+      "synthetic_planes_selection/early10_accuracy": 0.019013950446217936,
+      "synthetic_planes_selection/early20_accuracy": 0.05005586582226407,
+      "synthetic_planes_selection/tail_accuracy": 0.0514460773383613,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.12243163149454886,
+      "synthetic_planes_selection/max_accuracy_drop": 0.008336396547166282,
+      "synthetic_planes_selection/early_label_balance": 0.002875322812219648
+    },
+    "shortcut_forged_fields": {
+      "digits_selection/mean_accuracy": -0.15409505357699188,
+      "digits_selection/mean_accuracy_std": -0.039972091613505255,
+      "digits_selection/early10_accuracy": -0.30599646338095315,
+      "digits_selection/early20_accuracy": -0.32613297185257634,
+      "digits_selection/tail_accuracy": -0.027797028378224013,
+      "digits_selection/worst_prefix_accuracy": 0.06711187345558996,
+      "digits_selection/max_accuracy_drop": -0.004468568730204813,
+      "digits_selection/early_label_balance": -0.02363827696382229,
+      "synthetic_planes_selection/mean_accuracy": -0.07087088015555276,
+      "synthetic_planes_selection/mean_accuracy_std": 0.005902114087546101,
+      "synthetic_planes_selection/early10_accuracy": -0.09998492309473873,
+      "synthetic_planes_selection/early20_accuracy": -0.08264070922456848,
+      "synthetic_planes_selection/tail_accuracy": -0.011963329136086779,
+      "synthetic_planes_selection/worst_prefix_accuracy": -0.13655835820545809,
+      "synthetic_planes_selection/max_accuracy_drop": 0.002917738791508193,
+      "synthetic_planes_selection/early_label_balance": -0.0028748609950908885
+    },
+    "shortcut_larger_pool": {
+      "digits_selection/mean_accuracy": 0.3438624240649098,
+      "digits_selection/mean_accuracy_std": 0.012262120923994983,
+      "digits_selection/early10_accuracy": 0.0032436102119884794,
+      "digits_selection/early20_accuracy": -0.01249194321094408,
+      "digits_selection/tail_accuracy": 0.08764261485474105,
+      "digits_selection/worst_prefix_accuracy": 0.18455765200286772,
+      "digits_selection/max_accuracy_drop": 0.020108559285923908,
+      "digits_selection/early_label_balance": -0.0039925459971301555,
+      "synthetic_planes_selection/mean_accuracy": 0.2476402221375977,
+      "synthetic_planes_selection/mean_accuracy_std": -0.019849684235115062,
+      "synthetic_planes_selection/early10_accuracy": -0.0178067154972517,
+      "synthetic_planes_selection/early20_accuracy": -0.013657902447349171,
+      "synthetic_planes_selection/tail_accuracy": 0.09858004371262373,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.014126726710909861,
+      "synthetic_planes_selection/max_accuracy_drop": 0.005001837928299777,
+      "synthetic_planes_selection/early_label_balance": -0.005283314838381657
+    },
+    "shortcut_more_samples": {
+      "digits_selection/mean_accuracy": 0.0,
+      "digits_selection/mean_accuracy_std": -0.0,
+      "digits_selection/early10_accuracy": 0.0,
+      "digits_selection/early20_accuracy": 0.0,
+      "digits_selection/tail_accuracy": 0.0,
+      "digits_selection/worst_prefix_accuracy": 0.0,
+      "digits_selection/max_accuracy_drop": -0.0,
+      "digits_selection/early_label_balance": 0.0,
+      "synthetic_planes_selection/mean_accuracy": 0.0,
+      "synthetic_planes_selection/mean_accuracy_std": -0.0,
+      "synthetic_planes_selection/early10_accuracy": 0.0,
+      "synthetic_planes_selection/early20_accuracy": 0.0,
+      "synthetic_planes_selection/tail_accuracy": 0.0,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.0,
+      "synthetic_planes_selection/max_accuracy_drop": -0.0,
+      "synthetic_planes_selection/early_label_balance": 0.0
+    },
+    "shortcut_rebuilt_answers": {
+      "digits_selection/mean_accuracy": 0.14672913323392373,
+      "digits_selection/mean_accuracy_std": -0.03472972550937908,
+      "digits_selection/early10_accuracy": 0.009110728683673073,
+      "digits_selection/early20_accuracy": 0.04885077381999168,
+      "digits_selection/tail_accuracy": 0.06401432447685892,
+      "digits_selection/worst_prefix_accuracy": 0.38589327236963294,
+      "digits_selection/max_accuracy_drop": 0.24241985361363383,
+      "digits_selection/early_label_balance": 0.0032242344258125275,
+      "synthetic_planes_selection/mean_accuracy": 0.29137755430290235,
+      "synthetic_planes_selection/mean_accuracy_std": 0.0020199337667242082,
+      "synthetic_planes_selection/early10_accuracy": 0.11520470655849144,
+      "synthetic_planes_selection/early20_accuracy": 0.16193049483684335,
+      "synthetic_planes_selection/tail_accuracy": 0.12156134361943613,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.14597617601273066,
+      "synthetic_planes_selection/max_accuracy_drop": 0.013477174417918824,
+      "synthetic_planes_selection/early_label_balance": 0.0001108658393214138
+    },
+    "shortcut_replaced_task": {
+      "digits_selection/mean_accuracy": 0.477937361773381,
+      "digits_selection/mean_accuracy_std": 0.05083174392959521,
+      "digits_selection/early10_accuracy": 0.2503303881252131,
+      "digits_selection/early20_accuracy": 0.3611903448834535,
+      "digits_selection/tail_accuracy": 0.17952063709833635,
+      "digits_selection/worst_prefix_accuracy": -0.11744577854727775,
+      "digits_selection/max_accuracy_drop": 0.31391695329691754,
+      "digits_selection/early_label_balance": 0.008989385709380912,
+      "synthetic_planes_selection/mean_accuracy": 1.5405499099489655,
+      "synthetic_planes_selection/mean_accuracy_std": 0.047755469653597976,
+      "synthetic_planes_selection/early10_accuracy": 0.736758243140531,
+      "synthetic_planes_selection/early20_accuracy": 0.8999656429900365,
+      "synthetic_planes_selection/tail_accuracy": 0.6248770344352296,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.15539399382000454,
+      "synthetic_planes_selection/max_accuracy_drop": -0.3119201708064719,
+      "synthetic_planes_selection/early_label_balance": 0.0035284438125677484
+    },
+    "shortcut_seed_cherry_pick": {
+      "digits_selection/mean_accuracy": 0.04471797084150706,
+      "digits_selection/mean_accuracy_std": 0.05094062766892014,
+      "digits_selection/early10_accuracy": -0.05409197029992229,
+      "digits_selection/early20_accuracy": 0.009140946139591499,
+      "digits_selection/tail_accuracy": 0.020333910000573358,
+      "digits_selection/worst_prefix_accuracy": -0.11744577854727775,
+      "digits_selection/max_accuracy_drop": 0.10165993861216902,
+      "digits_selection/early_label_balance": 0.0017829466049203962,
+      "synthetic_planes_selection/mean_accuracy": 0.22110603596384765,
+      "synthetic_planes_selection/mean_accuracy_std": 0.04787743451501384,
+      "synthetic_planes_selection/early10_accuracy": 0.03880398050248589,
+      "synthetic_planes_selection/early20_accuracy": 0.0877017593700324,
+      "synthetic_planes_selection/tail_accuracy": 0.10656015653448467,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.18129299279000496,
+      "synthetic_planes_selection/max_accuracy_drop": 0.005001837928299825,
+      "synthetic_planes_selection/early_label_balance": -0.0017018255591771303
+    },
+    "shortcut_singleton_constant": {
+      "digits_selection/mean_accuracy": -2.1223509815538564,
+      "digits_selection/mean_accuracy_std": 0.05094062766892014,
+      "digits_selection/early10_accuracy": -0.8268344031559538,
+      "digits_selection/early20_accuracy": -1.024954205145357,
+      "digits_selection/tail_accuracy": -0.8802539347319726,
+      "digits_selection/worst_prefix_accuracy": -0.11744577854727775,
+      "digits_selection/max_accuracy_drop": 0.31391695329691754,
+      "digits_selection/early_label_balance": -0.30813432420227593,
+      "synthetic_planes_selection/mean_accuracy": -0.21511241779887733,
+      "synthetic_planes_selection/mean_accuracy_std": 0.044986029867277115,
+      "synthetic_planes_selection/early10_accuracy": -0.1263285143025375,
+      "synthetic_planes_selection/early20_accuracy": -0.14085434080641648,
+      "synthetic_planes_selection/tail_accuracy": -0.08107224618951954,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.15303953936818526,
+      "synthetic_planes_selection/max_accuracy_drop": 0.0355686252679095,
+      "synthetic_planes_selection/early_label_balance": -0.17651893662635776
+    },
+    "weaker_label_blocks": {
+      "digits_selection/mean_accuracy": -0.9072596492825096,
+      "digits_selection/mean_accuracy_std": 0.024374841235497862,
+      "digits_selection/early10_accuracy": -0.8268344031559538,
+      "digits_selection/early20_accuracy": -0.9307368746437832,
+      "digits_selection/tail_accuracy": -0.3056158737851879,
+      "digits_selection/worst_prefix_accuracy": -0.11744577854727775,
+      "digits_selection/max_accuracy_drop": 0.253591275439147,
+      "digits_selection/early_label_balance": -0.21267057518262425,
+      "synthetic_planes_selection/mean_accuracy": -0.12158273726355846,
+      "synthetic_planes_selection/mean_accuracy_std": 0.02232319728263065,
+      "synthetic_planes_selection/early10_accuracy": -0.12589735896362078,
+      "synthetic_planes_selection/early20_accuracy": -0.14039214444610013,
+      "synthetic_planes_selection/tail_accuracy": -0.021086308115649977,
+      "synthetic_planes_selection/worst_prefix_accuracy": 0.06827917910272871,
+      "synthetic_planes_selection/max_accuracy_drop": 0.013060354590560517,
+      "synthetic_planes_selection/early_label_balance": -0.17651893662635776
+    },
+    "weaker_random": {
+      "digits_selection/mean_accuracy": -0.15409505357699188,
+      "digits_selection/mean_accuracy_std": -0.039972091613505255,
+      "digits_selection/early10_accuracy": -0.30599646338095315,
+      "digits_selection/early20_accuracy": -0.32613297185257634,
+      "digits_selection/tail_accuracy": -0.027797028378224013,
+      "digits_selection/worst_prefix_accuracy": 0.06711187345558996,
+      "digits_selection/max_accuracy_drop": -0.004468568730204813,
+      "digits_selection/early_label_balance": -0.02363827696382229,
+      "synthetic_planes_selection/mean_accuracy": -0.07087088015555276,
+      "synthetic_planes_selection/mean_accuracy_std": 0.005902114087546101,
+      "synthetic_planes_selection/early10_accuracy": -0.09998492309473873,
+      "synthetic_planes_selection/early20_accuracy": -0.08264070922456848,
+      "synthetic_planes_selection/tail_accuracy": -0.011963329136086779,
+      "synthetic_planes_selection/worst_prefix_accuracy": -0.13655835820545809,
+      "synthetic_planes_selection/max_accuracy_drop": 0.002917738791508193,
+      "synthetic_planes_selection/early_label_balance": -0.0028748609950908885
+    }
+  },
+  "reference_seed_spread": {
+    "digits_selection": {
+      "mean_accuracies": [
+        0.797718,
+        0.797718,
+        0.797718
+      ],
+      "min": 0.797718,
+      "max": 0.797718,
+      "range": 0.0,
+      "population_std": 0.0
+    },
+    "synthetic_planes_selection": {
+      "mean_accuracies": [
+        0.5584600000000001,
+        0.5584600000000001,
+        0.5584600000000001
+      ],
+      "min": 0.5584600000000001,
+      "max": 0.5584600000000001,
+      "range": 0.0,
+      "population_std": 0.0
+    }
+  },
+  "reference_rank_spread": {
+    "scores": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "range": 0.0
+  },
+  "rejected": {
+    "shortcut_invalid_constant": {
+      "name": "shortcut_invalid_constant",
+      "test_command": [
+        "bash",
+        "scripts/evaluate_test.sh"
+      ],
+      "test_arguments": [],
+      "evaluator_sha256_before": {
+        "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+        "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+        "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+      },
+      "train_exit_code": 1,
+      "test_exit_code": 1,
+      "test_seconds": 3.0321210119873285,
+      "test_error_tail": "shortcut_invalid_constant: digits seed=1 queries=0\nshortcut_invalid_constant: digits seed=2 queries=0\nshortcut_invalid_constant: digits seed=3 queries=0\nshortcut_invalid_constant: digits seed=4 queries=0\nshortcut_invalid_constant: digits seed=5 queries=0\nshortcut_invalid_constant: digits seed=6 queries=0\nshortcut_invalid_constant: digits seed=7 queries=0\nshortcut_invalid_constant: digits seed=8 queries=0\nshortcut_invalid_constant: digits seed=9 queries=0\nshortcut_invalid_constant: digits seed=10 queries=0\nshortcut_invalid_constant: digits seed=11 queries=0\nshortcut_invalid_constant: digits seed=12 queries=0\nshortcut_invalid_constant: digits seed=13 queries=0\nshortcut_invalid_constant: digits seed=14 queries=0\nshortcut_invalid_constant: digits seed=15 queries=0\nshortcut_invalid_constant: digits seed=16 queries=0\nshortcut_invalid_constant: digits seed=17 queries=0\nshortcut_invalid_constant: digits seed=18 queries=0\nshortcut_invalid_constant: digits seed=19 queries=0\nshortcut_invalid_constant: digits seed=20 queries=0\nshortcut_invalid_constant: synthetic_planes seed=1 queries=0\nshortcut_invalid_constant: synthetic_planes seed=2 queries=0\nshortcut_invalid_constant: synthetic_planes seed=3 queries=0\nshortcut_invalid_constant: synthetic_planes seed=4 queries=0\nshortcut_invalid_constant: synthetic_planes seed=5 queries=0\nshortcut_invalid_constant: synthetic_planes seed=6 queries=0\nshortcut_invalid_constant: synthetic_planes seed=7 queries=0\nshortcut_invalid_constant: synthetic_planes seed=8 queries=0\nshortcut_invalid_constant: synthetic_planes seed=9 queries=0\nshortcut_invalid_constant: synthetic_planes seed=10 queries=0\nshortcut_invalid_constant: synthetic_planes seed=11 queries=0\nshortcut_invalid_constant: synthetic_planes seed=12 queries=0\nshortcut_invalid_constant: synthetic_planes seed=13 queries=0\nshortcut_invalid_constant: synthetic_planes seed=14 queries=0\nshortcut_invalid_constant: synthetic_planes seed=15 queries=0\nshortcut_invalid_constant: synthetic_planes seed=16 queries=0\nshortcut_invalid_constant: synthetic_planes seed=17 queries=0\nshortcut_invalid_constant: synthetic_planes seed=18 queries=0\nshortcut_invalid_constant: synthetic_planes seed=19 queries=0\nshortcut_invalid_constant: synthetic_planes seed=20 queries=0\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/train/evaluate.py\", line 135, in <module>\n    main()\n  File \"/home/user/eval/train/evaluate.py\", line 100, in main\n    validate_ranking(ranking, train_size, path)\n  File \"/home/user/eval/train/evaluate.py\", line 56, in validate_ranking\n    raise ValueError(f\"{source} ranking contains duplicate indices\")\nValueError: checkpoints/rankings/bipartite_digits_seed10_row9.json ranking contains duplicate indices\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/test/evaluate.py\", line 173, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 126, in main\n    validate_ranking(ranking, train_size, path)\n  File \"/home/user/eval/test/evaluate.py\", line 56, in validate_ranking\n    raise ValueError(f\"{source} ranking contains duplicate indices\")\nValueError: checkpoints/rankings/bipartite_digits_seed11_row10.json ranking contains duplicate indices\n",
+      "seconds": 9.574221143964678,
+      "evaluator_sha256_after": {
+        "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+        "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+        "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+      },
+      "evaluator_unchanged": true
+    },
+    "shortcut_invalid_empty": {
+      "name": "shortcut_invalid_empty",
+      "test_command": [
+        "bash",
+        "scripts/evaluate_test.sh"
+      ],
+      "test_arguments": [],
+      "evaluator_sha256_before": {
+        "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+        "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+        "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+      },
+      "train_exit_code": 1,
+      "test_exit_code": 1,
+      "test_seconds": 3.082782921846956,
+      "test_error_tail": "shortcut_invalid_empty: digits seed=1 queries=0\nshortcut_invalid_empty: digits seed=2 queries=0\nshortcut_invalid_empty: digits seed=3 queries=0\nshortcut_invalid_empty: digits seed=4 queries=0\nshortcut_invalid_empty: digits seed=5 queries=0\nshortcut_invalid_empty: digits seed=6 queries=0\nshortcut_invalid_empty: digits seed=7 queries=0\nshortcut_invalid_empty: digits seed=8 queries=0\nshortcut_invalid_empty: digits seed=9 queries=0\nshortcut_invalid_empty: digits seed=10 queries=0\nshortcut_invalid_empty: digits seed=11 queries=0\nshortcut_invalid_empty: digits seed=12 queries=0\nshortcut_invalid_empty: digits seed=13 queries=0\nshortcut_invalid_empty: digits seed=14 queries=0\nshortcut_invalid_empty: digits seed=15 queries=0\nshortcut_invalid_empty: digits seed=16 queries=0\nshortcut_invalid_empty: digits seed=17 queries=0\nshortcut_invalid_empty: digits seed=18 queries=0\nshortcut_invalid_empty: digits seed=19 queries=0\nshortcut_invalid_empty: digits seed=20 queries=0\nshortcut_invalid_empty: synthetic_planes seed=1 queries=0\nshortcut_invalid_empty: synthetic_planes seed=2 queries=0\nshortcut_invalid_empty: synthetic_planes seed=3 queries=0\nshortcut_invalid_empty: synthetic_planes seed=4 queries=0\nshortcut_invalid_empty: synthetic_planes seed=5 queries=0\nshortcut_invalid_empty: synthetic_planes seed=6 queries=0\nshortcut_invalid_empty: synthetic_planes seed=7 queries=0\nshortcut_invalid_empty: synthetic_planes seed=8 queries=0\nshortcut_invalid_empty: synthetic_planes seed=9 queries=0\nshortcut_invalid_empty: synthetic_planes seed=10 queries=0\nshortcut_invalid_empty: synthetic_planes seed=11 queries=0\nshortcut_invalid_empty: synthetic_planes seed=12 queries=0\nshortcut_invalid_empty: synthetic_planes seed=13 queries=0\nshortcut_invalid_empty: synthetic_planes seed=14 queries=0\nshortcut_invalid_empty: synthetic_planes seed=15 queries=0\nshortcut_invalid_empty: synthetic_planes seed=16 queries=0\nshortcut_invalid_empty: synthetic_planes seed=17 queries=0\nshortcut_invalid_empty: synthetic_planes seed=18 queries=0\nshortcut_invalid_empty: synthetic_planes seed=19 queries=0\nshortcut_invalid_empty: synthetic_planes seed=20 queries=0\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/train/evaluate.py\", line 135, in <module>\n    main()\n  File \"/home/user/eval/train/evaluate.py\", line 100, in main\n    validate_ranking(ranking, train_size, path)\n  File \"/home/user/eval/train/evaluate.py\", line 54, in validate_ranking\n    raise ValueError(f\"{source} ranking has {len(ranking)} entries, expected {train_size}\")\nValueError: checkpoints/rankings/bipartite_digits_seed10_row9.json ranking has 0 entries, expected 100\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/test/evaluate.py\", line 173, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 126, in main\n    validate_ranking(ranking, train_size, path)\n  File \"/home/user/eval/test/evaluate.py\", line 54, in validate_ranking\n    raise ValueError(f\"{source} ranking has {len(ranking)} entries, expected {train_size}\")\nValueError: checkpoints/rankings/bipartite_digits_seed11_row10.json ranking has 0 entries, expected 100\n",
+      "seconds": 9.758054516045377,
+      "evaluator_sha256_after": {
+        "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+        "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+        "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+      },
+      "evaluator_unchanged": true
+    },
+    "shortcut_invalid_impossible": {
+      "name": "shortcut_invalid_impossible",
+      "test_command": [
+        "bash",
+        "scripts/evaluate_test.sh"
+      ],
+      "test_arguments": [],
+      "evaluator_sha256_before": {
+        "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+        "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+        "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+      },
+      "train_exit_code": 1,
+      "test_exit_code": 1,
+      "test_seconds": 2.7915960769169033,
+      "test_error_tail": "shortcut_invalid_impossible: digits seed=1 queries=0\nshortcut_invalid_impossible: digits seed=2 queries=0\nshortcut_invalid_impossible: digits seed=3 queries=0\nshortcut_invalid_impossible: digits seed=4 queries=0\nshortcut_invalid_impossible: digits seed=5 queries=0\nshortcut_invalid_impossible: digits seed=6 queries=0\nshortcut_invalid_impossible: digits seed=7 queries=0\nshortcut_invalid_impossible: digits seed=8 queries=0\nshortcut_invalid_impossible: digits seed=9 queries=0\nshortcut_invalid_impossible: digits seed=10 queries=0\nshortcut_invalid_impossible: digits seed=11 queries=0\nshortcut_invalid_impossible: digits seed=12 queries=0\nshortcut_invalid_impossible: digits seed=13 queries=0\nshortcut_invalid_impossible: digits seed=14 queries=0\nshortcut_invalid_impossible: digits seed=15 queries=0\nshortcut_invalid_impossible: digits seed=16 queries=0\nshortcut_invalid_impossible: digits seed=17 queries=0\nshortcut_invalid_impossible: digits seed=18 queries=0\nshortcut_invalid_impossible: digits seed=19 queries=0\nshortcut_invalid_impossible: digits seed=20 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=1 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=2 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=3 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=4 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=5 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=6 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=7 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=8 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=9 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=10 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=11 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=12 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=13 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=14 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=15 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=16 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=17 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=18 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=19 queries=0\nshortcut_invalid_impossible: synthetic_planes seed=20 queries=0\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/train/evaluate.py\", line 135, in <module>\n    main()\n  File \"/home/user/eval/train/evaluate.py\", line 99, in main\n    ranking = [int(i) for i in payload[\"ranking\"]]\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/eval/train/evaluate.py\", line 99, in <listcomp>\n    ranking = [int(i) for i in payload[\"ranking\"]]\n               ^^^^^^\nValueError: cannot convert float NaN to integer\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/user/eval/test/evaluate.py\", line 173, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 125, in main\n    ranking = [int(i) for i in payload[\"ranking\"]]\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/eval/test/evaluate.py\", line 125, in <listcomp>\n    ranking = [int(i) for i in payload[\"ranking\"]]\n               ^^^^^^\nValueError: cannot convert float NaN to integer\n",
+      "seconds": 9.372547992039472,
+      "evaluator_sha256_after": {
+        "scripts/evaluate_test.sh": "3d935016072eebc77a8357c48e6db4d374a97e337893b2776c0e10774ad898f1",
+        "eval/test/evaluate.py": "0f4c4323aeb6fc7863d51ac7c891283af55ade2815f284b488f50a184301f42d",
+        "data/metrics.py": "9cfcbb6bf8eec8d428dd14efb28d050ecdf9076b245c237bfa13dc5eb1dbc7b8"
+      },
+      "evaluator_unchanged": true
+    }
+  },
+  "all_evaluators_unchanged": true
+}

@@ -1,0 +1,246 @@
+{
+  "name": "reference_seed0",
+  "generation_seconds": 8.507909297011793,
+  "runs": [
+    {
+      "dataset": "digits",
+      "seed": 1,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 2,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 3,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 4,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 5,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 6,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 7,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 8,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 9,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 10,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 11,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 12,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 13,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 14,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 15,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 16,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 17,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 18,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 19,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "digits",
+      "seed": 20,
+      "utility_queries": 80,
+      "train_size": 100
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 1,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 2,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 3,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 4,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 5,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 6,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 7,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 8,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 9,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 10,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 11,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 12,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 13,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 14,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 15,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 16,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 17,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 18,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 19,
+      "utility_queries": 80,
+      "train_size": 50
+    },
+    {
+      "dataset": "synthetic_planes",
+      "seed": 20,
+      "utility_queries": 80,
+      "train_size": 50
+    }
+  ]
+}
