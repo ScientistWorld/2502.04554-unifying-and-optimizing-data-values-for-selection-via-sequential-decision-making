@@ -31,14 +31,40 @@ Can a data selection method find a ranking whose prefixes achieve high downstrea
 
 Data selection is used when labeling, training, storage, or evaluation budgets are limited. A strong selector should identify useful data early and remain effective as the selected subset grows, rather than only optimizing a single fixed budget or producing importance scores that do not translate into good prefix performance.
 
+## Tasks
+
+Each task is a family of independent *instances* (random splits). An instance gives the method:
+
+- a candidate training pool (features and labels), and
+- a validation set (features and labels) for estimating utility,
+
+plus an integer seed for the method's own randomness. Test data is never given to the method.
+
+| Task | Data | Candidate pool | Validation | Test (hidden) |
+|---|---|---:|---:|---:|
+| `digits` | scikit-learn 8x8 handwritten digits, 10 classes | 100 | 100 | 1000 |
+| `fried` | binarized Friedman #1 benchmark (OpenML "fried"), 10 features, 2 classes | 50 | 50 | 500 |
+
+Features are standardized per instance. The downstream learner is scikit-learn logistic regression (`C=1.0`, `lbfgs`, `max_iter=500`).
+
+## Interface
+
+A method is a *ranker*: an executable script `scripts/rankers/<name>.sh` called as
+
+```bash
+bash scripts/rankers/<name>.sh INSTANCES_DIR OUTPUT_DIR
+```
+
+For every `INSTANCES_DIR/<instance_id>.npz` (arrays `x_train`, `y_train`, `x_valid`, `y_valid`; scalars `dataset`, `instance_id`, `seed`) it must write `OUTPUT_DIR/<instance_id>.json` containing `{"ranking": [...]}`, a permutation of `0..n-1` over the candidate pool. `data/instances.py` has readers/writers, and `python -m data.instances DIR` writes the visible development instances (seeds 1-20 per task; any other seed is available for development too).
+
 ## Success Criteria
 
 A successful solution should:
 
-- Improve the area under the test-performance selection curve across datasets.
-- Reach competitive test accuracy with fewer selected examples.
-- Remain fair under the same downstream learner, train/validation/test splits, candidate pool sizes, random seeds, and retraining budget used by the benchmark.
-- Avoid using test labels or external data to construct the ranking.
+- Improve the area under the test-performance selection curve across tasks.
+- Reach competitive test accuracy with fewer selected examples, without giving up accuracy at larger budgets.
+- Hold fixed the downstream learner, the instance inputs, the candidate pool and the evaluation protocol.
+- Avoid using test labels, external data, or held-out evaluation code to construct the ranking.
 
 ---
 
@@ -75,48 +101,44 @@ For the scalable method, the paper learns a bipartite graph between training exa
 
 # Evaluation
 
-Evaluation measures how well a submitted data selection method orders a fixed training pool. The evaluator builds prefixes of the submitted ordering, trains the fixed downstream learner on each prefix, and records held-out test accuracy.
+Evaluation measures how well a selection method orders a fixed candidate pool. For every instance, the evaluator takes each prefix of the submitted ordering, trains the fixed downstream learner on it, and records accuracy on that instance's test set. This file describes the measurement only; it does not constrain how the ordering is produced.
 
-This file intentionally describes only the task, metrics, baselines, and fair-comparison rules. It does not constrain the internal method used to produce the ordering.
+## How a method is scored
 
-## Metrics
+1. The evaluator builds the instances itself and writes only their method inputs (candidate pool + validation set + seed).
+2. It runs every ranker found in `scripts/rankers/*.sh` on those inputs (contract in `briefing/problem.md`).
+3. Each output must be exactly one ranking per instance and a permutation of that instance's full candidate pool, given as JSON integers. A missing, partial, duplicated, out-of-range, non-integer or otherwise malformed ranking, or a ranker that exits with an error, fails the whole evaluation: no scores are written.
+4. The evaluator retrains logistic regression on prefixes `k = 1..n` and computes every metric itself from the resulting test accuracies. Nothing else a ranker writes is read.
 
-- **Mean selection accuracy:** mean test accuracy over the evaluated prefix budgets for a dataset and seed. Higher is better.
-- **Selection AUC / cumulative utility:** area under the test accuracy versus selected-prefix-size curve, or the equivalent average over recorded prefix accuracies. Higher is better.
-- **Early-prefix accuracy:** test accuracy at small selected budgets, such as the first 10-30 percent of the training pool. Higher is better.
-- **Best-baseline gap:** difference between a submitted method and the strongest reference baseline under the same dataset, split, learner, and budget. Higher is better.
-- **Utility-query budget:** number of downstream model retrainings or subset utility evaluations used to produce the ranking. Lower is better, subject to achieving the selection metrics.
+Two slices use the same interface and the same instance distribution:
 
-## Baselines and Targets
+- **Visible slice** (`scripts/evaluate_train.sh`, `scripts/evaluate.sh`): seeds 1-20 of each task, built with `data/tasks.py` -> `scoring/scores_train.json` / `scoring/scores.json`.
+- **Held-out slice** (`scripts/evaluate_test.sh`, no arguments): 100 instances per task drawn by the held-out evaluator from the same generators with seeds that are not available to methods -> `scoring/scores_test.json`. Methods never see these instances' inputs before evaluation, nor their test data at all.
 
-The original study compares against Random, Leave-one-out, Influence Function, Data Shapley, Beta Shapley, Data Banzhaf, AME, DVRL, and Data-OOB. This gym includes the implemented baselines reported in `scoring/scores.json`; future methods should compare against them under the same splits and learner.
+## Metrics (per task, averaged over instances)
 
-The original study reports these practical mean-accuracy targets across eight datasets:
+| Metric | Direction | Coefficient | Meaning |
+|---|---|---:|---|
+| `mean_accuracy` | higher | 1.0 | Mean test accuracy over the whole selection curve (prefix sizes `1..n`). |
+| `early10_accuracy` | higher | 0.5 | Mean test accuracy over prefix sizes 1-10. |
+| `early20_accuracy` | higher | 0.6 | Mean test accuracy over prefix sizes 1-20. |
+| `tail_accuracy` | higher | 0.4 | Mean test accuracy over prefix sizes 21-`n`: early gains must not come at the cost of larger budgets. |
+| `max_accuracy_drop` | lower | 0.2 | Largest one-step decrease of test accuracy along the curve. |
+| `curve_accuracy_std` | lower | 0 (unscored) | Spread of test accuracy pooled over prefix sizes and instances (reported for comparison with the original study's +/-). |
 
-- 2dplanes: 0.745 mean test accuracy
-- nomao: 0.852 mean test accuracy
-- bbc-embed: 0.878 mean test accuracy
-- MiniBooNE: 0.754 mean test accuracy
-- digits: 0.764 mean test accuracy
-- election: 0.601 mean test accuracy
-- electricity: 0.669 mean test accuracy
-- fried: 0.741 mean test accuracy
+Task weights: `digits_selection` 0.6, `fried_selection` 0.4. Coefficients and weights live in `scoring/reference.json`.
 
-These targets should be interpreted under the original study's stated protocol: mean test accuracy across 20 independent runs, with selection budgets of 50 points for standard datasets and 100 points for digits and bbc-embedding.
+## Baselines
 
-## Evaluation Protocol
+Implemented and scored through the same interface: random order (`random`), leave-one-out values (`loo`), and Monte Carlo Data Shapley with 8 permutations (`datashap`). The original study also compares Influence Function, Beta Shapley, Data Banzhaf, AME, DVRL and Data-OOB; their reported numbers are listed in `scoring/reference.json`.
 
-Use the fixed benchmark data splits and downstream learner. The benchmark uses scikit-learn Logistic Regression as the target model whose test accuracy defines utility.
+## Reported targets from the original study
 
-For each dataset and seed:
+Mean test accuracy over the selection curve, 20 runs, logistic regression, pool size 50 (100 for digits and bbc-embed):
 
-1. Provide a ranking of the candidate training examples.
-2. For each evaluated prefix size `k`, train the target learner on the first `k` ranked examples.
-3. Evaluate the trained learner on the held-out test set.
-4. Aggregate accuracy over prefix sizes to produce the selection curve metrics.
-5. Average results over the same 20 independent trials used by the benchmark.
+- 2dplanes 0.745, nomao 0.852, bbc-embed 0.878, MiniBooNE 0.754, **digits 0.764**, election 0.601, electricity 0.669, **fried 0.741**
 
-The practical scaled comparison uses 50 training, 50 validation, and 500 test points for standard tabular datasets; digits-style multiclass tasks use 100 training, 100 validation, and 1000 test points. All methods should respect the same maximum model-retraining or utility-query budget used by the evaluation.
+Only digits and fried are part of this benchmark. Their absolute levels here differ from the study's because of preprocessing (class-balanced candidate pools, standardized features); compare methods with each other under this benchmark's protocol.
 
 ---
 
@@ -446,6 +468,58 @@ The practical scaled comparison uses 50 training, 50 validation, and 500 test po
 
 <details>
 <summary>Progress Log</summary>
+
+### [2026-06-02 04:10] - core_claim
+- Final verification found an unverified structured-benchmark edit that did not have regenerated scores.
+- Restored the verified binary structured tabular benchmark and kept the milestone at `core_claim`.
+- No higher milestone is claimed because the additional structured setting remains weak.
+
+### [2026-06-02 03:48] - core_claim
+- Final verification completed.
+- Regenerated stale scoring JSON files from existing curve artifacts so all declared metrics are present.
+- Cleaned method-agnostic documentation wording and confirmed `python validate.py --compare` passes.
+
+### [2026-06-02 03:45] - core_claim
+- Audited the scoring contract and found `scores.json` was stale relative to the declared metrics.
+- Patched the standard evaluator to emit all declared curve-quality and constraint metrics, restored 20-seed defaults, and updated the submitted job to regenerate scores from scratch.
+- Keeping the current milestone at `core_claim` until the regeneration job validates in the container.
+
+### [2026-06-02 03:18] - core_claim
+- Job `3bd5ddd1-7cc` completed successfully and passed `python validate.py --compare`.
+- The added Monte Carlo Data Shapley baseline ran on `digits_selection`; bipartite mean accuracy remained higher (`0.7967`) than DataShap (`0.7744`), random (`0.7475`), and LOO (`0.7218`).
+- Restored `core_claim` after auditing and expanding the baseline coverage. The synthetic setting is still only marginal, so no higher milestone is claimed.
+
+### [2026-06-02 03:08] - method_runs
+- Continuation audit found the bipartite implementation is faithful, but baseline coverage was thin for a restored `core_claim`.
+- Added a Monte Carlo Data Shapley baseline using random-permutation marginal utilities and wired it into the reproduction job for `digits_selection`.
+- Submitting a CPU job to regenerate rankings, curves, and scores from scratch before restoring `core_claim`.
+
+### [2026-06-02 02:43] - core_claim
+- Implemented the paper's feature/label bipartite graph threshold learner and iterative maximum-coverage selector.
+- Ran the packaged 20-seed reproduction job and validated `scoring/scores.json` with `python validate.py --compare`.
+- Reproduced the central practical effect on `digits_selection`: bipartite mean accuracy `0.7967` versus LOO `0.7218` and random `0.7475`, with a stronger early-prefix gap.
+
+### [2026-06-02 01:24] - method_runs
+- Implemented random and leave-one-out baselines plus method-agnostic ranking evaluation.
+- Confirmed the bipartite method and baselines execute end-to-end and produce ranking artifacts.
+
+### [2026-06-02 01:11] - none
+- Started reproduction work and read the paper's sequential data selection and bipartite surrogate sections.
+
+</details>
+
+### Iteration 11: claude-opus-5-5 (hardener)
+- **Milestone**: `core_claim` | **Status**: done
+- **Working time**: 28m | **GPU**: 0.0h
+- **Jobs**: 12 total (8 completed, 3 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-11-09] - core_claim (hardening)
+- Rebuilt the held-out test: secret-seeded instances generated inside `eval/test/`, every registered ranker run on their inputs, strict full-permutation validation, all metrics recomputed; closes the rebuilt-answers, larger-pool, seed cherry-pick, replaced-task and forged-output shortcuts.
+- Replaced the non-reproducing `synthetic_planes` stand-in with the paper's `fried` dataset; the reproduced method now beats random, LOO and Data Shapley on both digits and fried on the held-out test (jobs `cc16bb60-089`, `553bd7c8-3f6`).
+- Milestone stays `core_claim` (two of the paper's eight datasets; the theory/curvature and DP-gap experiments are not reproduced).
 
 ### [2026-06-02 04:10] - core_claim
 - Final verification found an unverified structured-benchmark edit that did not have regenerated scores.

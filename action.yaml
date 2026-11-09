@@ -1,8 +1,6 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: submit
-gpus: 0
-test: false
+action: done
 milestone: core_claim
-notes: "Final reference regeneration after decoupling the visible method seed from the split seed (reproduce visible + held-out), plus two new checks (visible cohort rerun, budget-respecting validation greedy); earlier checks are cached. Then summarize and validate."
+notes: "Hardened: hidden secret-seeded held-out instances run through a ranker registry with strict validation; fried replaces the non-reproducing stand-in; better variants beat the reference at z~8, weaker lose, fixed shortcuts fail or tie; over-budget brute force and external-data use left to the grader (see HARDENING.md)."
