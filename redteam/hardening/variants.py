@@ -100,6 +100,35 @@ def brute_force_greedy(inst, x_eval=None, y_eval=None):
     return ranking
 
 
+def budgeted_greedy(inst, budget=1000):
+    """Validation-utility greedy within the 1000-retraining budget: at each step
+    evaluate at most budget // n randomly drawn remaining candidates."""
+    x_train, y_train = inst["x_train"], inst["y_train"]
+    n = len(y_train)
+    per_step = max(1, budget // n)
+    rng = np.random.default_rng(inst["seed"])
+    classes = np.unique(y_train)
+    ranking, remaining, fits = [], list(range(n)), 0
+    while remaining:
+        if len(remaining) == 1:
+            ranking.append(remaining.pop())
+            break
+        pool = remaining if len(remaining) <= per_step else rng.choice(remaining, per_step, replace=False).tolist()
+        utilities = {}
+        for i in pool:
+            chosen = ranking + [int(i)]
+            utilities[int(i)] = fit_eval_logreg(
+                x_train[chosen], y_train[chosen], inst["x_valid"], inst["y_valid"], inst["seed"] + len(chosen)
+            )
+            fits += 1
+        counts = {c: int(np.sum(y_train[ranking] == c)) for c in classes}
+        best = max(sorted(utilities), key=lambda i: (utilities[i], -counts[y_train[i]], -i))
+        ranking.append(best)
+        remaining.remove(best)
+    assert fits <= budget, fits
+    return ranking
+
+
 def more_samples_800(inst):
     """Reference method with 10x the sampled-subset utility evaluations."""
     return rank_instance(inst, subset_samples=800)[0]
@@ -167,6 +196,7 @@ SCORED = {
     "label_blocks": label_blocks,
     "brute_force_greedy": brute_force_greedy,
     "more_samples_800": more_samples_800,
+    "budgeted_greedy": budgeted_greedy,
     "rebuilt_answers": rebuilt_answers,
     "round_robin": round_robin,
 }

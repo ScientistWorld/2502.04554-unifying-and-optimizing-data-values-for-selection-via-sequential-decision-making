@@ -28,6 +28,9 @@ COHORT = REGISTERED + (
 )
 CHECKS = {
     "cohort": {"rankers": COHORT, "train": True},
+    # Visible-slice rerun after the method-seed decoupling (test side unchanged).
+    "cohort_train": {"rankers": COHORT, "train": True, "train_only": True},
+    "budgeted_greedy": {"rankers": ("budgeted_greedy",)},
     "rebuilt_answers": {"rankers": ("rebuilt_answers",)},
     "replaced_task": {"rankers": ("round_robin", "bipartite"), "patch_tasks": True},
     "larger_pool": {"rankers": ("larger_pool",)},
@@ -109,11 +112,14 @@ def run_check(name: str, spec: dict, force: bool) -> dict:
         else:
             scores_path = folder / "scores_test.json"
             scores_arg = ["--scores", str(scores_path)]
-        cmd = ["bash", "scripts/evaluate_test.sh", "--rankers-dir", str(rankers_dir),
-               *scores_arg, "--curves-dir", str(work / "curves_test")]
-        code, seconds = run(cmd, log_path)
-        record.update({"test_exit_code": code, "test_seconds": seconds,
-                       "scores_file_exists": scores_path.exists()})
+        if spec.get("train_only"):
+            record.update({"test_exit_code": 0, "test_seconds": 0.0, "scores_file_exists": False})
+        else:
+            cmd = ["bash", "scripts/evaluate_test.sh", "--rankers-dir", str(rankers_dir),
+                   *scores_arg, "--curves-dir", str(work / "curves_test")]
+            code, seconds = run(cmd, log_path)
+            record.update({"test_exit_code": code, "test_seconds": seconds,
+                           "scores_file_exists": scores_path.exists()})
         if scores_path.exists() and scores_path != folder / "scores_test.json":
             shutil.copy2(scores_path, folder / "scores_test.json")
             scores_path.unlink()

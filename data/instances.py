@@ -33,6 +33,15 @@ from data.tasks import DATASETS, SelectionTask, load_task
 
 
 DEFAULT_VISIBLE_SEEDS = tuple(range(1, 21))
+# The ``seed`` given to a method is decoupled from the split seed: drawing the
+# method's randomness from the same generator stream that built and shuffled the
+# candidate pool correlates the two (a "random" order then is not random with
+# respect to the pool). The held-out evaluator decouples them the same way.
+METHOD_SEED_OFFSET = 1_000_000
+
+
+def method_seed(split_seed: int) -> int:
+    return METHOD_SEED_OFFSET + int(split_seed)
 
 
 def instance_id(dataset: str, seed: int) -> str:
@@ -98,7 +107,7 @@ def write_visible_instances(
     for dataset in datasets:
         for seed in seeds:
             task = load_task(dataset, int(seed))
-            paths.append(write_instance(directory, task, instance_id(dataset, int(seed)), int(seed)))
+            paths.append(write_instance(directory, task, instance_id(dataset, int(seed)), method_seed(seed)))
     return paths
 
 

@@ -138,7 +138,7 @@ def main() -> None:
                 abs(a[e][m] - attempts[reference_name][e][m]) < 1e-12 for e in a for m in a[e]
             )
 
-    train = load(OUT / "cohort" / "scores_train.json")
+    train = load(OUT / "cohort_train" / "scores_train.json") or load(OUT / "cohort" / "scores_train.json")
     if train:
         summary["train_vs_test_mean_accuracy"] = {
             exp: {m: {"train": train["experiments"][exp]["results"][m]["mean_accuracy"],

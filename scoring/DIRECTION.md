@@ -14,7 +14,7 @@ In scope: new valuation functions, utility surrogates, subset-ranking objectives
 
 ## Known Room for Improvement
 
-The reproduced reference is far from the bound on every scored metric (mean accuracy about 0.80 on digits; early-prefix accuracy well below later-prefix accuracy). Simple variants that keep the reference's information budget, for example ordering the remainder of the pool more carefully once early selection has saturated, already score above it on the held-out slice.
+The reproduced reference is far from the bound on every scored metric (mean accuracy about 0.79 on digits and 0.73 on fried; early-prefix accuracy well below later-prefix accuracy), and held-out checks found variants that use no more information or utility evaluations than the reference and still score clearly above it.
 
 ## Out of Bounds
 

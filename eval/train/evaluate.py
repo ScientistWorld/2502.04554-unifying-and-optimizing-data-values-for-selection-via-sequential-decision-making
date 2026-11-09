@@ -20,7 +20,7 @@ from pathlib import Path
 
 import numpy as np
 
-from data.instances import DEFAULT_VISIBLE_SEEDS, instance_id, write_instance
+from data.instances import DEFAULT_VISIBLE_SEEDS, instance_id, method_seed, write_instance
 from data.metrics import selection_curve
 from data.tasks import DATASETS, load_task
 
@@ -127,7 +127,7 @@ def main() -> None:
             shutil.rmtree(instances_dir)
         instances_dir.mkdir(parents=True)
         for inst_id, (dataset, seed, task) in tasks.items():
-            write_instance(instances_dir, task, inst_id, seed)
+            write_instance(instances_dir, task, inst_id, method_seed(seed))
         for name, script in rankers.items():
             run_ranker(name, script, instances_dir, rankings_dir / name)
 
