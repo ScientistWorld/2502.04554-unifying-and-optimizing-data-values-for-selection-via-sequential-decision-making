@@ -1,0 +1,7 @@
+__pycache__/
+_state/
+*/rankings/
+*/curves_train/
+*/curves_test/
+*/run.log
+*.log
