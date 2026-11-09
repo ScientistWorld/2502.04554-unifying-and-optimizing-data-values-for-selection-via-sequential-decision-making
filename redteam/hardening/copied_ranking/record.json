@@ -1,0 +1,9 @@
+{
+  "check": "copied_ranking",
+  "rankers": [
+    "copied_ranking"
+  ],
+  "test_exit_code": 0,
+  "test_seconds": 45.40638677100651,
+  "scores_file_exists": true
+}

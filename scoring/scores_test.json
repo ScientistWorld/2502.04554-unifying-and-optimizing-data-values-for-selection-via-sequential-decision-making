@@ -1,0 +1,76 @@
+{
+  "experiments": {
+    "digits_selection": {
+      "results": {
+        "bipartite": {
+          "curve_accuracy_std": 0.1415748766898986,
+          "early10_accuracy": 0.44328500000000015,
+          "early20_accuracy": 0.594579,
+          "max_accuracy_drop": 0.024059999999999998,
+          "mean_accuracy": 0.7942968,
+          "tail_accuracy": 0.8442262500000001
+        },
+        "datashap": {
+          "curve_accuracy_std": 0.1691474039824141,
+          "early10_accuracy": 0.35015700000000005,
+          "early20_accuracy": 0.4914575,
+          "max_accuracy_drop": 0.019450000000000002,
+          "mean_accuracy": 0.7729949000000002,
+          "tail_accuracy": 0.84337925
+        },
+        "loo": {
+          "curve_accuracy_std": 0.2115894393625542,
+          "early10_accuracy": 0.23475600000000008,
+          "early20_accuracy": 0.3557915,
+          "max_accuracy_drop": 0.02398,
+          "mean_accuracy": 0.7218531999999999,
+          "tail_accuracy": 0.8133686250000001
+        },
+        "random": {
+          "curve_accuracy_std": 0.1884198833217981,
+          "early10_accuracy": 0.289335,
+          "early20_accuracy": 0.4139334999999999,
+          "max_accuracy_drop": 0.02232000000000001,
+          "mean_accuracy": 0.732637,
+          "tail_accuracy": 0.8123128749999999
+        }
+      }
+    },
+    "fried_selection": {
+      "results": {
+        "bipartite": {
+          "curve_accuracy_std": 0.06823774905431744,
+          "early10_accuracy": 0.6559679999999999,
+          "early20_accuracy": 0.6893699999999999,
+          "max_accuracy_drop": 0.06214,
+          "mean_accuracy": 0.732602,
+          "tail_accuracy": 0.7614233333333331
+        },
+        "datashap": {
+          "curve_accuracy_std": 0.08542210632757777,
+          "early10_accuracy": 0.598052,
+          "early20_accuracy": 0.6571159999999999,
+          "max_accuracy_drop": 0.046479999999999994,
+          "mean_accuracy": 0.7286084000000002,
+          "tail_accuracy": 0.7762699999999999
+        },
+        "loo": {
+          "curve_accuracy_std": 0.10074132462420772,
+          "early10_accuracy": 0.55258,
+          "early20_accuracy": 0.6095580000000002,
+          "max_accuracy_drop": 0.03906000000000001,
+          "mean_accuracy": 0.7012464000000002,
+          "tail_accuracy": 0.7623719999999998
+        },
+        "random": {
+          "curve_accuracy_std": 0.08580186724215272,
+          "early10_accuracy": 0.590248,
+          "early20_accuracy": 0.6407510000000001,
+          "max_accuracy_drop": 0.05168000000000001,
+          "mean_accuracy": 0.7103923999999999,
+          "tail_accuracy": 0.75682
+        }
+      }
+    }
+  }
+}

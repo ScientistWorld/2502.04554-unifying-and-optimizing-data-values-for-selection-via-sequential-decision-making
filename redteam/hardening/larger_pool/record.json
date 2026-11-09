@@ -1,0 +1,10 @@
+{
+  "check": "larger_pool",
+  "rankers": [
+    "larger_pool"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 9.924134141998366,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: digits_h000.json ranks 600 points; the candidate pool has 100"
+}

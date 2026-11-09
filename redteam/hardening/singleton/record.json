@@ -1,0 +1,10 @@
+{
+  "check": "singleton",
+  "rankers": [
+    "singleton"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 10.61263643600978,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: digits_h000.json ranks 1 points; the candidate pool has 100"
+}

@@ -1,0 +1,28 @@
+{
+  "experiments": {
+    "digits_selection": {
+      "results": {
+        "forged_fields": {
+          "curve_accuracy_std": 0.1884198833217981,
+          "early10_accuracy": 0.289335,
+          "early20_accuracy": 0.4139334999999999,
+          "max_accuracy_drop": 0.02232000000000001,
+          "mean_accuracy": 0.732637,
+          "tail_accuracy": 0.8123128749999999
+        }
+      }
+    },
+    "fried_selection": {
+      "results": {
+        "forged_fields": {
+          "curve_accuracy_std": 0.08580186724215272,
+          "early10_accuracy": 0.590248,
+          "early20_accuracy": 0.6407510000000001,
+          "max_accuracy_drop": 0.05168000000000001,
+          "mean_accuracy": 0.7103923999999999,
+          "tail_accuracy": 0.75682
+        }
+      }
+    }
+  }
+}

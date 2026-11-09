@@ -1,0 +1,10 @@
+{
+  "check": "skip_half",
+  "rankers": [
+    "skip_half"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 30.175517437048256,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: no ranking written for held-out instance digits_h001"
+}

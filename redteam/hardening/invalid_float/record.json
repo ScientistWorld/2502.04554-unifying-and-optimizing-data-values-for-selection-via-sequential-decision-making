@@ -1,0 +1,10 @@
+{
+  "check": "invalid_float",
+  "rankers": [
+    "invalid_float"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 9.856199880829081,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: digits_h000.json ranking entries must be JSON integers"
+}

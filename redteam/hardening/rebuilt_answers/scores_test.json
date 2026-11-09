@@ -1,0 +1,28 @@
+{
+  "experiments": {
+    "digits_selection": {
+      "results": {
+        "rebuilt_answers": {
+          "curve_accuracy_std": 0.1415748766898986,
+          "early10_accuracy": 0.44328500000000015,
+          "early20_accuracy": 0.594579,
+          "max_accuracy_drop": 0.024059999999999998,
+          "mean_accuracy": 0.7942968,
+          "tail_accuracy": 0.8442262500000001
+        }
+      }
+    },
+    "fried_selection": {
+      "results": {
+        "rebuilt_answers": {
+          "curve_accuracy_std": 0.06823774905431744,
+          "early10_accuracy": 0.6559679999999999,
+          "early20_accuracy": 0.6893699999999999,
+          "max_accuracy_drop": 0.06214,
+          "mean_accuracy": 0.732602,
+          "tail_accuracy": 0.7614233333333331
+        }
+      }
+    }
+  }
+}

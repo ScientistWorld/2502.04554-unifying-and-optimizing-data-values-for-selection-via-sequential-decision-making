@@ -1,0 +1,9 @@
+{
+  "check": "rebuilt_answers",
+  "rankers": [
+    "rebuilt_answers"
+  ],
+  "test_exit_code": 0,
+  "test_seconds": 120.56281681498513,
+  "scores_file_exists": true
+}

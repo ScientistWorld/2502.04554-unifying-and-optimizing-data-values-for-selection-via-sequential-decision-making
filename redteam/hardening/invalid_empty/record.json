@@ -1,0 +1,10 @@
+{
+  "check": "invalid_empty",
+  "rankers": [
+    "invalid_empty"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 10.724662792868912,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: digits_h000.json ranks 0 points; the candidate pool has 100"
+}

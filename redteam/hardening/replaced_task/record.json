@@ -1,0 +1,11 @@
+{
+  "check": "replaced_task",
+  "rankers": [
+    "round_robin",
+    "bipartite"
+  ],
+  "patched_data_tasks": true,
+  "test_exit_code": 0,
+  "test_seconds": 127.11850277194753,
+  "scores_file_exists": true
+}

@@ -1,0 +1,10 @@
+{
+  "check": "invalid_duplicate",
+  "rankers": [
+    "invalid_duplicate"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 10.620654952945188,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: digits_h000.json ranking is not a permutation of the candidate pool"
+}

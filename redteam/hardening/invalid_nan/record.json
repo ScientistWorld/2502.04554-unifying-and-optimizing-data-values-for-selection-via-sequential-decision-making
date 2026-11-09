@@ -1,0 +1,10 @@
+{
+  "check": "invalid_nan",
+  "rankers": [
+    "invalid_nan"
+  ],
+  "test_exit_code": 1,
+  "test_seconds": 9.735367222921923,
+  "scores_file_exists": false,
+  "failure_message": "FAILED: digits_h000.json ranking entries must be JSON integers"
+}

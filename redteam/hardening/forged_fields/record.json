@@ -1,0 +1,9 @@
+{
+  "check": "forged_fields",
+  "rankers": [
+    "forged_fields"
+  ],
+  "test_exit_code": 0,
+  "test_seconds": 48.784624736057594,
+  "scores_file_exists": true
+}

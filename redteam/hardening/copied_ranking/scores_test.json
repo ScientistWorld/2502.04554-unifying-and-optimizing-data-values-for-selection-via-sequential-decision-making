@@ -1,0 +1,28 @@
+{
+  "experiments": {
+    "digits_selection": {
+      "results": {
+        "copied_ranking": {
+          "curve_accuracy_std": 0.18940915103383998,
+          "early10_accuracy": 0.29434,
+          "early20_accuracy": 0.413912,
+          "max_accuracy_drop": 0.02353,
+          "mean_accuracy": 0.7345592000000001,
+          "tail_accuracy": 0.8147210000000001
+        }
+      }
+    },
+    "fried_selection": {
+      "results": {
+        "copied_ranking": {
+          "curve_accuracy_std": 0.08856941579213448,
+          "early10_accuracy": 0.582428,
+          "early20_accuracy": 0.63412,
+          "max_accuracy_drop": 0.05258,
+          "mean_accuracy": 0.7066568,
+          "tail_accuracy": 0.7550146666666667
+        }
+      }
+    }
+  }
+}
