@@ -1,5 +1,13 @@
 # Progress
 
+## Hardening iteration (2026-11-09) — current state
+
+See `HARDENING.md` for the full report. In short:
+- Methods are *rankers* (`scripts/rankers/*.sh`, contract in `data/instances.py`). The visible evaluator (`eval/train`, seeds 1-20) and the held-out evaluator (`eval/test`, 100 secret-seeded instances per dataset, self-contained) both run every registered ranker and recompute all scores from its rankings alone.
+- The second task is now the paper's `fried` (OpenML 901), regenerated from Friedman #1; the near-chance `synthetic_planes` stand-in was removed.
+- Held-out results (job `553bd7c8-3f6`): digits — bipartite 0.7943, Data Shapley 0.7730, random 0.7326, LOO 0.7219; fried — bipartite 0.7326, Data Shapley 0.7286, random 0.7104, LOO 0.7012. The paper's direction holds on both tasks (the fried margin over Data Shapley is small in mean accuracy, clear in early-prefix accuracy).
+- Everything below this section describes earlier iterations; dataset names, metrics and file layouts there are historical.
+
 ## What Works
 
 - Paper analysis completed for the core RQ3 experiment.

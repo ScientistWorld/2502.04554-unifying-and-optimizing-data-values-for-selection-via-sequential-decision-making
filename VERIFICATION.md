@@ -1,5 +1,7 @@
 # Verification Report
 
+> Historical (pre-hardening). The current gym is described in `HARDENING.md`.
+
 ## Initial Assessment
 
 The workspace started from a claimed `core_claim` milestone with a faithful implementation of the paper's bipartite data-selection algorithm, reusable ranking artifacts, and working aggregate scores. The core digits result justified `core_claim`: the proposed selector outperformed random, leave-one-out, and Monte Carlo Data Shapley baselines on the packaged sequential-selection protocol.

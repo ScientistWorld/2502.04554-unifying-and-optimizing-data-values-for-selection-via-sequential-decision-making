@@ -1,7 +1,9 @@
 #!/bin/bash
-# Job entry point: reproduce the reference end to end, then run the
-# hardening checks (variants and shortcuts through the held-out evaluator),
-# summarize them, and validate the workspace.
+# Job entry point: reproduce the reference end to end (visible slice and the
+# held-out test for every ranker in scripts/rankers/) and validate.
+#
+# The hardening checks are a separate, optional step (about 1.5 h on one CPU):
+#   python -m redteam.hardening.harness --force && python -m redteam.hardening.summarize
 set -uo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
@@ -12,12 +14,6 @@ export OMP_NUM_THREADS=${OMP_NUM_THREADS:-1} OPENBLAS_NUM_THREADS=${OPENBLAS_NUM
 
 echo "== $(date -u +%FT%TZ) reproduce (visible + held-out)"
 bash scripts/reproduce.sh || { echo "reproduce failed"; exit 1; }
-
-echo "== $(date -u +%FT%TZ) hardening checks"
-python -m redteam.hardening.harness
-
-echo "== $(date -u +%FT%TZ) summarize"
-python -m redteam.hardening.summarize
 
 echo "== $(date -u +%FT%TZ) validate"
 python validate.py --compare --post-design

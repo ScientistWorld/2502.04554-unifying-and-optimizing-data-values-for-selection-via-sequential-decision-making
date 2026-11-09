@@ -4,6 +4,11 @@
 
 ## Progress Log
 
+### [2026-11-09] - core_claim (hardening)
+- Rebuilt the held-out test: secret-seeded instances generated inside `eval/test/`, every registered ranker run on their inputs, strict full-permutation validation, all metrics recomputed; closes the rebuilt-answers, larger-pool, seed cherry-pick, replaced-task and forged-output shortcuts.
+- Replaced the non-reproducing `synthetic_planes` stand-in with the paper's `fried` dataset; the reproduced method now beats random, LOO and Data Shapley on both digits and fried on the held-out test (jobs `cc16bb60-089`, `553bd7c8-3f6`).
+- Milestone stays `core_claim` (two of the paper's eight datasets; the theory/curvature and DP-gap experiments are not reproduced).
+
 ### [2026-06-02 04:10] - core_claim
 - Final verification found an unverified structured-benchmark edit that did not have regenerated scores.
 - Restored the verified binary structured tabular benchmark and kept the milestone at `core_claim`.

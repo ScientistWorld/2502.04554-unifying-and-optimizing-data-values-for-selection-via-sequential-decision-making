@@ -1,5 +1,7 @@
 # Design Notes
 
+> Superseded: the metric set and evaluators described here were replaced in the hardening iteration; see `HARDENING.md` and `briefing/evaluation.md`.
+
 ## Checks Performed
 
 - Read `eval/train/evaluate.py`, `eval/test/evaluate.py`, `eval/evaluate_rankings.py`, and both train/test shell wrappers side by side.

@@ -2,7 +2,7 @@
   "experiments": {
     "digits_selection": {
       "description": "Order a 100-point candidate pool of 8x8 handwritten digits (10 classes) for sequential selection; 100 validation and 1000 test points per instance (the paper's RQ3 large-dataset split).",
-      "notes": "Results are the paper's Table 1 values (mean test accuracy and its +/- over 20 runs, OpenDataVal logistic regression). This gym uses the same split sizes and target model family, with class-balanced candidate pools and standardized features, so absolute accuracies run higher than the paper's (e.g. random ordering ~0.75 here vs 0.619); compare methods to the reproduced reference in scores_test.json, not to these numbers. The held-out test scores 100 hidden instances. Only random, loo, datashap and bipartite are implemented here; the other rows are the paper's.",
+      "notes": "Results are the paper's Table 1 values (mean test accuracy and its +/- over 20 runs, OpenDataVal logistic regression). This gym uses the same split sizes and target model family, with class-balanced candidate pools and standardized features, so absolute accuracies run higher than the paper's (e.g. random ordering ~0.73 here vs 0.619); compare methods to the reproduced reference in scores_test.json, not to these numbers. The held-out test scores 100 hidden instances. Only random, loo, datashap and bipartite are implemented here; the other rows are the paper's.",
       "weight": 0.6,
       "primary_metric": "mean_accuracy",
       "metrics": {
