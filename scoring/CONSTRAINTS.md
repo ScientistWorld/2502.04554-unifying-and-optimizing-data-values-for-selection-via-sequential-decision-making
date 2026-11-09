@@ -1,42 +1,40 @@
 # Scientist Constraints
 
-These constraints define what a future scientist must hold fixed when trying to improve the benchmark scores. The goal is to measure better data selection methodology, not gains from changing the learning task or spending more resources.
+These constraints define what a future scientist must hold fixed when trying to improve the benchmark scores. The goal is to measure better data-selection methodology, not gains from changing the task, spending far more resources, or seeing the answers.
+
+## Interface
+
+Every method is a ranker in `scripts/rankers/<name>.sh` following the contract in `data/instances.py`: read instance files, write one `{"ranking": [...]}` per instance. The held-out evaluator runs every ranker in that directory on instances it builds itself. A ranker must rank each instance from that instance's inputs; it must not depend on files written by earlier evaluations.
 
 ## Target Learner
 
-The downstream model used to evaluate selected prefixes must remain the benchmark's scikit-learn Logistic Regression target learner. The task is about selecting data for a fixed learner; switching to a stronger classifier, neural network, ensemble, or tuned model would improve test accuracy for reasons unrelated to data selection quality.
+The downstream model is the benchmark's scikit-learn logistic regression (`C=1.0`, `lbfgs`, `max_iter=500`) on the provided standardized features. The evaluator owns it; a submitted ordering cannot change it.
 
 ## Data and Splits
 
-The scientist must use only the benchmark-provided tasks currently implemented in `data/tasks.py`: `digits` and `synthetic_planes`. The predefined train, validation, and test split procedure must remain fixed for each seed. No external labeled data, extra unlabeled data, alternate OpenML versions, or re-sampled test sets may be used for these scored tasks.
+Use only the two benchmark tasks, `digits` and `fried`, through the instance inputs. Do not bring in external labelled or unlabelled data. In particular, do not load another copy of the digits dataset or generate additional Friedman data inside a ranker to act as a larger validation or proxy test set: the held-out instances are drawn from these same public sources, so doing so leaks the test distribution. Do not read, import, copy or inspect `eval/test/` or any held-out scores, curves or temporary files from a ranker.
 
 ## Ranking Inputs
 
-The ranking method may use the training pool and validation set provided for that seed. It must not use test labels, test predictions, or aggregate test-set feedback to choose or tune the ranking. Test data is only for final evaluation of selected prefixes.
+The ranking may use the candidate pool and the validation set of the instance (features and labels) and the instance seed. It must not use test data, test predictions or test-set feedback.
 
 ## Candidate Pool Size
 
-The practical comparison must keep the benchmark pool sizes fixed: 100 training, 100 validation, and 1000 test examples for `digits`; 50 training, 50 validation, and 500 test examples for `synthetic_planes`. Increasing the candidate pool, validation pool, or test pool changes the problem.
+The candidate pool is fixed by the instance: 100 points for `digits`, 50 for `fried`; validation 100 / 50; test 1000 / 500. A ranking must be a permutation of exactly the given pool (the evaluator rejects anything else).
 
-## Random Seeds and Repeats
+## Utility-Evaluation Budget
 
-Use the benchmark seed schedule and report averages over the same 20 independent trials. Dropping hard seeds, adding extra seeds only for a submitted method, or selecting favorable runs is not allowed.
+At most 1000 target-model retrainings (or other subset-utility evaluations on the validation set) per instance to construct a ranking, as in the original study's experimental control. Exhaustive or near-exhaustive search, such as evaluating every remaining candidate at every step (5,050 retrainings for a 100-point pool), exceeds this budget. The evaluator cannot count retrainings, so this rule is checked in review.
 
-## Utility-Query and Retraining Budget
+## Instances and Repeats
 
-Methods must respect the benchmark's model-retraining or subset-utility-query budget. Exhaustive search over all possible rankings is not a practical submitted method for the scaled benchmark.
-
-## Baseline Comparisons
-
-Baseline results must be computed under the same splits, learner, preprocessing, and evaluation checkpoints as the submitted method. A comparison is invalid if the submitted method receives more data, more test feedback, or a different target learner than the baselines.
+The held-out evaluator fixes the instances (100 per task) and requires a ranking for every one of them. Rankers must be deterministic given the instance seed.
 
 ## Compliance Checklist
 
-- [ ] Target learner is the benchmark Logistic Regression model.
-- [ ] Only the implemented benchmark tasks, `digits` and `synthetic_planes`, are used.
-- [ ] Train, validation, and test splits match the benchmark seed-driven split procedure.
-- [ ] Test labels and test feedback are not used to create or tune rankings.
-- [ ] Candidate pool and validation sizes match the specified experiment.
-- [ ] Results are averaged over the benchmark's 20 trials.
-- [ ] Utility-query and retraining budgets are not exceeded.
-- [ ] Baselines and submitted method use the same preprocessing and evaluation checkpoints.
+- [ ] The method is a ranker in `scripts/rankers/` that reads only the instance inputs.
+- [ ] Target learner, features and splits are those given by the instance.
+- [ ] No external data, no extra copies of the benchmark datasets, no regeneration of the generators.
+- [ ] Nothing from `eval/test/` or from held-out outputs is read.
+- [ ] Each ranking is a permutation of the full candidate pool.
+- [ ] At most 1000 utility evaluations per instance.

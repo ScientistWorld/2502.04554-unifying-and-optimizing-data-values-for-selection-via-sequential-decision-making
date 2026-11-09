@@ -1,13 +1,12 @@
+"""Monte Carlo Data Shapley baseline (random-permutation marginal utilities)."""
 from __future__ import annotations
 
 import argparse
-import json
-from pathlib import Path
 
 import numpy as np
 
+from data.instances import iter_instances, write_ranking
 from data.metrics import fit_eval_logreg
-from data.tasks import load_task
 
 
 def permutation_shapley_values(
@@ -41,39 +40,35 @@ def permutation_shapley_values(
     return values.tolist()
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default="digits", choices=["digits", "synthetic_planes"])
-    parser.add_argument("--seed", type=int, default=10)
-    parser.add_argument("--train-size", type=int, default=None)
-    parser.add_argument("--permutations", type=int, default=8)
-    parser.add_argument("--output-dir", default="checkpoints/rankings")
-    args = parser.parse_args()
-
-    task = load_task(args.dataset, args.seed, train_size=args.train_size)
+def rank_instance(instance: dict, permutations: int = 8) -> tuple[list[int], list[float]]:
     values = permutation_shapley_values(
-        task.x_train,
-        task.y_train,
-        task.x_valid,
-        task.y_valid,
-        seed=args.seed,
-        permutations=args.permutations,
+        instance["x_train"],
+        instance["y_train"],
+        instance["x_valid"],
+        instance["y_valid"],
+        seed=instance["seed"],
+        permutations=permutations,
     )
     ranking = np.argsort(-np.array(values), kind="mergesort").astype(int).tolist()
-    Path(args.output_dir).mkdir(parents=True, exist_ok=True)
-    payload = {
-        "method": "datashap",
-        "dataset": args.dataset,
-        "seed": args.seed,
-        "ranking": ranking,
-        "values": values,
-        "permutations": args.permutations,
-        "train_size": len(task.x_train),
-        "valid_size": len(task.x_valid),
-        "test_size": len(task.x_test),
-    }
-    out = Path(args.output_dir) / f"datashap_{args.dataset}_seed{args.seed}.json"
-    out.write_text(json.dumps(payload, indent=2))
+    return ranking, values
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--instances", required=True)
+    parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--permutations", type=int, default=8)
+    args = parser.parse_args()
+    for instance in iter_instances(args.instances):
+        ranking, values = rank_instance(instance, args.permutations)
+        write_ranking(
+            args.output_dir,
+            instance["instance_id"],
+            ranking,
+            method="datashap",
+            values=values,
+            permutations=args.permutations,
+        )
 
 
 if __name__ == "__main__":

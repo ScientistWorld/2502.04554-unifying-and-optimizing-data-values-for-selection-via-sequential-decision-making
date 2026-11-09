@@ -1,11 +1,11 @@
 # Experiment Overview
 
-The section headings here match the current experiment keys in `scoring/reference.json`. These descriptions explain the scientific purpose of each benchmark measurement without requiring or revealing any particular selection algorithm.
+The section headings match the experiment keys in `scoring/reference.json`. Each experiment is scored on 100 held-out instances (random splits) that methods have not seen; the visible slice uses seeds 1-20 of the same generators.
 
 ## digits_selection
 
-Tests whether a data selection method can produce a ranking that performs well on an image-style multiclass classification task with a larger candidate pool. This experiment emphasizes the low-budget and full-curve behavior of the ranking, while also tracking variability and selected-budget size so gains are not credited solely for unstable or larger-budget behavior.
+Establishes whether a selection method finds orderings of a multiclass image-style candidate pool whose prefixes train a good classifier at every budget, and especially at very small budgets where only a handful of the 10 classes' examples can be chosen. Ten classes and a 100-point pool make early choices consequential: a poor early ordering leaves classes unseen or poorly represented for many steps. The tail metric checks that early-budget gains are not paid for at larger budgets, and the step-drop metric checks that the curve does not regress as data is added.
 
-## synthetic_planes_selection
+## fried_selection
 
-Tests whether a data selection method can produce a ranking that performs well on a structured tabular binary-classification task. This experiment provides a smaller practical setting for comparing full-curve accuracy, early-prefix quality, run-to-run stability, and selected-budget size under the same fixed learner and split protocol.
+Establishes the same question on a smooth, low-noise binary tabular problem with five informative and five irrelevant features and a 50-point pool. Here class coverage is easy, so differences come from choosing examples that pin down the decision boundary early and from avoiding harmful additions later. It checks that an improvement is not specific to multiclass coverage effects.

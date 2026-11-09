@@ -1,130 +1,183 @@
 {
   "experiments": {
     "digits_selection": {
-      "description": "Sequential data selection on the digits dataset using the paper's RQ3 protocol.",
-      "notes": "The original paper reports mean selection-curve accuracy for the proposed method and baselines from plotted curves/tables. Auxiliary gym metrics such as early10, tail, worst-prefix, max-drop, and label-balance are computed by the evaluator for future comparisons but are not reported as paper reference values.",
+      "description": "Order a 100-point candidate pool of 8x8 handwritten digits (10 classes) for sequential selection; 100 validation and 1000 test points per instance (the paper's RQ3 large-dataset split).",
+      "notes": "Results are the paper's Table 1 values (mean test accuracy and its +/- over 20 runs, OpenDataVal logistic regression). This gym uses the same split sizes and target model family, with class-balanced candidate pools and standardized features, so absolute accuracies run higher than the paper's (e.g. random ordering ~0.75 here vs 0.619); compare methods to the reproduced reference in scores_test.json, not to these numbers. The held-out test scores 100 hidden instances. Only random, loo, datashap and bipartite are implemented here; the other rows are the paper's.",
       "weight": 0.6,
       "primary_metric": "mean_accuracy",
       "metrics": {
         "mean_accuracy": {
           "higher_is_better": true,
           "coefficient": 1.0,
-          "description": "Average test accuracy over the full sequential selection curve."
-        },
-        "mean_accuracy_std": {
-          "higher_is_better": false,
-          "coefficient": -0.05,
-          "description": "Run-to-run variability of full-curve test accuracy across seeds."
+          "description": "Mean held-out test accuracy over the full selection curve (prefix sizes 1..100); the paper's Table 1 metric."
         },
         "early10_accuracy": {
           "higher_is_better": true,
           "coefficient": 0.5,
-          "description": "Mean test accuracy over the first 10 selected examples, emphasizing very low-budget selection."
+          "description": "Mean test accuracy over prefix sizes 1..10 (10% of the pool): very-low-budget selection quality, where the paper reports the largest gaps."
         },
         "early20_accuracy": {
           "higher_is_better": true,
           "coefficient": 0.6,
-          "description": "Mean test accuracy over the first 20 selected examples, measuring sample-efficient early ranking quality."
+          "description": "Mean test accuracy over prefix sizes 1..20 (20% of the pool): early-selection sample efficiency."
         },
         "tail_accuracy": {
           "higher_is_better": true,
           "coefficient": 0.4,
-          "description": "Mean test accuracy after the early-selection region, checking that early gains persist across larger budgets."
-        },
-        "worst_prefix_accuracy": {
-          "higher_is_better": true,
-          "coefficient": 0.25,
-          "description": "Lowest test accuracy reached by any prefix of the ranking, penalizing fragile curves."
+          "description": "Mean test accuracy over prefix sizes 21..100. Constraint side of the claim: early gains must not be bought by worse larger-budget prefixes."
         },
         "max_accuracy_drop": {
           "higher_is_better": false,
-          "coefficient": -0.2,
-          "description": "Largest one-step decrease in test accuracy along the selection curve."
+          "coefficient": 0.2,
+          "description": "Largest one-step decrease in test accuracy along the curve, averaged over instances (the paper's 'fewer fluctuations'); constraint metric."
         },
-        "early_label_balance": {
-          "higher_is_better": true,
-          "coefficient": 0.15,
-          "description": "Normalized label entropy in the first 20 selected examples, discouraging degenerate early class composition."
-        },
-        "final_accuracy": {
-          "higher_is_better": true,
-          "coefficient": 0.0,
-          "description": "Compatibility-only full-budget accuracy; unscored because all complete rankings train on the same final set."
-        },
-        "selection_budget": {
+        "curve_accuracy_std": {
           "higher_is_better": false,
           "coefficient": 0.0,
-          "description": "Compatibility-only ranking length; unscored because the interface requires full candidate rankings."
+          "description": "Unscored. Standard deviation of test accuracy pooled over all prefix sizes and instances; reported because the paper's Table 1 '+/-' column is read as this quantity."
         }
       },
       "results": {
-        "random": {"type": "baseline", "mean_accuracy": 0.619, "mean_accuracy_std": 0.342, "selection_budget": 100},
-        "loo": {"type": "baseline", "mean_accuracy": 0.680, "mean_accuracy_std": 0.318, "selection_budget": 100},
-        "datashap": {"type": "baseline", "mean_accuracy": 0.649, "mean_accuracy_std": 0.335, "selection_budget": 100},
-        "bipartite": {"type": "proposed", "mean_accuracy": 0.764, "mean_accuracy_std": 0.245, "selection_budget": 100}
+        "random": {
+          "type": "baseline",
+          "mean_accuracy": 0.619,
+          "curve_accuracy_std": 0.342
+        },
+        "loo": {
+          "type": "baseline",
+          "mean_accuracy": 0.68,
+          "curve_accuracy_std": 0.318
+        },
+        "influence": {
+          "type": "baseline",
+          "mean_accuracy": 0.646,
+          "curve_accuracy_std": 0.346
+        },
+        "datashap": {
+          "type": "baseline",
+          "mean_accuracy": 0.649,
+          "curve_accuracy_std": 0.335
+        },
+        "betashap": {
+          "type": "baseline",
+          "mean_accuracy": 0.647,
+          "curve_accuracy_std": 0.332
+        },
+        "banzhaf": {
+          "type": "baseline",
+          "mean_accuracy": 0.61,
+          "curve_accuracy_std": 0.361
+        },
+        "ame": {
+          "type": "baseline",
+          "mean_accuracy": 0.662,
+          "curve_accuracy_std": 0.324
+        },
+        "dvrl": {
+          "type": "baseline",
+          "mean_accuracy": 0.419,
+          "curve_accuracy_std": 0.366
+        },
+        "dataoob": {
+          "type": "baseline",
+          "mean_accuracy": 0.338,
+          "curve_accuracy_std": 0.349
+        },
+        "bipartite": {
+          "type": "proposed",
+          "mean_accuracy": 0.764,
+          "curve_accuracy_std": 0.245
+        }
       }
     },
-    "synthetic_planes_selection": {
-      "description": "Sequential data selection on a structured tabular binary-classification task analogous to the paper's 2dplanes setting.",
-      "notes": "This benchmark substitutes a reproducible structured binary task for the original OpenML 2dplanes resource. Reference mean-accuracy targets are anchored to the paper's 2dplanes-style practical result; auxiliary gym metrics are computed by the evaluator but were not reported in the paper.",
+    "fried_selection": {
+      "description": "Order a 50-point candidate pool of the binarized Friedman #1 regression benchmark (OpenML 'fried', ID 901: 10 uniform features, target above its mean vs. not), regenerated from its published definition; 50 validation and 500 test points per instance (the paper's standard split).",
+      "notes": "Results are the paper's Table 1 values for fried (mean test accuracy and +/- over 20 runs). The data are regenerated with sklearn.datasets.make_friedman1 (noise 1.0) and binarized at the sample mean as OpenML does, so they follow the same distribution as the OpenML table rather than being the identical 40768 rows. Replaces the earlier 'synthetic_planes' stand-in, which was near chance and did not reproduce the paper's direction. The held-out test scores 100 hidden instances. Only random, loo, datashap and bipartite are implemented here.",
       "weight": 0.4,
       "primary_metric": "mean_accuracy",
       "metrics": {
         "mean_accuracy": {
           "higher_is_better": true,
           "coefficient": 1.0,
-          "description": "Average test accuracy over the full sequential selection curve."
-        },
-        "mean_accuracy_std": {
-          "higher_is_better": false,
-          "coefficient": -0.05,
-          "description": "Run-to-run variability of full-curve test accuracy across seeds."
+          "description": "Mean held-out test accuracy over the full selection curve (prefix sizes 1..50); the paper's Table 1 metric."
         },
         "early10_accuracy": {
           "higher_is_better": true,
           "coefficient": 0.5,
-          "description": "Mean test accuracy over the first 10 selected examples, emphasizing very low-budget selection."
+          "description": "Mean test accuracy over prefix sizes 1..10 (20% of the pool): very-low-budget selection quality, where the paper reports the largest gaps."
         },
         "early20_accuracy": {
           "higher_is_better": true,
           "coefficient": 0.6,
-          "description": "Mean test accuracy over the first 20 selected examples, measuring sample-efficient early ranking quality."
+          "description": "Mean test accuracy over prefix sizes 1..20 (40% of the pool): early-selection sample efficiency."
         },
         "tail_accuracy": {
           "higher_is_better": true,
           "coefficient": 0.4,
-          "description": "Mean test accuracy after the early-selection region, checking that early gains persist across larger budgets."
-        },
-        "worst_prefix_accuracy": {
-          "higher_is_better": true,
-          "coefficient": 0.25,
-          "description": "Lowest test accuracy reached by any prefix of the ranking, penalizing fragile curves."
+          "description": "Mean test accuracy over prefix sizes 21..50. Constraint side of the claim: early gains must not be bought by worse larger-budget prefixes."
         },
         "max_accuracy_drop": {
           "higher_is_better": false,
-          "coefficient": -0.2,
-          "description": "Largest one-step decrease in test accuracy along the selection curve."
+          "coefficient": 0.2,
+          "description": "Largest one-step decrease in test accuracy along the curve, averaged over instances (the paper's 'fewer fluctuations'); constraint metric."
         },
-        "early_label_balance": {
-          "higher_is_better": true,
-          "coefficient": 0.15,
-          "description": "Normalized label entropy in the first 20 selected examples, discouraging degenerate early class composition."
-        },
-        "final_accuracy": {
-          "higher_is_better": true,
-          "coefficient": 0.0,
-          "description": "Compatibility-only full-budget accuracy; unscored because all complete rankings train on the same final set."
-        },
-        "selection_budget": {
+        "curve_accuracy_std": {
           "higher_is_better": false,
           "coefficient": 0.0,
-          "description": "Compatibility-only ranking length; unscored because the interface requires full candidate rankings."
+          "description": "Unscored. Standard deviation of test accuracy pooled over all prefix sizes and instances; reported because the paper's Table 1 '+/-' column is read as this quantity."
         }
       },
       "results": {
-        "random": {"type": "baseline", "mean_accuracy": 0.723, "mean_accuracy_std": 0.098, "selection_budget": 50},
-        "loo": {"type": "baseline", "mean_accuracy": 0.720, "mean_accuracy_std": 0.103, "selection_budget": 50},
-        "bipartite": {"type": "proposed", "mean_accuracy": 0.745, "mean_accuracy_std": 0.069, "selection_budget": 50}
+        "random": {
+          "type": "baseline",
+          "mean_accuracy": 0.702,
+          "curve_accuracy_std": 0.087
+        },
+        "loo": {
+          "type": "baseline",
+          "mean_accuracy": 0.698,
+          "curve_accuracy_std": 0.099
+        },
+        "influence": {
+          "type": "baseline",
+          "mean_accuracy": 0.7,
+          "curve_accuracy_std": 0.108
+        },
+        "datashap": {
+          "type": "baseline",
+          "mean_accuracy": 0.71,
+          "curve_accuracy_std": 0.103
+        },
+        "betashap": {
+          "type": "baseline",
+          "mean_accuracy": 0.719,
+          "curve_accuracy_std": 0.095
+        },
+        "banzhaf": {
+          "type": "baseline",
+          "mean_accuracy": 0.707,
+          "curve_accuracy_std": 0.106
+        },
+        "ame": {
+          "type": "baseline",
+          "mean_accuracy": 0.702,
+          "curve_accuracy_std": 0.109
+        },
+        "dvrl": {
+          "type": "baseline",
+          "mean_accuracy": 0.702,
+          "curve_accuracy_std": 0.098
+        },
+        "dataoob": {
+          "type": "baseline",
+          "mean_accuracy": 0.719,
+          "curve_accuracy_std": 0.085
+        },
+        "bipartite": {
+          "type": "proposed",
+          "mean_accuracy": 0.741,
+          "curve_accuracy_std": 0.065
+        }
       }
     }
   }

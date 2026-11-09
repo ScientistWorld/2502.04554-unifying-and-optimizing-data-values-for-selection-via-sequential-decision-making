@@ -1,11 +1,40 @@
+"""Visible task provider for the sequential data-selection benchmark.
+
+Two of the paper's datasets are used:
+
+* ``digits`` -- scikit-learn's bundled 8x8 handwritten digits (10 classes),
+  using the paper's large-dataset split sizes: 100 candidate training points,
+  100 validation points, 1000 test points.
+* ``fried`` -- the paper's OpenML ``fried`` dataset (ID 901). It is Friedman's
+  synthetic regression benchmark (10 uniform features, of which 5 matter, plus
+  unit Gaussian noise), binarized the way OpenML binarizes it: targets above
+  the mean form one class, the rest the other. It is regenerated here from its
+  published definition via ``sklearn.datasets.make_friedman1``, so no download
+  is required. Split sizes follow the paper's standard datasets: 50 training,
+  50 validation, 500 test points.
+
+Each ``seed`` gives one independent split ("instance"). This module produces
+the *visible* development instances. The held-out evaluation draws its own
+instances from the same generators with seeds that are not derivable from this
+file, so nothing here can regenerate held-out test data.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
 
 import numpy as np
-from sklearn.datasets import load_digits, make_classification
+from sklearn.datasets import load_digits, make_friedman1
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+
+
+DATASETS = ("digits", "fried")
+SPLIT_SIZES = {
+    # dataset: (train pool, validation, test)
+    "digits": (100, 100, 1000),
+    "fried": (50, 50, 500),
+}
+FRIED_POOL = 5000
 
 
 @dataclass(frozen=True)
@@ -40,55 +69,31 @@ def _balanced_sample(
     return x[selected], y[selected]
 
 
-def load_task(name: str, seed: int, train_size: int | None = None) -> SelectionTask:
-    """Return deterministic train/validation/test splits.
-
-    The paper uses OpenML datasets. For the first reusable reproduction we use
-    scikit-learn's bundled digits and a structured synthetic tabular task so the
-    environment has no external data dependency while preserving the protocol.
-    """
-    rng = np.random.default_rng(seed)
+def _raw_dataset(name: str, seed: int) -> tuple[np.ndarray, np.ndarray]:
     if name == "digits":
         raw = load_digits()
-        x = raw.data.astype(np.float64) / 16.0
-        y = raw.target.astype(int)
-        default_train = 100
-        valid_size = 100
-        test_size = 1000
-        stratify = y
-    elif name == "synthetic_planes":
-        # Structured binary tabular substitute for an unavailable OpenML-style
-        # task. It keeps the benchmark self-contained while preserving the
-        # fixed-pool sequential selection protocol.
-        x, y = make_classification(
-            n_samples=5000,
-            n_features=20,
-            n_informative=8,
-            n_redundant=6,
-            n_repeated=0,
-            n_classes=2,
-            n_clusters_per_class=4,
-            class_sep=0.75,
-            flip_y=0.08,
-            random_state=seed,
+        return raw.data.astype(np.float64) / 16.0, raw.target.astype(int)
+    if name == "fried":
+        x, target = make_friedman1(
+            n_samples=FRIED_POOL, n_features=10, noise=1.0, random_state=seed
         )
-        y = y.astype(int)
-        default_train = 50
-        valid_size = 50
-        test_size = 500
-        stratify = y
-    else:
-        raise ValueError(f"unknown task {name!r}")
+        return x.astype(np.float64), (target > target.mean()).astype(int)
+    raise ValueError(f"unknown task {name!r}; expected one of {DATASETS}")
 
-    train_size = int(train_size or default_train)
-    first_size = train_size + valid_size
+
+def load_task(name: str, seed: int) -> SelectionTask:
+    """Return one deterministic train/validation/test split for ``seed``."""
+    x, y = _raw_dataset(name, seed)
+    train_size, valid_size, test_size = SPLIT_SIZES[name]
+    rng = np.random.default_rng(seed)
+
     x_work, x_test, y_work, y_test = train_test_split(
         x,
         y,
-        train_size=first_size,
+        train_size=train_size + valid_size,
         test_size=test_size,
         random_state=seed,
-        stratify=stratify,
+        stratify=y,
     )
     x_train, y_train = _balanced_sample(x_work, y_work, train_size, rng)
     mask = np.ones(len(x_work), dtype=bool)

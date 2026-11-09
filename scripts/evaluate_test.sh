@@ -1,15 +1,14 @@
 #!/bin/bash
-# Held-out test-slice evaluator. Mirrors scripts/evaluate.sh but writes
-# scoring/scores_test.json and test-marked per-seed curve artifacts.
-
+# Held-out test-slice evaluator -> scoring/scores_test.json.
+#
+# Runs with no arguments. Draws the held-out instances inside eval/test/,
+# runs every ranker in scripts/rankers/*.sh on their inputs, and scores every
+# method. Any failed ranker or invalid/missing ranking fails the run (non-zero
+# exit, no scores file).
 set -e
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$SCRIPT_DIR/.."
 
 mkdir -p scoring
-
-python -m eval.test.evaluate \
-  --scores scoring/scores_test.json \
-  --curves-dir scoring/curves_test \
-  "$@"
+python -m eval.test.evaluate --scores scoring/scores_test.json "$@"

@@ -1,30 +1,19 @@
 #!/bin/bash
-# Reproduce the paper's results end-to-end.
+# Reproduce the reference results end-to-end (CPU only, no downloads needed).
 #
-# This script runs inside the compute container and should call
-# scripts/baseline.sh and scripts/method.sh to run baselines and
-# the paper's method, each of which calls scripts/evaluate.sh.
-#
-# Assumes:
-#   - Container is built (environment/container.sif)
-#   - Data and models are downloaded (via scripts/download.sh)
-#   - Working directory can be anywhere inside the checkout
-#
-# This is the "gold standard" reproduction — 
-# You do not need to run this, but keep this in good shape
-# so other agents can easily run a full loop of reproduction and get the paper's numbers.
-
+# 1. Visible slice: run every ranker in scripts/rankers/ (the paper's method
+#    and the random / leave-one-out / Data Shapley baselines) on the visible
+#    instances -> scoring/scores_train.json, then rescore the same rankings
+#    into scoring/scores.json.
+# 2. Held-out slice: scripts/evaluate_test.sh -> scoring/scores_test.json.
 set -e
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$SCRIPT_DIR/.."
 
-rm -rf checkpoints/rankings scoring/curves scoring/scores.json
+rm -rf checkpoints/instances checkpoints/rankings scoring/curves scoring/curves_train
+rm -f scoring/scores.json scoring/scores_train.json scoring/scores_test.json
 
-export SEEDS=${SEEDS:-"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"}
-export EVALUATE_AFTER_RUN=0
-bash scripts/baseline.sh random digits synthetic_planes
-bash scripts/baseline.sh loo digits synthetic_planes
-bash scripts/baseline.sh datashap digits
-bash scripts/method.sh digits synthetic_planes
-bash scripts/evaluate.sh
+bash scripts/evaluate_train.sh
+bash scripts/evaluate.sh --skip-run
+bash scripts/evaluate_test.sh

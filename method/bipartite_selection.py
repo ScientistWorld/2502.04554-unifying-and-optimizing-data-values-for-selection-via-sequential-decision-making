@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 
 import numpy as np
 from sklearn.metrics import pairwise_distances
 
+from data.instances import iter_instances, write_ranking
 from data.metrics import fit_eval_logreg
-from data.tasks import load_task
 
 
 def learn_bipartite_edges(
@@ -82,50 +81,49 @@ def greedy_maximum_coverage(edges: np.ndarray) -> tuple[list[int], list[int]]:
     return ranking, gains
 
 
-def run(args: argparse.Namespace) -> None:
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    task = load_task(args.dataset, args.seed, train_size=args.train_size)
-    subset_size = args.subset_size or max(2, min(len(task.x_train) // 5, 20))
+def rank_instance(
+    instance: dict,
+    subset_samples: int = 80,
+    subset_size: int | None = None,
+    n_thresholds: int = 25,
+) -> tuple[list[int], dict]:
+    """Learn the bipartite surrogate for one instance and rank its pool."""
+    n_train = len(instance["y_train"])
+    subset_size = subset_size or max(2, min(n_train // 5, 20))
     edges, graph_info = learn_bipartite_edges(
-        task.x_train,
-        task.y_train,
-        task.x_valid,
-        task.y_valid,
-        seed=args.seed,
-        subset_samples=args.subset_samples,
+        instance["x_train"],
+        instance["y_train"],
+        instance["x_valid"],
+        instance["y_valid"],
+        seed=instance["seed"],
+        subset_samples=subset_samples,
         subset_size=subset_size,
-        n_thresholds=args.thresholds,
+        n_thresholds=n_thresholds,
     )
     ranking, gains = greedy_maximum_coverage(edges)
-    payload = {
-        "method": "bipartite",
-        "dataset": args.dataset,
-        "seed": args.seed,
-        "ranking": ranking,
-        "coverage_gains": gains,
-        "graph": graph_info,
-        "train_size": len(task.x_train),
-        "valid_size": len(task.x_valid),
-        "test_size": len(task.x_test),
-    }
-    (output_dir / f"bipartite_{args.dataset}_seed{args.seed}.json").write_text(
-        json.dumps(payload, indent=2)
-    )
+    return ranking, {"coverage_gains": gains, "graph": graph_info}
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default="digits", choices=["digits", "synthetic_planes"])
-    parser.add_argument("--seed", type=int, default=10)
-    parser.add_argument("--train-size", type=int, default=None)
+    parser = argparse.ArgumentParser(
+        description="Bipartite-surrogate sequential selection ranker (see data/instances.py)."
+    )
+    parser.add_argument("--instances", required=True, help="directory of instance .npz files")
+    parser.add_argument("--output-dir", required=True, help="where <instance_id>.json rankings go")
     parser.add_argument("--subset-samples", type=int, default=80)
     parser.add_argument("--subset-size", type=int, default=None)
     parser.add_argument("--thresholds", type=int, default=25)
-    parser.add_argument("--output-dir", default="checkpoints/rankings")
-    run(parser.parse_args())
+    args = parser.parse_args()
+    output_dir = Path(args.output_dir)
+    for instance in iter_instances(args.instances):
+        ranking, info = rank_instance(
+            instance,
+            subset_samples=args.subset_samples,
+            subset_size=args.subset_size,
+            n_thresholds=args.thresholds,
+        )
+        write_ranking(output_dir, instance["instance_id"], ranking, method="bipartite", **info)
 
 
 if __name__ == "__main__":
     main()
-

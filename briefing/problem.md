@@ -12,11 +12,37 @@ Can a data selection method find a ranking whose prefixes achieve high downstrea
 
 Data selection is used when labeling, training, storage, or evaluation budgets are limited. A strong selector should identify useful data early and remain effective as the selected subset grows, rather than only optimizing a single fixed budget or producing importance scores that do not translate into good prefix performance.
 
+## Tasks
+
+Each task is a family of independent *instances* (random splits). An instance gives the method:
+
+- a candidate training pool (features and labels), and
+- a validation set (features and labels) for estimating utility,
+
+plus an integer seed for the method's own randomness. Test data is never given to the method.
+
+| Task | Data | Candidate pool | Validation | Test (hidden) |
+|---|---|---:|---:|---:|
+| `digits` | scikit-learn 8x8 handwritten digits, 10 classes | 100 | 100 | 1000 |
+| `fried` | binarized Friedman #1 benchmark (OpenML "fried"), 10 features, 2 classes | 50 | 50 | 500 |
+
+Features are standardized per instance. The downstream learner is scikit-learn logistic regression (`C=1.0`, `lbfgs`, `max_iter=500`).
+
+## Interface
+
+A method is a *ranker*: an executable script `scripts/rankers/<name>.sh` called as
+
+```bash
+bash scripts/rankers/<name>.sh INSTANCES_DIR OUTPUT_DIR
+```
+
+For every `INSTANCES_DIR/<instance_id>.npz` (arrays `x_train`, `y_train`, `x_valid`, `y_valid`; scalars `dataset`, `instance_id`, `seed`) it must write `OUTPUT_DIR/<instance_id>.json` containing `{"ranking": [...]}`, a permutation of `0..n-1` over the candidate pool. `data/instances.py` has readers/writers, and `python -m data.instances DIR` writes the visible development instances (seeds 1-20 per task; any other seed is available for development too).
+
 ## Success Criteria
 
 A successful solution should:
 
-- Improve the area under the test-performance selection curve across datasets.
-- Reach competitive test accuracy with fewer selected examples.
-- Remain fair under the same downstream learner, train/validation/test splits, candidate pool sizes, random seeds, and retraining budget used by the benchmark.
-- Avoid using test labels or external data to construct the ranking.
+- Improve the area under the test-performance selection curve across tasks.
+- Reach competitive test accuracy with fewer selected examples, without giving up accuracy at larger budgets.
+- Hold fixed the downstream learner, the instance inputs, the candidate pool and the evaluation protocol.
+- Avoid using test labels, external data, or held-out evaluation code to construct the ranking.

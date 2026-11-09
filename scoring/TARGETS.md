@@ -1,21 +1,27 @@
 # Evaluation Targets
 
-The benchmark evaluates ordered data selection. A submitted method receives the same candidate training pool, validation set, downstream learner, and evaluation splits as the reproduction, then outputs a single ranking of training examples.
+A method receives the instance inputs (candidate pool + validation set) and returns one ordering of the full candidate pool per instance. The evaluator retrains the fixed logistic-regression learner on every prefix and scores test accuracy. Held-out scores come from `scripts/evaluate_test.sh` over 100 hidden instances per task.
 
-The experiment headings below match the current `scoring/reference.json` experiment keys. Each experiment includes both benefit metrics and constraint metrics so future improvements cannot come only from using a larger selection budget or unstable runs.
+## Primary: digits_selection (weight 0.6)
 
-## Primary: digits_selection
+Sequential selection on the handwritten-digits task (pool 100, validation 100, test 1000).
 
-Tests sequential data selection on the handwritten-digits benchmark under the paper's practical evaluation protocol.
+- **Benefit metrics (higher is better):** `mean_accuracy` (1.0), `early10_accuracy` (0.5), `early20_accuracy` (0.6)
+- **Constraint metrics:** `tail_accuracy` (0.4, higher is better: larger-budget prefixes must stay good), `max_accuracy_drop` (0.2, lower is better: no regressions as data is added)
+- **Hard constraints enforced by the evaluator (violations fail the run):** one ranking per held-out instance; each a permutation of that instance's whole candidate pool; rankers run only on the evaluator-provided inputs.
+- **Reported, unscored:** `curve_accuracy_std`
+- **Reference (reproduced, held-out):** see `scoring/scores_test.json` (`bipartite`); the original study reports 0.764 mean accuracy for its method and 0.680 for the best of its baselines on digits.
 
-- **Benefit metrics:** mean_accuracy, early10_accuracy, early20_accuracy, tail_accuracy, worst_prefix_accuracy, final_accuracy, and early_label_balance (higher is better)
-- **Constraint metrics:** mean_accuracy_std, max_accuracy_drop, and selection_budget (lower is better)
-- **How to run evaluation:** Rank the fixed digits training pool for each seed, retrain the fixed target learner on selected prefixes, evaluate on the fixed test split, and aggregate over the benchmark trials.
+## Primary: fried_selection (weight 0.4)
 
-## Primary: synthetic_planes_selection
+Sequential selection on the binarized Friedman #1 ("fried") task (pool 50, validation 50, test 500).
 
-Tests sequential data selection on a structured tabular binary-classification benchmark analogous to the paper's 2dplanes setting.
+- **Benefit metrics (higher is better):** `mean_accuracy` (1.0), `early10_accuracy` (0.5), `early20_accuracy` (0.6)
+- **Constraint metrics:** `tail_accuracy` (0.4), `max_accuracy_drop` (0.2, lower is better)
+- **Hard constraints:** as above.
+- **Reported, unscored:** `curve_accuracy_std`
+- **Reference (reproduced, held-out):** see `scoring/scores_test.json` (`bipartite`); the original study reports 0.741 for its method versus 0.702 random, 0.698 leave-one-out and 0.710 Data Shapley on fried.
 
-- **Benefit metrics:** mean_accuracy, early10_accuracy, early20_accuracy, tail_accuracy, worst_prefix_accuracy, final_accuracy, and early_label_balance (higher is better)
-- **Constraint metrics:** mean_accuracy_std, max_accuracy_drop, and selection_budget (lower is better)
-- **How to run evaluation:** Rank the fixed synthetic-planes training pool for each seed, retrain the fixed target learner on selected prefixes, evaluate on the fixed test split, and aggregate over the benchmark trials.
+## Rule-based constraint (checked by review, not measurable by the evaluator)
+
+- At most 1000 target-model retrainings / subset-utility evaluations per instance to build a ranking (the original study's experimental control). See `scoring/CONSTRAINTS.md`.
